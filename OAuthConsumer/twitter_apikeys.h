@@ -1,0 +1,3 @@
+// see http://twitter.com/oauth_clients
+#define TWITTER_OAUTH_CONSUMER_KEY			@"ORdJ0f4FCYis4yJxAZb1w"
+#define TWITTER_OAUTH_CONSUMER_SECRET		@"IbUAz976jJW5hPAQE43yXcW30MQO32PBA9OPv9EprCc"
