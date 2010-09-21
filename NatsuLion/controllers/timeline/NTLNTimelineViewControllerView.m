@@ -55,16 +55,40 @@
 	b.frame = CGRectMake(0, 0, 320, 55);
 	//[b addTarget:self action:@selector(reloadButton:) forControlEvents:UIControlEventTouchUpInside];
 	//ST: we try now to replace the reloadButton function with the playTweets one
-	[b addTarget:self action:@selector(playTweets:) forControlEvents:UIControlEventTouchUpInside];
+	[b addTarget:self action:@selector(playTweetsAction:) forControlEvents:UIControlEventTouchUpInside];
+	
 	headReloadButton = [b retain];
 	
 	[self setReloadButtonNormal:YES];
 	return b;
 }
 
+- (UIView*)playButtonItem{
+	
+	//UIBarButtonItem *b = [[UIBarButtonItem alloc] 
+//							initWithImage:[UIImage imageNamed:@"play.jpg"]
+//	 //					  initWithImage:[UIImage imageNamed:@"unread_clear.png"]
+//									style:UIBarButtonItemStyleBordered 
+//									target:self action:@selector(playTweets:)];
+	UIButton *b = [UIButton buttonWithType:UIButtonTypeCustom];
+	b.frame = CGRectMake(0, 0, 320, 55);
+	[b addTarget:self action:@selector(playTweetsAction:) forControlEvents:UIControlEventTouchUpInside];
+	
+	[b retain];
+	return b;
+	
+}
+
 - (void)setupTableView {
 	self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
 	self.tableView.tableHeaderView = [self reloadView];
+	
+	
+	//UIBarButtonItem *playButton;
+
+	//[self.view addSubview:[self playButtonItem]];
+	
+
 }
 
 - (void)setupNavigationBar {
@@ -91,25 +115,119 @@
 	}
 }
 
--(IBAction)reloadButton:(id)sender {
-	if (![timeline isClientActive]) {
-		[timeline getTimelineWithPage:0 autoload:NO];
-	} else {
-		[timeline clientCancel];
+//-(IBAction)reloadButton:(id)sender {
+//	if (![timeline isClientActive]) {
+//		[timeline getTimelineWithPage:0 autoload:NO];
+//	} else {
+//		[timeline clientCancel];
+//	}
+//}
+
+
+//ST: set the next row index to read (still dunno if useful)
+-(void)setNextIndexToRead:(NSInteger)value{
+	@synchronized(nextIndexToReadLocker){
+		nextIndexToRead = value;
+		NSLog(@"New index to read %i", value);
 	}
 }
 
--(IBAction)playTweets:(id)sender{
-	//ST: here we're gonna write what needed for palying tweets
-	NTLNStatus *currentStatus = [timeline statusAtIndex:1];
+//ST: get the next visible row index to read
+-(NSInteger)getNextIndexToRead{
+	@synchronized(nextIndexToReadLocker){
+		//ST: test -> verify whether the index change on scrolling
+		//return [self getVisibleCellTableIndexAtPosition:nextIndexToRead];
+		return nextIndexToRead;
+	}
+}
+
+-(NSIndexPath*)getVisibleCellIndexPathAtPosition:(NSInteger)position{
+	
+	UITableView *tableView = self.tableView; // Or however you get your table view
+	NSArray *paths = [tableView indexPathsForVisibleRows];
+	NSIndexPath *indexPath = nil;
+	
+	//  For getting the cells themselves
+	if(paths != nil){
+		NSInteger currentPosition = 0;
+		for( NSIndexPath *path in paths)
+		{
+			if(currentPosition == position){
+				indexPath = path;
+			}
+			currentPosition++;
+		}
+	}
+	
+	return indexPath;
+
+}
+
+//ST: once the visible row are retrieved, it returns the index of the first one
+-(NSInteger)getVisibleCellTableIndexAtPosition:(NSInteger)position{
+	NSInteger index = -1;
+	
+	NSIndexPath *path = [self getVisibleCellIndexPathAtPosition:position];
+	
+	if(path != nil){
+		index = [path row];
+	}
+	
+	return index;	
+	
+}
+
+
+//ST: after taking the first row height, the function scroll the table view
+//to the next row to be the first visible
+-(void)scrollToNextRow{
+	
+	//Get the second visible row (table start from index 0)
+	NSIndexPath *secondCellIndexPath = [self getVisibleCellIndexPathAtPosition:1];
+	
+	if (secondCellIndexPath != nil) {
+		
+		
+		[self.tableView scrollToRowAtIndexPath:secondCellIndexPath
+							  atScrollPosition:UITableViewScrollPositionTop
+									  animated:YES];
+		
+		[self setNextIndexToRead:[secondCellIndexPath row]+1];
+	}
+	
+}
+
+//ST:play the tweet at the given position
+-(void)playTweetAtIndex:(NSInteger)index{
+	
+	NTLNStatus *currentStatus = [timeline statusAtIndex:index];
 	NTLNMessage *currentMessage = currentStatus.message;
-    NSString *messageToSay = currentMessage.text;
-	NSLog(@"1st message %@",messageToSay);
-	
-	FliteTTS *fliteEngine;
-	fliteEngine = [[FliteTTS alloc] init];
-	
+	NSString *messageToSay = currentMessage.text;
 	[fliteEngine speakText:messageToSay];
+	
+	NSLog(@"Playing %@ at index %i", messageToSay, index);
+	
+	
+}
+
+//ST: delegate method to be called by on play button press
+-(IBAction)playTweetsAction:(id)sender{
+
+	[self setNextIndexToRead:1];
+	[self playTweetAtIndex:0];
+	
+}
+
+
+//ST: it plays the next tweet
+-(void)playTweets{
+	//ST: here we're gonna write what needed for palying tweets
+	NSInteger indexToRead;
+	indexToRead = [self getNextIndexToRead];
+	
+	[self playTweetAtIndex:indexToRead];
+	
+	[self scrollToNextRow];
 }
 
 - (void)iconUpdate:(NSNotification*)sender {
@@ -145,8 +263,15 @@
 		if (! [(NTLNAppDelegate*)[[UIApplication sharedApplication] delegate] 
 				isInMoreTab:self]){
 			[[self navigationItem] setLeftBarButtonItem:[self clearButtonItem]];
+			
+			//ST: let's try to put the header button out of the timeline table view
+			//buttonBarView = [[UIViewController alloc] init];
+			//[buttonBarView.view addSubview:[self reloadView]];
+			//[[self navigationItem] setLeftBarButtonItem:[self playButtonItem]];
+			
 		}
 	}
 }
+
 
 @end

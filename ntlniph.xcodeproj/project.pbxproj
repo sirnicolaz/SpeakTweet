@@ -169,6 +169,10 @@
 		D704E69D12476920005BBFAD /* usenglish.c in Sources */ = {isa = PBXBuildFile; fileRef = D704E63C12476920005BBFAD /* usenglish.c */; };
 		D704E6A11247697E005BBFAD /* FliteTTS.m in Sources */ = {isa = PBXBuildFile; fileRef = D704E6A01247697E005BBFAD /* FliteTTS.m */; };
 		D704E6A5124769F9005BBFAD /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D704E6A4124769F9005BBFAD /* AVFoundation.framework */; };
+		D70AB4071248ECFC0027DDC5 /* EGORefreshTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = D70AB4061248ECFC0027DDC5 /* EGORefreshTableHeaderView.m */; };
+		D70AB4231248EF2E0027DDC5 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D70AB4221248EF2E0027DDC5 /* QuartzCore.framework */; };
+		D7C1053D1247AFEC00EE9312 /* play.png in Resources */ = {isa = PBXBuildFile; fileRef = D7C1053C1247AFEC00EE9312 /* play.png */; };
+		D7C1054B1247B14E00EE9312 /* play.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D7C1054A1247B14E00EE9312 /* play.jpg */; };
 		F13E2B380FB806C50086B0E7 /* readme.html in Resources */ = {isa = PBXBuildFile; fileRef = F13E2B370FB806C50086B0E7 /* readme.html */; };
 		F1474F8B0FD3F457007D9F4C /* NTLNAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F1474EF20FD3F457007D9F4C /* NTLNAppDelegate.m */; };
 		F1474F8C0FD3F457007D9F4C /* NTLNTweetPostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1474EF60FD3F457007D9F4C /* NTLNTweetPostViewController.m */; };
@@ -512,6 +516,11 @@
 		D704E69F1247697E005BBFAD /* FliteTTS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FliteTTS.h; sourceTree = "<group>"; };
 		D704E6A01247697E005BBFAD /* FliteTTS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FliteTTS.m; sourceTree = "<group>"; };
 		D704E6A4124769F9005BBFAD /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		D70AB4051248ECFC0027DDC5 /* EGORefreshTableHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGORefreshTableHeaderView.h; sourceTree = "<group>"; };
+		D70AB4061248ECFC0027DDC5 /* EGORefreshTableHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EGORefreshTableHeaderView.m; sourceTree = "<group>"; };
+		D70AB4221248EF2E0027DDC5 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		D7C1053C1247AFEC00EE9312 /* play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = play.png; path = resources/buttons/play.png; sourceTree = SOURCE_ROOT; };
+		D7C1054A1247B14E00EE9312 /* play.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = play.jpg; sourceTree = "<group>"; };
 		F13E2B370FB806C50086B0E7 /* readme.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = readme.html; path = resources/readme.html; sourceTree = "<group>"; };
 		F1474EF10FD3F457007D9F4C /* NTLNAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NTLNAppDelegate.h; sourceTree = "<group>"; };
 		F1474EF20FD3F457007D9F4C /* NTLNAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NTLNAppDelegate.m; sourceTree = "<group>"; };
@@ -715,6 +724,7 @@
 				8DBA55A80E96A9F700109F5D /* AudioToolbox.framework in Frameworks */,
 				8D1EF37B0FA6C46200BD452F /* libxml2.2.dylib in Frameworks */,
 				D704E6A5124769F9005BBFAD /* AVFoundation.framework in Frameworks */,
+				D70AB4231248EF2E0027DDC5 /* QuartzCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -766,6 +776,7 @@
 				F17419060E2A2E6A008BA863 /* Foundation.framework */,
 				8DBA55A70E96A9F700109F5D /* AudioToolbox.framework */,
 				D704E6A4124769F9005BBFAD /* AVFoundation.framework */,
+				D70AB4221248EF2E0027DDC5 /* QuartzCore.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -791,6 +802,7 @@
 				8D3C77B70E4CD6C500B51A09 /* friends.png */,
 				8D3C77B80E4CD6C500B51A09 /* icon.png */,
 				8D3C77B90E4CD6C500B51A09 /* sent.png */,
+				D7C1054A1247B14E00EE9312 /* play.jpg */,
 				8D3C77BA0E4CD6C500B51A09 /* replies.png */,
 				8D3C77BB0E4CD6C500B51A09 /* unread.png */,
 				8D3C780B0E4CDAEF00B51A09 /* default_icon.png */,
@@ -807,6 +819,7 @@
 			isa = PBXGroup;
 			children = (
 				F19C451A0FC158E200FF2279 /* browser_icons_01.png */,
+				D7C1053C1247AFEC00EE9312 /* play.png */,
 				F19C451B0FC158E200FF2279 /* browser_icons_05.png */,
 				F19C451C0FC158E200FF2279 /* browser_icons_03.png */,
 				8DD55EC40FA435E5005E143B /* checkmark.png */,
@@ -1171,6 +1184,8 @@
 		F1474EF30FD3F457007D9F4C /* controllers */ = {
 			isa = PBXGroup;
 			children = (
+				D70AB4051248ECFC0027DDC5 /* EGORefreshTableHeaderView.h */,
+				D70AB4061248ECFC0027DDC5 /* EGORefreshTableHeaderView.m */,
 				F1474F0D0FD3F457007D9F4C /* timeline */,
 				F1474EFE0FD3F457007D9F4C /* tabviews */,
 				F1474F180FD3F457007D9F4C /* tweetview */,
@@ -1228,8 +1243,8 @@
 			isa = PBXGroup;
 			children = (
 				F1474F0E0FD3F457007D9F4C /* NTLNTimelineViewController.h */,
-				F1474F0F0FD3F457007D9F4C /* NTLNTimelineViewController.m */,
 				F1474F100FD3F457007D9F4C /* NTLNTimelineViewControllerAccelerometer.m */,
+				F1474F0F0FD3F457007D9F4C /* NTLNTimelineViewController.m */,
 				F1474F170FD3F457007D9F4C /* NTLNTimelineViewControllerView.m */,
 				F1474F110FD3F457007D9F4C /* NTLNTimelineViewControllerPaging.m */,
 				F1474F120FD3F457007D9F4C /* NTLNTimelineViewControllerPost.m */,
@@ -1657,6 +1672,8 @@
 				F19C451E0FC158E200FF2279 /* browser_icons_05.png in Resources */,
 				F19C451F0FC158E200FF2279 /* browser_icons_03.png in Resources */,
 				D704E69A12476920005BBFAD /* us_pos.tree in Resources */,
+				D7C1053D1247AFEC00EE9312 /* play.png in Resources */,
+				D7C1054B1247B14E00EE9312 /* play.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1875,6 +1892,7 @@
 				D704E69C12476920005BBFAD /* us_text.c in Sources */,
 				D704E69D12476920005BBFAD /* usenglish.c in Sources */,
 				D704E6A11247697E005BBFAD /* FliteTTS.m in Sources */,
+				D70AB4071248ECFC0027DDC5 /* EGORefreshTableHeaderView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

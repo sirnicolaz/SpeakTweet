@@ -1,8 +1,9 @@
 //
-//  FliteTTS.h
-//  iPhone Text To Speech based on Flite
+//  EGORefreshTableHeaderView.h
+//  Demo
 //
-//  Copyright (c) 2010 Sam Foster
+//  Created by Devin Doty on 10/14/09October14.
+//  Copyright 2009 enormego. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -13,7 +14,7 @@
 //
 //  The above copyright notice and this permission notice shall be included in
 //  all copies or substantial portions of the Software.
-// 
+//
 //  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 //  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 //  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -22,27 +23,31 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 //
-//  Author: Sam Foster <samfoster@gmail.com> <http://cmang.org>
-//  Copyright 2010. All rights reserved.
-//
 
-#import <Foundation/Foundation.h>
-#import <AVFoundation/AVFoundation.h>
+#import <UIKit/UIKit.h>
+#import <QuartzCore/QuartzCore.h>
 
 
-@interface FliteTTS : NSObject <AVAudioPlayerDelegate> {
-	//NSData *soundObj;		// doesn't work yet - see note in FliteTTS.m
-	AVAudioPlayer* audioPlayer;
-	id onFinishPlayingDelegate;
-	SEL onFinishPlayingSelector;
+typedef enum{
+	EGOOPullRefreshPulling = 0,
+	EGOOPullRefreshNormal,
+	EGOOPullRefreshLoading,	
+} EGOPullRefreshState;
+
+@interface EGORefreshTableHeaderView : UIView {
+	
+	UILabel *lastUpdatedLabel;
+	UILabel *statusLabel;
+	CALayer *arrowImage;
+	UIActivityIndicatorView *activityView;
+	
+	EGOPullRefreshState _state;
+
 }
 
-// Use these:
-//ST: added another initialization method ought to handle to "on finish playing" event
--(id)initWithOnFinishDelegate:(id)delegate 
-	whenFinishPlayingExecute:(SEL)selector; 
--(void)speakText:(NSString *)text;
--(void)stopTalking;
--(void)setPitch:(float)pitch variance:(float)variance speed:(float)speed;
--(void)setVoice:(NSString *)voicename;
+@property(nonatomic,assign) EGOPullRefreshState state;
+
+- (void)setCurrentDate;
+- (void)setState:(EGOPullRefreshState)aState;
+
 @end

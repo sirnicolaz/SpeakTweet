@@ -4,8 +4,18 @@
 #import "NTLNAccelerometerSensor.h"
 #import "NTLNIconRepository.h"
 #import "NTLNRateLimit.h"
+#import "FliteTTS.h"
+#import "EGORefreshTableHeaderView.h"
+
+@interface NTLNTimelineViewController (Private)
+
+- (void)dataSourceDidFinishLoadingNewData;
+
+@end
 
 @implementation NTLNTimelineViewController
+
+@synthesize reloading=_reloading;
 
 @synthesize timeline;
 
@@ -18,11 +28,32 @@
 	[lastTopStatusId release];
 	[headReloadButton release];
 	[moreButton release];
+	
+	//ST: we add a new view ought to be placed above the table. Here we'll have the static play button
+	//[buttonBarView release];
+	nextIndexToReadLocker = [[NSObject alloc] init];
+	 
+	
     [super dealloc];
 }
 
-- (void)viewDidLoad {	
+- (void)viewDidLoad {
+	//ST: the next index to be read by the speaker is 0, the beginning of the table
+	//NSInteger zeroInteger = 0;
+	nextIndexToRead = 0;
+	fliteEngine = [[FliteTTS alloc] initWithOnFinishDelegate:self whenFinishPlayingExecute:@selector(playTweets)];
+	[fliteEngine setVoice:@"cmu_us_slt"];
+	
 	[self setupTableView];
+	
+	//ST: setting the load on drag handler
+	if (refreshHeaderView == nil) {
+		refreshHeaderView = [[EGORefreshTableHeaderView alloc] initWithFrame:CGRectMake(0.0f, 0.0f - self.tableView.bounds.size.height, 320.0f, self.tableView.bounds.size.height)];
+		refreshHeaderView.backgroundColor = [UIColor colorWithRed:226.0/255.0 green:231.0/255.0 blue:237.0/255.0 alpha:1.0];
+		[self.tableView addSubview:refreshHeaderView];
+		self.tableView.showsVerticalScrollIndicator = YES;
+		[refreshHeaderView release];
+	}
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -71,6 +102,16 @@
 	// Release anything that's not essential, such as cached data
 	LOG(@"NTLNStatusViewController#didReceiveMemoryWarning");
 //	[timeline suspend];
+}
+
+
+//ST: just to avoid warnings
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+	return nil;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+	return 0;
 }
 
 @end

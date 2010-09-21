@@ -7,13 +7,15 @@
 #import "NTLNAccelerometerSensor.h"
 #import "NTLNTimeline.h"
 
+@class FliteTTS;
 @class NTLNAppDelegate;
 @class NTLNTweetViewController;
 @class NTLNStatus;
 @class NTLNRoundedIconView;
 @class NTLNTweetPostViewController;
+@class EGORefreshTableHeaderView;
 
-@interface NTLNTimelineViewController : UITableViewController {
+@interface NTLNTimelineViewController : UITableViewController  <UITableViewDelegate, UITableViewDataSource>{
 	NTLNTimeline *timeline;
 	
 	// Read
@@ -28,7 +30,10 @@
 	
 	UIButton *headReloadButton;
 	
-	UIButton *playButton;
+	//ST: we add a new view ought to be placed above the table. Here we'll have the static play button
+	UIViewController *buttonBarView;
+	UITabBar *playButtonTabBar;
+	UIBarButtonItem *playButton;
 	
 	UIButton *moreButton;
 				
@@ -44,9 +49,23 @@
 	
 	NSString *lastTopStatusId;
 	
+	//ST: it's the next index to be read by the speaker. For test purpose we have just one index now
+	//but we will setup an array of indexes for each table
+	NSObject *nextIndexToReadLocker;
+	NSInteger nextIndexToRead;
+	FliteTTS *fliteEngine;
+	
+	//ST: load on drag handler
+	EGORefreshTableHeaderView *refreshHeaderView;
+	
+	//  Reloading should really be your tableviews model class
+	//  Putting it here for demo purposes 
+	BOOL _reloading;
 }
 
 @property (readonly) NTLNTimeline *timeline;
+
+@property(assign,getter=isReloading) BOOL reloading;
 
 @end
 
@@ -63,12 +82,13 @@
 - (UIBarButtonItem*)clearButtonItem;
 - (void)setReloadButtonNormal:(BOOL)normal;
 - (void)setupClearButton;
+- (NSInteger)getVisibleCellTableIndexAtPosition:(NSInteger)position;
+- (void)playTweets;
 
 @end
 
 
 @interface NTLNTimelineViewController(Scroll) <UIScrollViewDelegate>
-
 @end
 
 @interface NTLNTimelineViewController(Read)
@@ -87,6 +107,11 @@
 @end
 
 @interface NTLNTimelineViewController(TableView) <UITableViewDataSource, UITableViewDelegate>
+//ST: load on drag property and methods
+
+- (void)reloadTableViewDataSource;
+- (void)doneLoadingTableViewData;
+
 - (CGFloat)cellHeightForIndex:(int)index;
 
 @end

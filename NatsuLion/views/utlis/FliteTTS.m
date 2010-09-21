@@ -53,6 +53,16 @@ cst_voice *voice;
     return self;
 }
 
+-(id)initWithOnFinishDelegate:(id)delegate 
+	   whenFinishPlayingExecute:(SEL)selector{
+	
+	self = [self init];
+	onFinishPlayingDelegate = delegate;
+	onFinishPlayingSelector = selector;
+
+	return self;
+};
+
 -(void)speakText:(NSString *)text
 {
 	NSMutableString *cleanString;
@@ -135,6 +145,12 @@ cst_voice *voice;
 -(void)stopTalking
 {
 	[audioPlayer stop];
+}
+
+-(void)audioPlayerDidFinishPlaying: (AVAudioPlayer*)audioPlayer successfully: (BOOL)flag
+{
+	[onFinishPlayingDelegate performSelector:onFinishPlayingSelector];
+	NSLog(@"Finished");
 }
 
 @end

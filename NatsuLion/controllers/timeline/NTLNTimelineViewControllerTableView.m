@@ -1,8 +1,9 @@
 #import "NTLNTimelineViewController.h"
 #import "NTLNTweetViewController.h"
 
-@implementation NTLNTimelineViewController(TableView)
+#import "EGORefreshTableHeaderView.h"
 
+@implementation NTLNTimelineViewController(TableView)
 #pragma mark Private
 
 - (CGFloat)cellHeightForIndex:(int)index {
@@ -63,5 +64,64 @@
 	lvc.message = s.message;
 	[[self navigationController] pushViewController:lvc animated:YES];
 }
+//ST: load on drag methods implementation
+-(void)reloadTimeline {
+	if (![timeline isClientActive]) {
+		[timeline getTimelineWithPage:0 autoload:NO];
+	} else {
+		[timeline clientCancel];
+	}
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{	
+	
+	if (scrollView.isDragging) {
+		if (refreshHeaderView.state == EGOOPullRefreshPulling && scrollView.contentOffset.y > -65.0f && scrollView.contentOffset.y < 0.0f && !_reloading) {
+			[refreshHeaderView setState:EGOOPullRefreshNormal];
+		} else if (refreshHeaderView.state == EGOOPullRefreshNormal && scrollView.contentOffset.y < -65.0f && !_reloading) {
+			[refreshHeaderView setState:EGOOPullRefreshPulling];
+		}
+	}
+}
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
+	
+	if (scrollView.contentOffset.y <= - 65.0f && !_reloading) {
+		_reloading = YES;
+		[self reloadTableViewDataSource];
+		[refreshHeaderView setState:EGOOPullRefreshLoading];
+		[UIView beginAnimations:nil context:NULL];
+		[UIView setAnimationDuration:0.2];
+		self.tableView.contentInset = UIEdgeInsetsMake(60.0f, 0.0f, 0.0f, 0.0f);
+		[UIView commitAnimations];
+	}
+}
+
+- (void)dataSourceDidFinishLoadingNewData{
+	
+	_reloading = NO;
+	
+	[UIView beginAnimations:nil context:NULL];
+	[UIView setAnimationDuration:.3];
+	[self.tableView setContentInset:UIEdgeInsetsMake(0.0f, 0.0f, 0.0f, 0.0f)];
+	[UIView commitAnimations];
+	
+	[refreshHeaderView setState:EGOOPullRefreshNormal];
+	[refreshHeaderView setCurrentDate];  //  should check if data reload was successful
+}
+
+- (void)reloadTableViewDataSource{
+	//  should be calling your tableviews model to reload
+	//  put here just for demo
+	[self reloadTimeline];
+	[self performSelector:@selector(doneLoadingTableViewData) withObject:nil afterDelay:3.0];
+}
+
+
+- (void)doneLoadingTableViewData{
+	//  model should call this when its done loading
+	[self dataSourceDidFinishLoadingNewData];
+}
+
 
 @end
