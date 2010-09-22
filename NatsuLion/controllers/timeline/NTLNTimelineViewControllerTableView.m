@@ -2,6 +2,7 @@
 #import "NTLNTweetViewController.h"
 
 #import "EGORefreshTableHeaderView.h"
+#import "FliteTTS.h"
 
 @implementation NTLNTimelineViewController(TableView)
 #pragma mark Private
@@ -74,7 +75,6 @@
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{	
-	
 	if (scrollView.isDragging) {
 		if (refreshHeaderView.state == EGOOPullRefreshPulling && scrollView.contentOffset.y > -65.0f && scrollView.contentOffset.y < 0.0f && !_reloading) {
 			[refreshHeaderView setState:EGOOPullRefreshNormal];
@@ -94,6 +94,13 @@
 		[UIView setAnimationDuration:0.2];
 		self.tableView.contentInset = UIEdgeInsetsMake(60.0f, 0.0f, 0.0f, 0.0f);
 		[UIView commitAnimations];
+	}
+	
+	//ST: in this case the user has dragged the scroll to e specific position and tha view will not decelerate
+	if (decelerate == NO && isPlaying == YES) {
+		
+		[self seekToFirstVisible];
+
 	}
 }
 

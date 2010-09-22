@@ -37,6 +37,8 @@ cst_voice *register_cmu_us_slt();
 cst_wave *sound;
 cst_voice *voice;
 
+static int test = 0;
+
 @implementation FliteTTS
 
 -(id)init
@@ -99,8 +101,7 @@ cst_voice *voice;
 	NSArray *filePaths = NSSearchPathForDirectoriesInDomains (NSDocumentDirectory, NSUserDomainMask, YES);
 	NSString *recordingDirectory = [filePaths objectAtIndex: 0];
 	// Pick a file name
-	NSString *tempFilePath = [NSString stringWithFormat: @"%@/%s", recordingDirectory, "temp.wav"];
-	// save wave to disk
+	NSString *tempFilePath = [NSString stringWithFormat: @"%@/%s%i", recordingDirectory, "temp.wav", test];	// save wave to disk
 	char *path;	
 	path = (char*)[tempFilePath UTF8String];
 	cst_wave_save_riff(sound, path);

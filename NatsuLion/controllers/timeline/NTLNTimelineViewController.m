@@ -17,7 +17,7 @@
 
 @synthesize reloading=_reloading;
 
-@synthesize timeline;
+@synthesize timeline, tableView;
 
 - (void) dealloc {
 	[self stopReadTrackTimer];
@@ -28,6 +28,9 @@
 	[lastTopStatusId release];
 	[headReloadButton release];
 	[moreButton release];
+	[playButtonView release];
+	[tableView release];
+	[fliteEngine release];
 	
 	//ST: we add a new view ought to be placed above the table. Here we'll have the static play button
 	//[buttonBarView release];
@@ -37,13 +40,36 @@
     [super dealloc];
 }
 
+//ST: create a view with the play button
+- (UIView*)reloadView {
+	//ST: here we have the reload button that can be replaced by the play button
+	UIButton *b = [UIButton buttonWithType:UIButtonTypeCustom];
+	b.frame = CGRectMake(0, 0, 320, 55);
+	//[b addTarget:self action:@selector(reloadButton:) forControlEvents:UIControlEventTouchUpInside];
+	//ST: we try now to replace the reloadButton function with the playTweets one
+	[b addTarget:self action:@selector(playTweetsAction:) forControlEvents:UIControlEventTouchUpInside];
+	
+	headReloadButton = [b retain];
+	
+	[self setReloadButtonNormal:YES];
+	playButtonView = b;
+	
+	return b;
+}
+
+
 - (void)viewDidLoad {
+	
+	tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 55, 320, 313)
+											 style:UITableViewStylePlain];
+	tableView.delegate = self;
+	tableView.dataSource = self;
+	
 	//ST: the next index to be read by the speaker is 0, the beginning of the table
 	//NSInteger zeroInteger = 0;
 	nextIndexToRead = 0;
-	fliteEngine = [[FliteTTS alloc] initWithOnFinishDelegate:self whenFinishPlayingExecute:@selector(playTweets)];
-	[fliteEngine setVoice:@"cmu_us_slt"];
-	
+	isPlaying = NO;
+	[self setupSpeaker];
 	[self setupTableView];
 	
 	//ST: setting the load on drag handler
@@ -54,6 +80,10 @@
 		self.tableView.showsVerticalScrollIndicator = YES;
 		[refreshHeaderView release];
 	}
+	
+	[self.view addSubview:[self reloadView]];
+	[self.view addSubview:tableView];
+	
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -87,7 +117,7 @@
 - (void)viewWillDisappear:(BOOL)animated {
 	[NTLNIconRepository removeObserver:self];
 	[NTLNAccelerometerSensor sharedInstance].delegate = nil;
-	
+	[self stopPlaying];
 	enable_read = FALSE;
 	[timeline suspend];
 }

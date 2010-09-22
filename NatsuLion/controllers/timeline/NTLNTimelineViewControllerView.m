@@ -16,6 +16,11 @@
 
 #pragma mark Private
 
+- (void)setupSpeaker{
+	fliteEngine = [[FliteTTS alloc] initWithOnFinishDelegate:self whenFinishPlayingExecute:@selector(playTweets)];
+	[fliteEngine setVoice:@"cmu_us_slt"];
+}
+
 - (UIView*)nowloadingView {
 	
 	UIActivityIndicatorView *ai = [[[UIActivityIndicatorView alloc] 
@@ -49,20 +54,6 @@
 	}
 }
 
-- (UIView*)reloadView {
-	//ST: here we have the reload button that can be replaced by the play button
-	UIButton *b = [UIButton buttonWithType:UIButtonTypeCustom];
-	b.frame = CGRectMake(0, 0, 320, 55);
-	//[b addTarget:self action:@selector(reloadButton:) forControlEvents:UIControlEventTouchUpInside];
-	//ST: we try now to replace the reloadButton function with the playTweets one
-	[b addTarget:self action:@selector(playTweetsAction:) forControlEvents:UIControlEventTouchUpInside];
-	
-	headReloadButton = [b retain];
-	
-	[self setReloadButtonNormal:YES];
-	return b;
-}
-
 - (UIView*)playButtonItem{
 	
 	//UIBarButtonItem *b = [[UIBarButtonItem alloc] 
@@ -81,7 +72,7 @@
 
 - (void)setupTableView {
 	self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-	self.tableView.tableHeaderView = [self reloadView];
+	//self.tableView.tableHeaderView = [self reloadView];
 	
 	
 	//UIBarButtonItem *playButton;
@@ -187,12 +178,33 @@
 	
 	if (secondCellIndexPath != nil) {
 		
+		//ST: it means that the scroll reched the end
+		if([secondCellIndexPath row]+1 <= [self getNextIndexToRead]){
+			
+			[self setNextIndexToRead:[self getNextIndexToRead]+1];
+			
+		}
+		else{
+			[self.tableView scrollToRowAtIndexPath:secondCellIndexPath
+								  atScrollPosition:UITableViewScrollPositionTop
+										  animated:YES];
 		
-		[self.tableView scrollToRowAtIndexPath:secondCellIndexPath
+			[self setNextIndexToRead:[secondCellIndexPath row]+1];
+		}
+	}
+}
+
+-(void)scrollToFirstVisible{
+	
+	NSIndexPath *firstVisibleIndexPath = [self getVisibleCellIndexPathAtPosition:0];
+	
+	if (firstVisibleIndexPath != nil) {
+				
+		[self.tableView scrollToRowAtIndexPath:firstVisibleIndexPath
 							  atScrollPosition:UITableViewScrollPositionTop
 									  animated:YES];
 		
-		[self setNextIndexToRead:[secondCellIndexPath row]+1];
+		[self setNextIndexToRead:[firstVisibleIndexPath row]+1];
 	}
 	
 }
@@ -203,8 +215,13 @@
 	NTLNStatus *currentStatus = [timeline statusAtIndex:index];
 	NTLNMessage *currentMessage = currentStatus.message;
 	NSString *messageToSay = currentMessage.text;
-	[fliteEngine speakText:messageToSay];
-	
+	if(messageToSay != nil){
+		isPlaying = YES;
+		[fliteEngine speakText:messageToSay];
+	}
+	else{
+		[self stopPlaying];
+	}
 	NSLog(@"Playing %@ at index %i", messageToSay, index);
 	
 	
@@ -218,16 +235,39 @@
 	
 }
 
+-(BOOL)isIndexInTableView:(NSInteger)index{
+	
+	if([self.tableView numberOfRowsInSection:1] > index){
+		return YES;
+	}
+	return YES;
+	
+}
 
 //ST: it plays the next tweet
 -(void)playTweets{
 	//ST: here we're gonna write what needed for palying tweets
 	NSInteger indexToRead;
 	indexToRead = [self getNextIndexToRead];
-	
 	[self playTweetAtIndex:indexToRead];
-	
 	[self scrollToNextRow];
+}
+
+
+//ST: stop playing tweets
+- (void)stopPlaying{
+	isPlaying = NO;
+	[fliteEngine stopTalking];
+}
+
+
+-(void)seekToFirstVisible{
+	
+	//ST: it's necessary to reset the speaker to get the audioplayer working after stop. Dunno why
+	[self setupSpeaker];
+	[self scrollToFirstVisible];
+	[self playTweets];
+	
 }
 
 - (void)iconUpdate:(NSNotification*)sender {
@@ -242,7 +282,7 @@
 
 - (void)clearButton:(id)sender {
 	[timeline markAllAsRead];
-	[super.tableView reloadData];
+	[self.tableView reloadData];
 	[self updateBadge];
 }
 
@@ -255,6 +295,7 @@
 	[b autorelease];
 	return b;
 }
+
 
 - (void)setupClearButton {
 	if ([[NTLNConfiguration instance] lefthand]) {

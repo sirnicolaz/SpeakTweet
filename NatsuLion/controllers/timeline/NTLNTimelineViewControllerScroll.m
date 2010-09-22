@@ -1,5 +1,6 @@
 #import "NTLNTimelineViewController.h"
 #import "NTLNConfiguration.h"
+#import "FliteTTS.h";
 
 @implementation NTLNTimelineViewController(Scroll)
 
@@ -16,6 +17,9 @@
 }
 
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
+	
+	[self stopPlaying];
+
 //	LOG(@"scrollViewWillBeginDragging");
 	if (! [self readTrackTimerActivated]) {
 		[NSObject cancelPreviousPerformRequestsWithTarget:self 
@@ -41,7 +45,12 @@
 											 selector:@selector(stopReadTrackTimer) 
 											   object:nil];
 	[self performSelector:@selector(stopReadTrackTimer) withObject:nil afterDelay:2.0];
-}
+	
+	//ST: to resume the play from the current new position
+	if( isPlaying == YES){
+		[self seekToFirstVisible];
 
+	}
+}
 
 @end

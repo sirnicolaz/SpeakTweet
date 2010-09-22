@@ -1243,14 +1243,14 @@
 			isa = PBXGroup;
 			children = (
 				F1474F0E0FD3F457007D9F4C /* NTLNTimelineViewController.h */,
-				F1474F100FD3F457007D9F4C /* NTLNTimelineViewControllerAccelerometer.m */,
 				F1474F0F0FD3F457007D9F4C /* NTLNTimelineViewController.m */,
 				F1474F170FD3F457007D9F4C /* NTLNTimelineViewControllerView.m */,
+				F1474F150FD3F457007D9F4C /* NTLNTimelineViewControllerTableView.m */,
+				F1474F100FD3F457007D9F4C /* NTLNTimelineViewControllerAccelerometer.m */,
 				F1474F110FD3F457007D9F4C /* NTLNTimelineViewControllerPaging.m */,
 				F1474F120FD3F457007D9F4C /* NTLNTimelineViewControllerPost.m */,
 				F1474F130FD3F457007D9F4C /* NTLNTimelineViewControllerRead.m */,
 				F1474F140FD3F457007D9F4C /* NTLNTimelineViewControllerScroll.m */,
-				F1474F150FD3F457007D9F4C /* NTLNTimelineViewControllerTableView.m */,
 				F1474F160FD3F457007D9F4C /* NTLNTimelineViewControllerTimeline.m */,
 			);
 			path = timeline;
@@ -1914,6 +1914,7 @@
 					"\"$(SRCROOT)/gtm/TigerGcov\"",
 				);
 				PRODUCT_NAME = ntlniph;
+				SDKROOT = iphonesimulator4.0;
 			};
 			name = Debug;
 		};
@@ -1982,7 +1983,7 @@
 				OTHER_CFLAGS = "-I/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.0.sdk/usr/include/libxml2";
 				PREBINDING = NO;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
-				SDKROOT = iphoneos3.2;
+				SDKROOT = iphonesimulator4.0;
 			};
 			name = Debug;
 		};

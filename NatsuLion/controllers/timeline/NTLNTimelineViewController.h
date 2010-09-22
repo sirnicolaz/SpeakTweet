@@ -15,8 +15,17 @@
 @class NTLNTweetPostViewController;
 @class EGORefreshTableHeaderView;
 
-@interface NTLNTimelineViewController : UITableViewController  <UITableViewDelegate, UITableViewDataSource>{
+@interface NTLNTimelineViewController : UIViewController  <UITableViewDelegate, UITableViewDataSource>{
 	NTLNTimeline *timeline;
+	
+	//ST: redefine the view structure to put the play button outside the table
+	UIView *playButtonView;
+	
+	//ST: redefine the UIViewController with a UITableView field
+	UITableView *tableView;
+	
+	//ST: state variable that specifies if the tweets are being played
+	BOOL isPlaying;
 	
 	// Read
 	BOOL badge_enable;
@@ -67,6 +76,7 @@
 
 @property(assign,getter=isReloading) BOOL reloading;
 
+@property(nonatomic, retain) UITableView *tableView;
 @end
 
 @interface NTLNTimelineViewController(Accerlerometer) <NTLNAccelerometerSensorDelegate>
@@ -84,7 +94,9 @@
 - (void)setupClearButton;
 - (NSInteger)getVisibleCellTableIndexAtPosition:(NSInteger)position;
 - (void)playTweets;
-
+- (void)stopPlaying;
+- (void)seekToFirstVisible;
+- (void)setupSpeaker;
 @end
 
 
