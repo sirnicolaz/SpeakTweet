@@ -5,7 +5,7 @@
 #import "NTLNConfiguration.h"
 #import "NTLNIconTextCell.h"
 #import "NTLNUserTimelineViewController.h"
-#import "NTLNFavoriteViewController.h"
+//#import "NTLNFavoriteViewController.h"
 #import "NTLNUserCell.h"
 #import "NTLNUserViewController.h"
 #import "NTLNUser.h"

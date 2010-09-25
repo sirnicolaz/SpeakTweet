@@ -6,7 +6,7 @@
 @class NTLNFriendsViewController;
 @class NTLNMentionsViewController;
 @class NTLNSentsViewController;
-@class NTLNUnreadsViewController;
+//@class NTLNUnreadsViewController;
 @class NTLNSettingViewController;
 @class NTLNFavoriteViewController;
 @class NTLNDirectMessageViewController;
@@ -18,7 +18,7 @@
 	NTLNFriendsViewController *friendsViewController;
 	NTLNMentionsViewController *replysViewController;
 	NTLNSentsViewController *sentsViewController;
-	NTLNUnreadsViewController *unreadsViewController;
+	//NTLNUnreadsViewController *unreadsViewController;
 	NTLNSettingViewController *settingViewController;
 	
 	NTLNFavoriteViewController *favoriteViewController;

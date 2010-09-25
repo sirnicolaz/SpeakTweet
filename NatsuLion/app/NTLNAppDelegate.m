@@ -4,7 +4,7 @@
 #import "NTLNFriendsViewController.h"
 #import "NTLNMentionsViewController.h"
 #import "NTLNSentsViewController.h"
-#import "NTLNUnreadsViewController.h"
+//#import "NTLNUnreadsViewController.h"
 #import "NTLNSettingViewController.h"
 #import "NTLNCacheCleaner.h"
 #import "NTLNFavoriteViewController.h"
@@ -58,12 +58,12 @@
 	replysViewController.friendsViewController = friendsViewController;
 	
 	directMessageViewController	= [[NTLNDirectMessageViewController alloc] init];
-	sentsViewController = [[NTLNSentsViewController alloc] init];
-	unreadsViewController = [[NTLNUnreadsViewController alloc] init];
+	//sentsViewController = [[NTLNSentsViewController alloc] init];
+	//unreadsViewController = [[NTLNUnreadsViewController alloc] init];
 	
-	unreadsViewController.friendsViewController = friendsViewController;
-	unreadsViewController.replysViewController = replysViewController;
-	unreadsViewController.directMessageViewController = directMessageViewController;
+	//unreadsViewController.friendsViewController = friendsViewController;
+	//unreadsViewController.replysViewController = replysViewController;
+	//unreadsViewController.directMessageViewController = directMessageViewController;
 		
 	settingViewController = [[NTLNSettingViewController alloc] initWithStyle:UITableViewStyleGrouped];
 	
@@ -77,10 +77,10 @@
 	
 	UINavigationController *nrep = [[[UINavigationController alloc] 
 										initWithRootViewController:replysViewController] autorelease];
-	UINavigationController *nsen = [[[UINavigationController alloc] 
-										initWithRootViewController:sentsViewController] autorelease];
-	UINavigationController *nunr = [[[UINavigationController alloc] 
-										initWithRootViewController:unreadsViewController] autorelease];
+	//UINavigationController *nsen = [[[UINavigationController alloc] 
+	//									initWithRootViewController:sentsViewController] autorelease];
+	//UINavigationController *nunr = [[[UINavigationController alloc] 
+	//									initWithRootViewController:unreadsViewController] autorelease];
 	UINavigationController *nset = [[[UINavigationController alloc] 
 										initWithRootViewController:settingViewController] autorelease];
 	UINavigationController *nsfv = [[[UINavigationController alloc]
@@ -103,13 +103,13 @@
 	[nsdm.tabBarItem setImage:[UIImage imageNamed:@"dm.png"]];
 	directMessageViewController.tabBarItem  = nsdm.tabBarItem; // is it need (to show badge)?
 	
-	[nsen.navigationBar setBarStyle:UIBarStyleBlackOpaque];
+	/*[nsen.navigationBar setBarStyle:UIBarStyleBlackOpaque];
 	[nsen.tabBarItem setTitle:@"Sents"];
-	[nsen.tabBarItem setImage:[UIImage imageNamed:@"sent.png"]];
+	[nsen.tabBarItem setImage:[UIImage imageNamed:@"sent.png"]];*/
 
-	[nunr.navigationBar setBarStyle:UIBarStyleBlackOpaque];
+	/*[nunr.navigationBar setBarStyle:UIBarStyleBlackOpaque];
 	[nunr.tabBarItem setTitle:@"Unreads"];
-	[nunr.tabBarItem setImage:[UIImage imageNamed:@"unread.png"]];
+	[nunr.tabBarItem setImage:[UIImage imageNamed:@"unread.png"]];*/
 	
 	[nset.navigationBar setBarStyle:UIBarStyleBlackOpaque];
 	[nset.tabBarItem setTitle:@"Settings"];
@@ -122,7 +122,7 @@
 	[[NTLNRateLimit shardInstance] updateNavigationBarColor:tabBarController.moreNavigationController.navigationBar];
 
 	[tabBarController setViewControllers:
-		[NSArray arrayWithObjects:nfri, nrep, nsdm, nsfv, nsen, nunr, nset, nil]];
+		[NSArray arrayWithObjects:nfri, nrep, nsdm, nsfv, nset, nil]];
 
 	[self setTabOrderIfSaved];
 }
@@ -183,8 +183,8 @@
 - (void)dealloc {
 	[friendsViewController release];
 	[replysViewController release];
-	[sentsViewController release];
-	[unreadsViewController release];
+	//[sentsViewController release];
+	//[unreadsViewController release];
 	[settingViewController release];
 	[favoriteViewController release];
 	[directMessageViewController release];
@@ -220,8 +220,8 @@
 	[replysViewController.timeline disactivate];
 	[directMessageViewController.timeline disactivate];
 	[friendsViewController.timeline disactivate];
-	[sentsViewController.timeline disactivate];
-	[favoriteViewController.timeline disactivate];
+	//[sentsViewController.timeline disactivate];
+	//[favoriteViewController.timeline disactivate];
 	
 	[[NTLNTwitterPost shardInstance] backupText];
 	
@@ -256,8 +256,8 @@
 	[replysViewController.timeline clearAndRemoveCache];
 	[directMessageViewController.timeline clearAndRemoveCache];
 	[friendsViewController.timeline clearAndRemoveCache];
-	[sentsViewController.timeline clearAndRemoveCache];
-	[favoriteViewController.timeline clearAndRemoveCache];
+	//[sentsViewController.timeline clearAndRemoveCache];
+	//[favoriteViewController.timeline clearAndRemoveCache];
 }
 
 @end
