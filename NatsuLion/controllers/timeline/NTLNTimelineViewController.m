@@ -70,6 +70,7 @@
 	nextIndexToRead = 0;
 	isPlaying = NO;
 	[self setupSpeaker];
+	[self prepareSpeaker];
 	[self setupTableView];
 	
 	//ST: setting the load on drag handler

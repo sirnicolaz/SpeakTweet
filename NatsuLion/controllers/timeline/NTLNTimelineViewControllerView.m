@@ -33,6 +33,11 @@
 
 }
 
+-(void)prepareSpeaker
+{
+	[fliteEngine speakText:@""];
+}
+
 - (UIView*)nowloadingView {
 	
 	UIActivityIndicatorView *ai = [[[UIActivityIndicatorView alloc] 
@@ -144,7 +149,7 @@
 
 -(NSIndexPath*)getVisibleCellIndexPathAtPosition:(NSInteger)position{
 	
-	UITableView *tableView = self.tableView; // Or however you get your table view
+	//UITableView *tableView = self.tableView; // Or however you get your table view
 	NSArray *paths = [tableView indexPathsForVisibleRows];
 	NSIndexPath *indexPath = nil;
 	
@@ -214,14 +219,12 @@
 							  atScrollPosition:UITableViewScrollPositionTop
 									  animated:YES];
 		
-		[self setNextIndexToRead:[firstVisibleIndexPath row]+1];
+		[self setNextIndexToRead:[firstVisibleIndexPath row]];
 	}
-	
 }
 
 //ST:play the tweet at the given position
 -(void)playTweetAtIndex:(NSInteger)index{
-	
 	NTLNStatus *currentStatus = [timeline statusAtIndex:index];
 	NTLNMessage *currentMessage = currentStatus.message;
 	NSString *messageToSay = currentMessage.text;
@@ -233,26 +236,31 @@
 		[self stopPlaying];
 	}
 	NSLog(@"Playing %@ at index %i", messageToSay, index);
-	
-	
 }
 
 //ST: delegate method to be called by on play button press
 -(IBAction)playTweetsAction:(id)sender{
 
 	if(isPlaying == NO){
-	//	[self setNextIndexToRead:1];
-	//	[self playTweetAtIndex:0];
 		isPlaying = YES;
-		[self seekToFirstVisible];
+		//for some reasons, seekToFirstVisible can't keep the table
+		//view as it is if the first row is the first visible one. So
+		//in order to play the first tweet it's necessary to directly
+		//use playTweetAtIndex without scrolling the view.
+		if([self getNextIndexToRead] == 0)
+		{
+			[self setNextIndexToRead:1];
+			[self playTweetAtIndex:0];
+		}
+		else {
+			[self seekToFirstVisible];
+		}
 	}
 	else {
 		
 		isPlaying = NO;
 		[self stopPlaying];
 	}
-
-	
 }
 
 -(BOOL)isIndexInTableView:(NSInteger)index{

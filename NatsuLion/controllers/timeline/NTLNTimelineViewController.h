@@ -97,6 +97,7 @@
 - (void)stopPlaying;
 - (void)seekToFirstVisible;
 - (void)setupSpeaker;
+-(void)prepareSpeaker;
 @end
 
 
