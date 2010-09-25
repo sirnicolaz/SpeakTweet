@@ -18,7 +18,19 @@
 
 - (void)setupSpeaker{
 	fliteEngine = [[FliteTTS alloc] initWithOnFinishDelegate:self whenFinishPlayingExecute:@selector(playTweets)];
-	[fliteEngine setVoice:@"cmu_us_slt"];
+	NSString *selectedVoice = [[NTLNConfiguration instance] voice];
+	
+	if( selectedVoice == @"woman" ){
+		NSLog(@"woman");
+		[fliteEngine setVoice:@"cmu_us_slt"];
+	}
+	else {
+		NSLog(@"man");
+		[fliteEngine setVoice:@"cmu_us_awb"];
+	}
+	
+	[fliteEngine setVolume:[[NTLNConfiguration instance] volume]];
+
 }
 
 - (UIView*)nowloadingView {
@@ -126,8 +138,6 @@
 //ST: get the next visible row index to read
 -(NSInteger)getNextIndexToRead{
 	@synchronized(nextIndexToReadLocker){
-		//ST: test -> verify whether the index change on scrolling
-		//return [self getVisibleCellTableIndexAtPosition:nextIndexToRead];
 		return nextIndexToRead;
 	}
 }
@@ -216,10 +226,10 @@
 	NTLNMessage *currentMessage = currentStatus.message;
 	NSString *messageToSay = currentMessage.text;
 	if(messageToSay != nil){
-		isPlaying = YES;
 		[fliteEngine speakText:messageToSay];
 	}
 	else{
+		isPlaying = NO;
 		[self stopPlaying];
 	}
 	NSLog(@"Playing %@ at index %i", messageToSay, index);
@@ -230,8 +240,18 @@
 //ST: delegate method to be called by on play button press
 -(IBAction)playTweetsAction:(id)sender{
 
-	[self setNextIndexToRead:1];
-	[self playTweetAtIndex:0];
+	if(isPlaying == NO){
+	//	[self setNextIndexToRead:1];
+	//	[self playTweetAtIndex:0];
+		isPlaying = YES;
+		[self seekToFirstVisible];
+	}
+	else {
+		
+		isPlaying = NO;
+		[self stopPlaying];
+	}
+
 	
 }
 
@@ -256,7 +276,6 @@
 
 //ST: stop playing tweets
 - (void)stopPlaying{
-	isPlaying = NO;
 	[fliteEngine stopTalking];
 }
 

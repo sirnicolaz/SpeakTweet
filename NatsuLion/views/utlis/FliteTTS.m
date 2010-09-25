@@ -38,6 +38,7 @@ cst_wave *sound;
 cst_voice *voice;
 
 static int test = 0;
+static float volumeLevel = 0.5;
 
 @implementation FliteTTS
 
@@ -110,6 +111,7 @@ static int test = 0;
 	[audioPlayer stop];
 	audioPlayer =  [[AVAudioPlayer alloc] initWithContentsOfURL:[NSURL fileURLWithPath:tempFilePath] error:&err];
 	[audioPlayer setDelegate:self];
+	[audioPlayer setVolume:volumeLevel];
 	[audioPlayer prepareToPlay];
 	[audioPlayer play];
 	// Remove file
@@ -117,6 +119,11 @@ static int test = 0;
 	
 }
 
+
+-(void)setVolume:(float)level
+{
+	volumeLevel = level;
+}
 -(void)setPitch:(float)pitch variance:(float)variance speed:(float)speed
 {
 	feat_set_float(voice->features,"int_f0_target_mean", pitch);

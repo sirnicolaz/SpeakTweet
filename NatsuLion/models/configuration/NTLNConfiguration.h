@@ -9,6 +9,8 @@
 	int fetchCount;
 	BOOL shakeToFullscreen;
 	BOOL lefthand;
+	int voice;
+	int volume;
 }
 
 @property (readonly) BOOL useSafari;
@@ -18,10 +20,11 @@
 @property (readonly) BOOL shakeToFullscreen;
 @property (readonly) BOOL lefthand;
 
+
 + (id) instance;
 - (void)reload;
 
 - (int)refreshIntervalSeconds;
 - (int)fetchCount;
-
+- (NSString *)voice;
 @end

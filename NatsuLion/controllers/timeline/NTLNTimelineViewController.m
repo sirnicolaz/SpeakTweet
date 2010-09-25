@@ -112,12 +112,14 @@
 	[timeline getTimelineWithPage:0 autoload:YES];
 	[self.tableView flashScrollIndicators];
 	[NTLNAccelerometerSensor sharedInstance].delegate = self;
+	[self setupSpeaker];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
 	[NTLNIconRepository removeObserver:self];
 	[NTLNAccelerometerSensor sharedInstance].delegate = nil;
 	[self stopPlaying];
+	isPlaying = FALSE;
 	enable_read = FALSE;
 	[timeline suspend];
 }

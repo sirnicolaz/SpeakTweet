@@ -7,7 +7,6 @@
 
 @synthesize useSafari, darkColorTheme, autoScroll, showMoreTweetMode, shakeToFullscreen;
 @synthesize lefthand;
-
 static id _instance = nil;
 
 + (id) instance {
@@ -39,6 +38,12 @@ static id _instance = nil;
 	fetchCount = [[NSUserDefaults standardUserDefaults] integerForKey:NTLN_PREFERENCE_FETCH_COUNT];
 	shakeToFullscreen = [[NSUserDefaults standardUserDefaults] boolForKey:NTLN_PREFERENCE_SHAKE_TO_FULLSCREEN];
 	lefthand = [[NSUserDefaults standardUserDefaults] boolForKey:NTLN_PREFERENCE_LEFTHAND];
+	//ST: set the voice
+	voice = [[NSUserDefaults standardUserDefaults] integerForKey:ST_PREFERENCE_VOICE];
+	//ST: set volume
+	volume = [[NSUserDefaults standardUserDefaults] integerForKey:ST_PREFERENCE_VOLUME];
+
+	
 }
 
 static int seconds_from_index(int index)
@@ -58,6 +63,26 @@ static int count_from_index(int index)
 	return m[index];
 }
 
+static NSString* voice_from_index(int index)
+{
+	if(index == 0) return @"woman";
+	return @"man";
+}
+
+static float volume_from_index(int index)
+{
+	switch (index) {
+		case 0:
+			return 0.1;
+		case 1:
+			return 0.5;
+		case 2:
+			return 1.0;
+		default:
+			return 0.5;
+	}
+}
+
 - (int)refreshIntervalSeconds {
 	return seconds_from_index(refreshIntervalSeconds);
 }
@@ -66,5 +91,14 @@ static int count_from_index(int index)
 	return count_from_index(fetchCount);
 }
 
+//ST: get the voice string identifier
+- (NSString *)voice{
+	return voice_from_index(voice);
+}
+
+//ST: get voice volume
+- (float)volume{
+	return volume_from_index(volume);
+}
 
 @end

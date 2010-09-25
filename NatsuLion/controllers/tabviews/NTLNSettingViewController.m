@@ -20,6 +20,22 @@
 	if (groups != nil) return;
 	
 	NSArray *g1 = [NSArray arrayWithObjects:[UICPrototypeTableCell cellForTitle:@"Twitter Account"], nil];	
+	
+	//ST: voice setting section
+	NSArray *gVoice = [NSArray arrayWithObjects:
+					   [UICPrototypeTableCell cellForSelect:@"Voice" 
+										   withSelectTitles:[NSArray arrayWithObjects:
+															 @"woman",
+															 @"man", nil]
+										withUserDefaultsKey:ST_PREFERENCE_VOICE],
+					   [UICPrototypeTableCell cellForSelect:@"Volume"
+										   withSelectTitles:[NSArray arrayWithObjects:
+															 @"quiet",
+															 @"normal",
+															 @"loud", nil]
+										withUserDefaultsKey:ST_PREFERENCE_VOLUME],
+					   nil];
+	
 	NSArray *g2 = [NSArray arrayWithObjects:
 				   [UICPrototypeTableCell cellForSelect:@"Auto refresh" 
 									   withSelectTitles:[NSArray arrayWithObjects:
@@ -72,6 +88,7 @@
 	
 	groups = [[NSArray arrayWithObjects:
 			   [UICPrototypeTableGroup groupWithCells:g1 withTitle:nil], 
+			   [UICPrototypeTableGroup groupWithCells:gVoice withTitle:nil],
 			   [UICPrototypeTableGroup groupWithCells:g2 withTitle:nil], 
 			   [UICPrototypeTableGroup groupWithCells:g3 withTitle:nil], 
 			   [UICPrototypeTableGroup groupWithCells:g4 withTitle:nil], 
