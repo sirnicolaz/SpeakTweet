@@ -63,12 +63,14 @@ static int count_from_index(int index)
 	return m[index];
 }
 
+//ST: pick up che voice from the selected index
 static NSString* voice_from_index(int index)
 {
 	if(index == 0) return @"woman";
 	return @"man";
 }
 
+//ST: pick up the volume level from the selected index
 static float volume_from_index(int index)
 {
 	switch (index) {
