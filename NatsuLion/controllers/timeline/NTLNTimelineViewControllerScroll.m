@@ -1,6 +1,6 @@
 #import "NTLNTimelineViewController.h"
 #import "NTLNConfiguration.h"
-#import "FliteTTS.h";
+#import "FliteTTS_HTS.h";
 
 @implementation NTLNTimelineViewController(Scroll)
 

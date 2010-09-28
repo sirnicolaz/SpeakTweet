@@ -7,7 +7,7 @@
 #import "NTLNAccelerometerSensor.h"
 #import "NTLNTimeline.h"
 
-@class FliteTTS;
+@class FliteTTS_HTS;
 @class NTLNAppDelegate;
 @class NTLNTweetViewController;
 @class NTLNStatus;
@@ -62,7 +62,7 @@
 	//but we will setup an array of indexes for each table
 	NSObject *nextIndexToReadLocker;
 	NSInteger nextIndexToRead;
-	FliteTTS *fliteEngine;
+	FliteTTS_HTS *fliteEngine;
 	
 	//ST: load on drag handler
 	EGORefreshTableHeaderView *refreshHeaderView;

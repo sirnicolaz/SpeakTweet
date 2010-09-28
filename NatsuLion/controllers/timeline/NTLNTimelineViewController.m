@@ -4,7 +4,7 @@
 #import "NTLNAccelerometerSensor.h"
 #import "NTLNIconRepository.h"
 #import "NTLNRateLimit.h"
-#import "FliteTTS.h"
+#import "FliteTTS_HTS.h"
 #import "EGORefreshTableHeaderView.h"
 
 @interface NTLNTimelineViewController (Private)

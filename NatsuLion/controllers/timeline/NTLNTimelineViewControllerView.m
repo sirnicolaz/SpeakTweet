@@ -2,7 +2,7 @@
 #import "NTLNConfiguration.h"
 #import "NTLNColors.h"
 #import "NTLNAppDelegate.h"
-#import "FliteTTS.h"
+#import "FliteTTS_HTS.h"
 
 @interface NTLNTimelineViewController(Private)
 - (UIView*)moreTweetView;
@@ -17,16 +17,16 @@
 #pragma mark Private
 
 - (void)setupSpeaker{
-	fliteEngine = [[FliteTTS alloc] initWithOnFinishDelegate:self whenFinishPlayingExecute:@selector(playTweets)];
+	fliteEngine = [[FliteTTS_HTS alloc] initWithOnFinishDelegate:self whenFinishPlayingExecute:@selector(playTweets)];
 	NSString *selectedVoice = [[NTLNConfiguration instance] voice];
 	
-	if( selectedVoice == @"woman" ){
-		NSLog(@"woman");
-		[fliteEngine setVoice:@"cmu_us_slt"];
+	if( selectedVoice == @"man" ){
+		NSLog(@"man");
+		[fliteEngine setVoice:@"man"];
 	}
 	else {
-		NSLog(@"man");
-		[fliteEngine setVoice:@"cmu_us_awb"];
+		NSLog(@"woman");
+		[fliteEngine setVoice:@"woman"];
 	}
 	
 	[fliteEngine setVolume:[[NTLNConfiguration instance] volume]];
