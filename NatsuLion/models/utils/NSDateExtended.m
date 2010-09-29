@@ -1,6 +1,6 @@
 #import "NSDateExtended.h"
 
-@implementation NSDate(NTLNExtended) 
+@implementation NSDate(Extended) 
 
 - (NSString*)descriptionWithTwitterStyle {
 	time_t now = [[NSDate date] timeIntervalSince1970];
@@ -34,7 +34,7 @@
 	return [NSString stringWithUTF8String:tmp];
 }
 
-- (NSString*)descriptionWithNTLNStyle {
+- (NSString*)descriptionWithStyle {
 	time_t now = [[NSDate date] timeIntervalSince1970];
 	time_t t = [self timeIntervalSince1970];
 	struct tm *tm_ = localtime(&t);

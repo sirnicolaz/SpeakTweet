@@ -1,8 +1,8 @@
 #import <Foundation/Foundation.h>
 
-@interface NSDate(NTLNExtended)
+@interface NSDate(Extended)
 - (NSString*)descriptionWithTwitterStyle;
-- (NSString*)descriptionWithNTLNStyle;
+- (NSString*)descriptionWithStyle;
 - (NSString*)descriptionWithRateLimitRemaining;
 
 @end
