@@ -1,7 +1,6 @@
 //
 // Prefix header for all source files of the 'ntlniph' target in the 'ntlniph' project
 //
-#define ENABLE_OAUTH
 #ifdef __OBJC__
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
