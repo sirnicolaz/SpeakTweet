@@ -29,7 +29,7 @@ GTMOBJECT_SINGLETON_BOILERPLATE(NTLNOAuthConsumer, sharedInstance)
 	[rootViewController release];
 	rootViewController = [viewController retain];
 	
-    NSURL *url = [NSURL URLWithString:@"http://twitter.com/oauth/request_token"];
+    NSURL *url = [NSURL URLWithString:@"https://api.twitter.com/oauth/request_token"];
 	
     OAMutableURLRequest *request = [[[OAMutableURLRequest alloc] initWithURL:url
 																	consumer:[self consumer]
@@ -69,7 +69,7 @@ GTMOBJECT_SINGLETON_BOILERPLATE(NTLNOAuthConsumer, sharedInstance)
 	
 	OAToken *token = [[[OAToken alloc] initWithHTTPResponseBody:response] autorelease];
 		
-	NSURL *url = [NSURL URLWithString:@"http://twitter.com/oauth/access_token"];
+	NSURL *url = [NSURL URLWithString:@"https://api.twitter.com/oauth/access_token"];
 	
 	OAMutableURLRequest *request = [[[OAMutableURLRequest alloc] initWithURL:url
 																   consumer:[self consumer]
@@ -99,7 +99,7 @@ GTMOBJECT_SINGLETON_BOILERPLATE(NTLNOAuthConsumer, sharedInstance)
 	if (ticket.didSucceed) {
 		NSString *responseBody = [[NSString alloc] initWithData:data
 													   encoding:NSUTF8StringEncoding];
-		NSString *url = [NSString stringWithFormat:@"https://twitter.com/oauth/authorize?%@", responseBody];
+		NSString *url = [NSString stringWithFormat:@"https://api.twitter.com/oauth/authorize?%@", responseBody];
 		[responseBody release];
 
 		[[NTLNAccount sharedInstance] setWaitForOAuthCallback:YES];

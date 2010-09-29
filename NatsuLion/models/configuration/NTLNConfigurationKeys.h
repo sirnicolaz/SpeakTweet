@@ -8,16 +8,16 @@
 #define NTLN_PREFERENCE_AUTO_SCROLL				@"autoScroll"
 #define NTLN_PREFERENCE_SHOW_MORE_TWEETS_MODE	@"showMoreTweetMode"
 #define NTLN_PREFERENCE_FETCH_COUNT				@"fetchCount"
-#define NTLN_PREFERENCE_SHAKE_TO_FULLSCREEN		@"shakeToFullscreen"
+#define NTLN_PREFERENCE_SHAKE_TO_FULLSCREEN	@"shakeToFullscreen"
 
 #define NTLN_PREFERENCE_FOOTER					@"footer"
 
 #define NTLN_PREFERENCE_LEFTHAND				@"lefthand"
 
-#define NTLN_OAUTH_PROVIDER						@"twitter.com"
+#define NTLN_OAUTH_PROVIDER					@"twitter.com"
 #define NTLN_OAUTH_PREFIX						@"iSteve"
 
-#define ST_PREFERENCE_VOICE                     @"voice"
+#define ST_PREFERENCE_VOICE               @"voice"
 #define ST_PREFERENCE_VOLUME					@"volume"
 
-#define NTLN_OAUTH_WAIT_FOR_CALLBACK			@"http://www.albertodebortoli.it/wordpress/iphone/isteve"
+#define NTLN_OAUTH_WAIT_FOR_CALLBACK		@"http://www.albertodebortoli.it/wordpress/iphone/speaktweet"
