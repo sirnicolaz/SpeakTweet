@@ -1,5 +1,5 @@
 //
-// Prefix header for all source files of the 'ntlniph' target in the 'ntlniph' project
+// Prefix header for all source files of the 'SpeakTweet' target in the 'SpeakTweet' project
 //
 #ifdef __OBJC__
 #import <Foundation/Foundation.h>
