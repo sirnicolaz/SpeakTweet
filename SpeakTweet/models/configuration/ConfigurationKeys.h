@@ -15,7 +15,7 @@
 #define PREFERENCE_LEFTHAND				@"lefthand"
 
 #define OAUTH_PROVIDER					@"twitter.com"
-#define OAUTH_PREFIX						@"NatsuLion"
+#define OAUTH_PREFIX						@"SpeakTweet"
 
 #define ST_PREFERENCE_VOICE               @"voice"
 #define ST_PREFERENCE_VOLUME					@"volume"
