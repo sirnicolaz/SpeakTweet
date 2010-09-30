@@ -89,18 +89,18 @@
 									 initWithRootViewController:directMessageViewController] autorelease];
 	
 	[nfri.navigationBar setBarStyle:UIBarStyleBlackOpaque];
-	[nfri.tabBarItem setTitle:@"Friends"];
-	[nfri.tabBarItem setImage:[UIImage imageNamed:@"friends.png"]];
+	[nfri.tabBarItem setTitle:@"Timeline"];
+	[nfri.tabBarItem setImage:[UIImage imageNamed:@"tab1tl.png"]];
 	friendsViewController.tabBarItem = nfri.tabBarItem; // is it need (to show badge)?
 	
 	[nrep.navigationBar setBarStyle:UIBarStyleBlackOpaque];
 	[nrep.tabBarItem setTitle:@"Mentions"];
-	[nrep.tabBarItem setImage:[UIImage imageNamed:@"replies.png"]];
+	[nrep.tabBarItem setImage:[UIImage imageNamed:@"tab2at.png"]];
 	replysViewController.tabBarItem  = nrep.tabBarItem; // is it need (to show badge)?
 
 	[nsdm.navigationBar setBarStyle:UIBarStyleBlackOpaque];
 	[nsdm.tabBarItem setTitle:@"DM"];
-	[nsdm.tabBarItem setImage:[UIImage imageNamed:@"dm.png"]];
+	[nsdm.tabBarItem setImage:[UIImage imageNamed:@"tab3dm.png"]];
 	directMessageViewController.tabBarItem  = nsdm.tabBarItem; // is it need (to show badge)?
 	
 	/*[nsen.navigationBar setBarStyle:UIBarStyleBlackOpaque];
@@ -111,14 +111,14 @@
 	[nunr.tabBarItem setTitle:@"Unreads"];
 	[nunr.tabBarItem setImage:[UIImage imageNamed:@"unread.png"]];*/
 	
-	[nset.navigationBar setBarStyle:UIBarStyleBlackOpaque];
-	[nset.tabBarItem setTitle:@"Settings"];
-	[nset.tabBarItem setImage:[UIImage imageNamed:@"setting.png"]];
-
 	[nsfv.navigationBar setBarStyle:UIBarStyleBlackOpaque];
 	[nsfv.tabBarItem setTitle:@"Favorites"];
-	[nsfv.tabBarItem setImage:[UIImage imageNamed:@"favorites.png"]];
+	[nsfv.tabBarItem setImage:[UIImage imageNamed:@"tab4fav.png"]];
 
+	[nset.navigationBar setBarStyle:UIBarStyleBlackOpaque];
+	[nset.tabBarItem setTitle:@"Settings"];
+	[nset.tabBarItem setImage:[UIImage imageNamed:@"tab5set.png"]];
+	
 	[[RateLimit shardInstance] updateNavigationBarColor:tabBarController.moreNavigationController.navigationBar];
 
 	[tabBarController setViewControllers:
