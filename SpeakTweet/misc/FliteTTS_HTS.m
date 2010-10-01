@@ -462,8 +462,8 @@ FILE *Getfp(const char *name, const char *opt)
 	wavfp = Getfp(path, "wb");
 	/* synthesis */
 	/* free */
-	Flite_HTS_Engine_clear(&engine);
-	[self setUpEngine:[self getCommandParameters]];
+	//Flite_HTS_Engine_clear(&engine);
+	//[self setUpEngine:[self getCommandParameters]];
 	/* synthesis */
 	
 	Flite_HTS_Engine_synthesis(&engine, (char*)[cleanString UTF8String] , wavfp, pitch);

@@ -19,6 +19,20 @@
 
 @synthesize timeline, tableView;
 
+- (id)init {
+	[super init];	
+	fliteEngine = [[FliteTTS_HTS alloc] initWithOnFinishDelegate:self whenFinishPlayingExecute:@selector(playTweets)];
+
+	selectedVoice = [[Configuration instance] voice];
+	[fliteEngine setVoice:selectedVoice];	
+	
+	volume = [[Configuration instance] volume];
+	[fliteEngine setVolume:volume];
+	
+	return self;
+}
+
+
 - (void) dealloc {
 	[self stopReadTrackTimer];
 	[timeline release];
@@ -64,12 +78,7 @@
 											 style:UITableViewStylePlain];
 	tableView.delegate = self;
 	tableView.dataSource = self;
-	
-	//ST: the next index to be read by the speaker is 0, the beginning of the table
-	//NSInteger zeroInteger = 0;
-	nextIndexToRead = 0;
-	isPlaying = NO;
-	[self setupSpeaker];
+
 	//[self prepareSpeaker];
 	[self setupTableView];
 	
@@ -103,6 +112,13 @@
 	[[RateLimit shardInstance] updateNavigationBarColor:self.navigationController.navigationBar];
 	[IconRepository addObserver:self selectorSuccess:@selector(iconUpdate:)];
 
+	
+	//ST: the next index to be read by the speaker is 0, the beginning of the table
+	//NSInteger zeroInteger = 0;
+	nextIndexToRead = 0;
+	isPlaying = NO;
+	[self setupSpeaker];
+	
 	[self setupNavigationBar];
 	[self setReloadButtonNormal:![timeline isClientActive]];
 }
@@ -113,7 +129,7 @@
 	[timeline getTimelineWithPage:0 autoload:YES];
 	[self.tableView flashScrollIndicators];
 	[AccelerometerSensor sharedInstance].delegate = self;
-	[self setupSpeaker];
+	//[self setupSpeaker];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
