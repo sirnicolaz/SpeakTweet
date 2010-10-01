@@ -1936,7 +1936,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Alberto De Bortoli (H348E8ZLY2)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Nicola Miotto (458RFQE64U)";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -2009,7 +2009,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+<<<<<<< local
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Alberto De Bortoli (H348E8ZLY2)";
+=======
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Nicola Miotto (458RFQE64U)";
+>>>>>>> other
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"FLITE_PLUS_HTS_ENGINE=1",
@@ -2024,7 +2028,11 @@
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CFLAGS = "-I/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.0.sdk/usr/include/libxml2";
 				PREBINDING = NO;
+<<<<<<< local
 				SDKROOT = iphonesimulator4.1;
+=======
+				SDKROOT = iphonesimulator4.0;
+>>>>>>> other
 			};
 			name = Debug;
 		};
