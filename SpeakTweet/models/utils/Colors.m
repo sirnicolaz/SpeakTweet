@@ -101,7 +101,7 @@ CGColorRef createRGBColor(int r, int g, int b)
 	return c;
 }
 
-- (void) setupLightColors {
+/*- (void) setupLightColors {
     [self releaseColors];
 	
 	textForground			= [[UIColor alloc] initWithRed:0 green:0 blue:0 alpha:1.0];
@@ -130,7 +130,7 @@ CGColorRef createRGBColor(int r, int g, int b)
 	quoteBackgroundColor	= createGrayColor(200);
 
 	[self setupLightGradients];
-}
+}*/
 
 - (void) setupDarkColors {
     [self releaseColors];
@@ -167,11 +167,11 @@ CGColorRef createRGBColor(int r, int g, int b)
 }
 
 - (void) setupColors {
-    if ([[Configuration instance] darkColorTheme]) {
+    //if ([[Configuration instance] darkColorTheme]) {
         [self setupDarkColors];
-    } else {
-        [self setupLightColors];
-    }
+    //} else {
+    //    [self setupLightColors];
+    //}
 }
 
 - (id) init {

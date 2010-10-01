@@ -94,11 +94,11 @@
 	[self updateFooterView];
 	
 	self.tableView.backgroundColor = [[Colors instance] scrollViewBackground];
-	if ([[Configuration instance] darkColorTheme]) {
+	//if ([[Configuration instance] darkColorTheme]) {
 		self.tableView.indicatorStyle = UIScrollViewIndicatorStyleWhite;
-	} else {
-		self.tableView.indicatorStyle = UIScrollViewIndicatorStyleBlack;
-	}
+	//} else {
+	//	self.tableView.indicatorStyle = UIScrollViewIndicatorStyleBlack;
+	//}
 	
 	[[RateLimit shardInstance] updateNavigationBarColor:self.navigationController.navigationBar];
 	[IconRepository addObserver:self selectorSuccess:@selector(iconUpdate:)];

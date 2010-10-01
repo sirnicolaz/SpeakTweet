@@ -103,11 +103,11 @@
 	[(UITableView*)self.view reloadData];
 	
 	((UITableView*)self.view).backgroundColor = [[Colors instance] scrollViewBackground];
-	if ([[Configuration instance] darkColorTheme]) {
+	//if ([[Configuration instance] darkColorTheme]) {
 		((UITableView*)self.view).indicatorStyle = UIScrollViewIndicatorStyleWhite;
-	} else {
-		((UITableView*)self.view).indicatorStyle = UIScrollViewIndicatorStyleBlack;
-	}
+	//} else {
+	//	((UITableView*)self.view).indicatorStyle = UIScrollViewIndicatorStyleBlack;
+	//}
 
 	if (![[Configuration instance] lefthand]) {
 		[self setupPostButton];
@@ -249,11 +249,11 @@
 	}
 	
 	UIImage *buttonImage = nil;
-	if ([[Configuration instance] darkColorTheme]) {
+	//if ([[Configuration instance] darkColorTheme]) {
 		buttonImage = [UIImage imageNamed:@"pushed_black_04.png"];
-	} else {
-		buttonImage = [UIImage imageNamed:@"pushed_04.png"];
-	}
+	//} else {
+	//	buttonImage = [UIImage imageNamed:@"pushed_04.png"];
+	//}
 	[favButton setBackgroundImage:buttonImage forState:UIControlStateNormal];
 	[favButton addSubview:favAI];
 	[favAI startAnimating];
@@ -285,17 +285,17 @@
 
 - (UIImage*)favButtonImage{
 	if (message.favorited) {
-		if ([[Configuration instance] darkColorTheme]) {
+		//if ([[Configuration instance] darkColorTheme]) {
 			return [UIImage imageNamed:@"normal_black_04_.png"];
-		} else {
-			return [UIImage imageNamed:@"normal_04_.png"];
-		}
+		//} else {
+		//	return [UIImage imageNamed:@"normal_04_.png"];
+		//}
 	} else {
-		if ([[Configuration instance] darkColorTheme]) {
+		//if ([[Configuration instance] darkColorTheme]) {
 			return [UIImage imageNamed:@"normal_black_04.png"];
-		} else {
-			return [UIImage imageNamed:@"normal_04.png"];
-		}
+		//} else {
+		//	return [UIImage imageNamed:@"normal_04.png"];
+		//}
 	}
 }
 
@@ -334,19 +334,19 @@
 	
 	
 	UIImage *bimage[5];
-	if ([[Configuration instance] darkColorTheme]) {
+	//if ([[Configuration instance] darkColorTheme]) {
 		bimage[0] = [UIImage imageNamed:@"normal_black_03.png"];
 		bimage[1] = [UIImage imageNamed:@"pushed_black_03.png"];
 		bimage[2] = [UIImage imageNamed:@"pushed_black_04.png"];
 		bimage[3] = [UIImage imageNamed:@"normal_black_05.png"];
 		bimage[4] = [UIImage imageNamed:@"pushed_black_05.png"];
-	} else {
-		bimage[0] = [UIImage imageNamed:@"normal_03.png"];
-		bimage[1] = [UIImage imageNamed:@"pushed_03.png"];
-		bimage[2] = [UIImage imageNamed:@"pushed_04.png"];
-		bimage[3] = [UIImage imageNamed:@"normal_05.png"];
-		bimage[4] = [UIImage imageNamed:@"pushed_05.png"];
-	}
+	//} else {
+		//bimage[0] = [UIImage imageNamed:@"normal_03.png"];
+		//bimage[1] = [UIImage imageNamed:@"pushed_03.png"];
+		//bimage[2] = [UIImage imageNamed:@"pushed_04.png"];
+		//bimage[3] = [UIImage imageNamed:@"normal_05.png"];
+		//bimage[4] = [UIImage imageNamed:@"pushed_05.png"];
+	//}
 		
 	int y = textHeight + 13*2;
 	{

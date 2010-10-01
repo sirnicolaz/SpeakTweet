@@ -4,7 +4,7 @@
 
 #define PREFERENCE_REFRESH_INTERVAL		@"refreshInterval"
 #define PREFERENCE_USE_SAFARI				@"useSafari"
-#define PREFERENCE_DARK_COLOR_THEME		@"darkColorTheme"
+//#define PREFERENCE_DARK_COLOR_THEME		@"darkColorTheme"
 #define PREFERENCE_AUTO_SCROLL				@"autoScroll"
 #define PREFERENCE_SHOW_MORE_TWEETS_MODE	@"showMoreTweetMode"
 #define PREFERENCE_FETCH_COUNT				@"fetchCount"

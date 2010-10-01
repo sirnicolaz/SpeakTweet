@@ -51,11 +51,11 @@
 //	[(UITableView*)self.view reloadData];
 	
 	((UITableView*)self.view).backgroundColor = [[Colors instance] scrollViewBackground];
-	if ([[Configuration instance] darkColorTheme]) {
+	//if ([[Configuration instance] darkColorTheme]) {
 		((UITableView*)self.view).indicatorStyle = UIScrollViewIndicatorStyleWhite;
-	} else {
-		((UITableView*)self.view).indicatorStyle = UIScrollViewIndicatorStyleBlack;
-	}
+	//} else {
+	//	((UITableView*)self.view).indicatorStyle = UIScrollViewIndicatorStyleBlack;
+	//}
 }
 
 

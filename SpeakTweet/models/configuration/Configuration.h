@@ -2,7 +2,7 @@
 
 @interface Configuration : NSObject {
 	BOOL useSafari;
-	BOOL darkColorTheme;
+	//BOOL darkColorTheme;
 	BOOL autoScroll;
     int refreshIntervalSeconds;
 	BOOL showMoreTweetMode;
@@ -14,7 +14,7 @@
 }
 
 @property (readonly) BOOL useSafari;
-@property (readonly) BOOL darkColorTheme;
+//@property (readonly) BOOL darkColorTheme;
 @property (readonly) BOOL autoScroll;
 @property (readonly) BOOL showMoreTweetMode;
 @property (readonly) BOOL shakeToFullscreen;

@@ -29,21 +29,21 @@
 }
 
 - (void)setMoreButtonNormal:(BOOL)normal {
-	if ([[Configuration instance] darkColorTheme]) {
+	//if ([[Configuration instance] darkColorTheme]) {
 		if (normal) {
 			[moreButton setBackgroundImage:[UIImage imageNamed:@"more_button_normal_b.png"] forState:UIControlStateNormal];
 		} else {
 			[moreButton setBackgroundImage:nil forState:UIControlStateNormal];
 		}
 		[moreButton setBackgroundImage:nil forState:UIControlStateHighlighted];
-	} else {
+	/*} else {
 		if (normal) {
 			[moreButton setBackgroundImage:[UIImage imageNamed:@"more_button_normal.png"] forState:UIControlStateNormal];
 		} else {
 			[moreButton setBackgroundImage:[UIImage imageNamed:@"more_button_pushed.png"] forState:UIControlStateNormal];
 		}
 		[moreButton setBackgroundImage:[UIImage imageNamed:@"more_button_pushed.png"] forState:UIControlStateHighlighted];
-	}
+	}*/
 }
 
 - (UIView*)moreTweetView {

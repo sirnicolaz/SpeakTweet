@@ -51,8 +51,8 @@
 				   [UICPrototypeTableCell cellForSwitch:@"UseSafari" 
 									withUserDefaultsKey:PREFERENCE_USE_SAFARI],
 
-				   [UICPrototypeTableCell cellForSwitch:@"Dark color theme" 
-									withUserDefaultsKey:PREFERENCE_DARK_COLOR_THEME],
+				   //[UICPrototypeTableCell cellForSwitch:@"Dark color theme" 
+					//				withUserDefaultsKey:PREFERENCE_DARK_COLOR_THEME],
 				   
 				   [UICPrototypeTableCell cellForSwitch:@"Shake to fullscreen" 
 									withUserDefaultsKey:PREFERENCE_SHAKE_TO_FULLSCREEN],
@@ -78,9 +78,9 @@
 				   
 				   nil];
 	
-	NSArray *g4 = [NSArray arrayWithObjects:
+	/*NSArray *g4 = [NSArray arrayWithObjects:
 				   [UICPrototypeTableCell cellForTitle:@"Footer"],
-				   nil];
+				   nil];*/
 
 	NSArray *g5 = [NSArray arrayWithObjects:
 				   [UICPrototypeTableCell cellForTitle:@"About SpeakTweet for iPhone"],
@@ -91,7 +91,7 @@
 			   [UICPrototypeTableGroup groupWithCells:gVoice withTitle:nil],
 			   [UICPrototypeTableGroup groupWithCells:g2 withTitle:nil], 
 			   [UICPrototypeTableGroup groupWithCells:g3 withTitle:nil], 
-			   [UICPrototypeTableGroup groupWithCells:g4 withTitle:nil], 
+			   //[UICPrototypeTableGroup groupWithCells:g4 withTitle:nil], 
 			   [UICPrototypeTableGroup groupWithCells:g5 withTitle:nil], 
 			   nil] retain];
 }

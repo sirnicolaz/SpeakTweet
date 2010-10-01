@@ -35,7 +35,7 @@ static TweetPostViewController *_tweetViewController;
 
 - (void)updateViewColors {
 	UIColor *textColor, *backgroundColor, *backgroundColorBottom;
-	if ([[Configuration instance] darkColorTheme]) {
+	//if ([[Configuration instance] darkColorTheme]) {
 		textColor = [UIColor whiteColor];
 		if ([[TwitterPost shardInstance] isDirectMessage]) {
 			backgroundColor = [UIColor colorWithRed:0.2f green:0.2f blue:0.5f alpha:1.f];
@@ -43,7 +43,7 @@ static TweetPostViewController *_tweetViewController;
 			backgroundColor = [UIColor colorWithWhite:61.f/255.f alpha:1.0f];
 		}
 		backgroundColorBottom = [UIColor colorWithWhite:24.f/255.f alpha:1.0f];
-	} else {
+	/*} else {
 		textColor = [UIColor blackColor];
 		if ([[TwitterPost shardInstance] isDirectMessage]) {
 			backgroundColor = [UIColor colorWithRed:0.8f green:0.8f blue:1.f alpha:1.f];
@@ -51,7 +51,7 @@ static TweetPostViewController *_tweetViewController;
 			backgroundColor = [UIColor colorWithWhite:252.f/255.f alpha:1.0f];
 		}
 		backgroundColorBottom = [UIColor colorWithWhite:200.f/255.f alpha:1.0f];
-	}
+	}*/
 	
 	self.view.backgroundColor = backgroundColorBottom;//[UIColor blackColor];
 	
@@ -64,13 +64,13 @@ static TweetPostViewController *_tweetViewController;
 		tweetPostView.backgroundColor = backgroundColor;
 	}
 	
-	if ([[Configuration instance] darkColorTheme]) {
+	//if ([[Configuration instance] darkColorTheme]) {
 		// to use black keyboard appearance
 		tweetPostView.textView.keyboardAppearance = UIKeyboardAppearanceAlert;
-	} else {
+	/*} else {
 		// to use default keyboard appearance
 		tweetPostView.textView.keyboardAppearance = UIKeyboardAppearanceDefault;
-	}
+	}*/
 }
 
 - (void)setupViews {

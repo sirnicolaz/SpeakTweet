@@ -52,7 +52,7 @@
 
 - (void)setReloadButtonNormal:(BOOL)normal {
 	//ST: here we have images for the reload button that can be replaced with the one for the play button
-	if ([[Configuration instance] darkColorTheme]) {
+	//if ([[Configuration instance] darkColorTheme]) {
 		if (normal) {
 			[headReloadButton setBackgroundImage:[UIImage imageNamed:@"reload_button_normal_b.png"] forState:UIControlStateNormal];
 			[headReloadButton setBackgroundImage:[UIImage imageNamed:@"reload_button_normal_b.png"] forState:UIControlStateHighlighted];
@@ -60,7 +60,7 @@
 			[headReloadButton setBackgroundImage:[UIImage imageNamed:@"reload_button_loading_b.png"] forState:UIControlStateNormal];
 			[headReloadButton setBackgroundImage:[UIImage imageNamed:@"reload_button_loading_b.png"] forState:UIControlStateHighlighted];
 		}
-	} else {
+	/*} else {
 		if (normal) {
 			[headReloadButton setBackgroundImage:[UIImage imageNamed:@"reload_button_normal.png"] forState:UIControlStateNormal];
 			[headReloadButton setBackgroundImage:[UIImage imageNamed:@"reload_button_pushed.png"] forState:UIControlStateHighlighted];
@@ -68,7 +68,7 @@
 			[headReloadButton setBackgroundImage:[UIImage imageNamed:@"reload_button_loading.png"] forState:UIControlStateNormal];
 			[headReloadButton setBackgroundImage:[UIImage imageNamed:@"reload_button_loading_pushed.png"] forState:UIControlStateHighlighted];
 		}
-	}
+	}*/
 }
 
 - (UIView*)playButtonItem{

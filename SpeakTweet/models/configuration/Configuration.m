@@ -5,7 +5,7 @@
 
 @implementation Configuration
 
-@synthesize useSafari, darkColorTheme, autoScroll, showMoreTweetMode, shakeToFullscreen;
+@synthesize useSafari, autoScroll, showMoreTweetMode, shakeToFullscreen; //darkColorTheme
 @synthesize lefthand;
 static id _instance = nil;
 
@@ -32,7 +32,7 @@ static id _instance = nil;
 - (void)reload {
 	refreshIntervalSeconds = [[NSUserDefaults standardUserDefaults] integerForKey:PREFERENCE_REFRESH_INTERVAL];
 	useSafari = [[NSUserDefaults standardUserDefaults] boolForKey:PREFERENCE_USE_SAFARI];
-	darkColorTheme = [[NSUserDefaults standardUserDefaults] boolForKey:PREFERENCE_DARK_COLOR_THEME];
+	//darkColorTheme = [[NSUserDefaults standardUserDefaults] boolForKey:PREFERENCE_DARK_COLOR_THEME];
 	autoScroll = [[NSUserDefaults standardUserDefaults] boolForKey:PREFERENCE_AUTO_SCROLL];
 	showMoreTweetMode = [[NSUserDefaults standardUserDefaults] boolForKey:PREFERENCE_SHOW_MORE_TWEETS_MODE];
 	fetchCount = [[NSUserDefaults standardUserDefaults] integerForKey:PREFERENCE_FETCH_COUNT];
