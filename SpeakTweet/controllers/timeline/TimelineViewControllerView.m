@@ -2,7 +2,7 @@
 #import "Configuration.h"
 #import "Colors.h"
 #import "AppDelegate.h"
-#import "FliteTTS_HTS.h"
+#import "FliteTTS.h"
 
 @interface TimelineViewController(Private)
 - (UIView*)moreTweetView;

@@ -1,6 +1,6 @@
 #import "TimelineViewController.h"
 #import "Configuration.h"
-#import "FliteTTS_HTS.h";
+#import "FliteTTS.h";
 
 @implementation TimelineViewController(Scroll)
 
