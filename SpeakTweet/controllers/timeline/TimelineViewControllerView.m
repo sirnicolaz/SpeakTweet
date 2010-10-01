@@ -247,7 +247,7 @@
 		//view as it is if the first row is the first visible one. So
 		//in order to play the first tweet it's necessary to directly
 		//use playTweetAtIndex without scrolling the view.
-		if([self getNextIndexToRead] == 0)
+		if([self getNextIndexToRead] == 0 && [self getVisibleCellTableIndexAtPosition:0] == 0)
 		{
 			[self setNextIndexToRead:1];
 			[self playTweetAtIndex:0];
