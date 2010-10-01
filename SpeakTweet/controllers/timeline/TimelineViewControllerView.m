@@ -17,20 +17,18 @@
 #pragma mark Private
 
 - (void)setupSpeaker{
-	fliteEngine = [[FliteTTS_HTS alloc] initWithOnFinishDelegate:self whenFinishPlayingExecute:@selector(playTweets)];
-	NSString *selectedVoice = [[Configuration instance] voice];
-	
-	if( selectedVoice == @"man" ){
-		NSLog(@"man");
-		[fliteEngine setVoice:@"man"];
-	}
-	else {
-		NSLog(@"woman");
-		[fliteEngine setVoice:@"woman"];
-	}
-	
-	[fliteEngine setVolume:[[Configuration instance] volume]];
 
+	if (selectedVoice != [[Configuration instance] voice]) {
+		selectedVoice = [[Configuration instance] voice];
+		[fliteEngine setVoice:selectedVoice];
+	}
+	
+	if(volume != [[Configuration instance] volume]){
+		volume = [[Configuration instance] volume];
+		[fliteEngine setVolume:volume];
+	}
+
+	
 }
 
 -(void)prepareSpeaker
@@ -291,7 +289,7 @@
 -(void)seekToFirstVisible{
 	
 	//ST: it's necessary to reset the speaker to get the audioplayer working after stop. Dunno why
-	[self setupSpeaker];
+	//[self setupSpeaker];
 	[self scrollToFirstVisible];
 	[self playTweets];
 	

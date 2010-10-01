@@ -63,6 +63,8 @@
 	NSObject *nextIndexToReadLocker;
 	NSInteger nextIndexToRead;
 	FliteTTS_HTS *fliteEngine;
+	NSString *selectedVoice;
+	float volume;
 	
 	//ST: load on drag handler
 	EGORefreshTableHeaderView *refreshHeaderView;
