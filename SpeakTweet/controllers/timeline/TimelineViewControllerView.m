@@ -219,7 +219,7 @@
 							  atScrollPosition:UITableViewScrollPositionTop
 									  animated:YES];
 		
-		[self setNextIndexToRead:[firstVisibleIndexPath row]];
+		[self setNextIndexToRead:[firstVisibleIndexPath row]+1];
 	}
 }
 

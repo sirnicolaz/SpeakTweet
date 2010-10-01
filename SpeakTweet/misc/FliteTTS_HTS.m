@@ -482,7 +482,6 @@ FILE *Getfp(const char *name, const char *opt)
 	
 }
 
-
 -(void)setVolume:(float)level
 {
 	volumeLevel = level;
