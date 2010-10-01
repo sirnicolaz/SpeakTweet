@@ -23,10 +23,10 @@
 @synthesize tabBarController;
 @synthesize applicationActive;
 
-#define _PREFERENCE_TABORDER		@"tabItemTitlesForTabOrder"
+#define PREFERENCE_TABORDER		@"tabItemTitlesForTabOrder"
 
 - (void)setTabOrderIfSaved {
-	NSArray *tabItemTitles = [[NSUserDefaults standardUserDefaults] arrayForKey:_PREFERENCE_TABORDER];
+	NSArray *tabItemTitles = [[NSUserDefaults standardUserDefaults] arrayForKey:PREFERENCE_TABORDER];
 	NSMutableArray *views = [NSMutableArray array];
 	if ([tabItemTitles count] > 0) {
 		for (int i = 0; i < [tabItemTitles count]; i++){
@@ -46,7 +46,7 @@
 		[tabItemTitles addObject:v.tabBarItem.title];
 	}
 	
-	[[NSUserDefaults standardUserDefaults] setObject:tabItemTitles forKey:_PREFERENCE_TABORDER];
+	[[NSUserDefaults standardUserDefaults] setObject:tabItemTitles forKey:PREFERENCE_TABORDER];
 }
 
 - (void)createViews {
@@ -86,14 +86,14 @@
 	UINavigationController *nsfv = [[[UINavigationController alloc]
 										initWithRootViewController:favoriteViewController] autorelease];
 	UINavigationController *nsdm = [[[UINavigationController alloc]
-									 initWithRootViewController:directMessageViewController] autorelease];
+										initWithRootViewController:directMessageViewController] autorelease];
 	
 	[nfri.navigationBar setBarStyle:UIBarStyleBlackOpaque];
 	[nfri.tabBarItem setTitle:@"Timeline"];
 	[nfri.tabBarItem setImage:[UIImage imageNamed:@"tab1tl.png"]];
 	friendsViewController.tabBarItem = nfri.tabBarItem; // is it need (to show badge)?
 	
-	[nrep.navigationBar setBarStyle:UIBarStyleBlackOpaque];
+	[nrep.navigationBar setBarStyle:UIBarStyleDefault];
 	[nrep.tabBarItem setTitle:@"Mentions"];
 	[nrep.tabBarItem setImage:[UIImage imageNamed:@"tab2at.png"]];
 	replysViewController.tabBarItem  = nrep.tabBarItem; // is it need (to show badge)?

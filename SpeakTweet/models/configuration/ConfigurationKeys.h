@@ -20,6 +20,9 @@
 #define ST_PREFERENCE_VOICE               @"voice"
 #define ST_PREFERENCE_VOLUME					@"volume"
 
+// conterrà un BOOL
 #define OAUTH_WAIT_FOR_CALLBACK		@"oAuthWaitForCallback"
 
-// NatsuLion callback: http://iphone.natsulion.org/oauth_callback
+// callback: http://iphone.natsulion.org/oauth_callback
+
+

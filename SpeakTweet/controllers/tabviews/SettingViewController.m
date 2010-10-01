@@ -123,14 +123,14 @@
 	UITableViewCell *cell = [super tableView:tableView cellForRowAtIndexPath:indexPath];
 
 	// for "Twitter account" or "Footer" cell
-	if (([indexPath section] == 0 || [indexPath section] == 3) && [indexPath row] == 0) {
+	/*if (([indexPath section] == 0) && [indexPath row] == 0) { //|| [indexPath section] == 3
 		cell.accessoryType = UITableViewCellAccessoryNone;
-	}
+	}*/
 	
 	// for "About SpeakTweet for iPhone" cell
-	if ([indexPath section] == 4 && [indexPath row] == 0) {
+	/*if ([indexPath section] == 3 && [indexPath row] == 0) {
 		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-	}
+	}*/
 
 	return cell;
 }
@@ -147,14 +147,14 @@
 	}
 	
 	// for "Footer" cell
-	if ([indexPath section] == 3 && [indexPath row] == 0) {
+	/*if ([indexPath section] == 3 && [indexPath row] == 0) {
 		UITableViewController *vc = [[[FooterSettingViewController alloc] 
 									  initWithStyle:UITableViewStyleGrouped] autorelease];
 		UINavigationController *nc = [[[UINavigationController alloc] 
 									   initWithRootViewController:vc] autorelease];
 		[nc.navigationBar setBarStyle:UIBarStyleBlackOpaque];
 		[self.tabBarController presentModalViewController:nc animated:YES];
-	}
+	}*/
 
 	// for "About SpeakTweet for iPhone" cell
 	if ([indexPath section] == 4 && [indexPath row] == 0) {

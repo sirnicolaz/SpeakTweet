@@ -4,7 +4,7 @@ static Images *_instance;
 
 @implementation Images
 
-@synthesize unreadDark, unreadLight, starHilighted;
+@synthesize unreadDark, starHilighted; //unreadLight
 @synthesize iconChat;
 @synthesize iconConversation;
 @synthesize iconURL;
@@ -72,7 +72,7 @@ static Images *_instance;
 
 - (void)loadImages {
 	unreadDark = [[UIImage imageNamed:@"new-dark.png"] retain];
-	unreadLight = [[UIImage imageNamed:@"new-light.png"] retain];
+	//unreadLight = [[UIImage imageNamed:@"new-light.png"] retain];
 	starHilighted = [[UIImage imageNamed:@"star-highlighted.png"] retain];
 
 	iconChat = [[UIImage imageNamed:@"icons_03.png"] retain];
@@ -91,7 +91,7 @@ static Images *_instance;
 
 - (void)dealloc {
 	[unreadDark release];
-	[unreadLight release];
+	//[unreadLight release];
 	[starHilighted release];
 	
 	[iconChat release];

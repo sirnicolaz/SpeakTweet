@@ -2,7 +2,7 @@
 
 @interface Images : NSObject {
 	UIImage *unreadDark;
-	UIImage *unreadLight;
+	//UIImage *unreadLight;
 	UIImage *starHilighted;
 
 	UIImage *iconChat;
@@ -13,7 +13,7 @@
 
 + (id) sharedInstance;
 
-@property (readonly) UIImage *unreadDark, *unreadLight, *starHilighted;
+@property (readonly) UIImage *unreadDark, *starHilighted; //*unreadLight
 
 @property (readonly) UIImage *iconChat;
 @property (readonly) UIImage *iconConversation;

@@ -226,10 +226,10 @@
 						[TwitterClient URLForTwitterWithAccount]];
 	NSString *postString; 
 	if (reply_id == nil) { 
-		postString = [NSString stringWithFormat:@"status=%@&source=NatsuLiphone",  
+		postString = [NSString stringWithFormat:@"status=%@&source=SpeakTweet",  
 					  [XMLHTTPEncoder encodeHTTP:tweet]]; 
 	} else { 
-		postString = [NSString stringWithFormat:@"status=%@&in_reply_to_status_id=%@&source=NatsuLiphone",  
+		postString = [NSString stringWithFormat:@"status=%@&in_reply_to_status_id=%@&source=SpeakTweet",  
 					  [XMLHTTPEncoder encodeHTTP:tweet], 
 					  reply_id]; 
 	}

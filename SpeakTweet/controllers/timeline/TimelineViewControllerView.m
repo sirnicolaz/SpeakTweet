@@ -315,7 +315,7 @@
 
 - (UIBarButtonItem*)clearButtonItem {
 	UIBarButtonItem *b = [[UIBarButtonItem alloc] 
-						  initWithImage:[UIImage imageNamed:@"checkmark.png"]
+						  initWithImage:[UIImage imageNamed:@"speak.png"]
 //						  initWithImage:[UIImage imageNamed:@"unread_clear.png"]
 						  style:UIBarButtonItemStyleBordered 
 						  target:self action:@selector(clearButton:)];

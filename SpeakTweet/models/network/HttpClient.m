@@ -155,7 +155,8 @@
 }    
 */
 
-- (NSCachedURLResponse *)connection:(NSURLConnection *)connection willCacheResponse:(NSCachedURLResponse *)cachedResponse {
+- (NSCachedURLResponse *)connection:(NSURLConnection *)connection
+						willCacheResponse:(NSCachedURLResponse *)cachedResponse {
 	return nil;
 }
 
