@@ -1615,7 +1615,6 @@
 			isa = PBXProject;
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "SpeakTweet" */;
 			compatibilityVersion = "Xcode 3.1";
-			developmentRegion = English;
 			hasScannedForEncodings = 1;
 			knownRegions = (
 				English,
@@ -1933,7 +1932,7 @@
 					"\"$(SRCROOT)/gtm/TigerGcov\"",
 				);
 				PRODUCT_NAME = SpeakTweet;
-				SDKROOT = iphonesimulator4.1;
+				SDKROOT = iphonesimulator4.0;
 			};
 			name = Debug;
 		};
@@ -2005,7 +2004,7 @@
 				OTHER_CFLAGS = "-I/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.0.sdk/usr/include/libxml2";
 				PREBINDING = NO;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
-				SDKROOT = iphonesimulator4.1;
+				SDKROOT = iphonesimulator4.0;
 			};
 			name = Debug;
 		};
