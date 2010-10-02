@@ -1,7 +1,7 @@
 #import <UIKit/UIKit.h>
 #import "User.h"
 
-@interface TwitterUserXMLReader : NSObject {
+@interface TwitterUserXMLReader : NSObject<NSXMLParserDelegate> {
 	NSMutableString *currentStringValue;
 	BOOL userTagChild;
 	BOOL readText;

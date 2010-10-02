@@ -37,10 +37,10 @@
     [super dealloc];
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+- (void)tableView:(UITableView *)_tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	if (! tweetTextField.editing) {
 		[self.navigationItem setTitle:@"Timeline"];
-		[super tableView:tableView didSelectRowAtIndexPath:indexPath];
+		[super tableView:_tableView didSelectRowAtIndexPath:indexPath];
 	}
 }
 

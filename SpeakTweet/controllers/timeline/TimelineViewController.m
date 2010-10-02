@@ -76,7 +76,7 @@
 - (void)viewDidLoad {
 	
 	//ST: position of tableView
-	tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 44, 320, 313)
+	tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 44, 320, 323)
 											 style:UITableViewStylePlain];
 	tableView.delegate = self;
 	tableView.dataSource = self;
