@@ -12,9 +12,6 @@
 		8D3C40150F8FC26300E69E26 /* more_button_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 8D3C40130F8FC26300E69E26 /* more_button_normal.png */; };
 		8D3C40160F8FC26300E69E26 /* more_button_pushed.png in Resources */ = {isa = PBXBuildFile; fileRef = 8D3C40140F8FC26300E69E26 /* more_button_pushed.png */; };
 		8D3C77A80E4CCC2900B51A09 /* dist.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8D3C77A70E4CCC2900B51A09 /* dist.plist */; };
-		8D3ECB920F8929FA0090DCB1 /* timelineBackground_01.png in Resources */ = {isa = PBXBuildFile; fileRef = 8D3ECB8F0F8929FA0090DCB1 /* timelineBackground_01.png */; };
-		8D3ECB930F8929FA0090DCB1 /* timelineBackground_02.png in Resources */ = {isa = PBXBuildFile; fileRef = 8D3ECB900F8929FA0090DCB1 /* timelineBackground_02.png */; };
-		8D3ECB940F8929FA0090DCB1 /* timelineBackground_03.png in Resources */ = {isa = PBXBuildFile; fileRef = 8D3ECB910F8929FA0090DCB1 /* timelineBackground_03.png */; };
 		8DBA55A80E96A9F700109F5D /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DBA55A70E96A9F700109F5D /* AudioToolbox.framework */; };
 		8DBB73160F87E83500B54378 /* normal_01.png in Resources */ = {isa = PBXBuildFile; fileRef = 8DBB73080F87E83500B54378 /* normal_01.png */; };
 		8DBB73170F87E83500B54378 /* normal_02.png in Resources */ = {isa = PBXBuildFile; fileRef = 8DBB73090F87E83500B54378 /* normal_02.png */; };
@@ -224,9 +221,6 @@
 		8D3C40130F8FC26300E69E26 /* more_button_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = more_button_normal.png; sourceTree = "<group>"; };
 		8D3C40140F8FC26300E69E26 /* more_button_pushed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = more_button_pushed.png; sourceTree = "<group>"; };
 		8D3C77A70E4CCC2900B51A09 /* dist.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = dist.plist; sourceTree = "<group>"; };
-		8D3ECB8F0F8929FA0090DCB1 /* timelineBackground_01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = timelineBackground_01.png; sourceTree = "<group>"; };
-		8D3ECB900F8929FA0090DCB1 /* timelineBackground_02.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = timelineBackground_02.png; sourceTree = "<group>"; };
-		8D3ECB910F8929FA0090DCB1 /* timelineBackground_03.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = timelineBackground_03.png; sourceTree = "<group>"; };
 		8D4408F90FA6E6B70087F6ED /* GTMObjectSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMObjectSingleton.h; sourceTree = "<group>"; };
 		8DBA55A70E96A9F700109F5D /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		8DBB73080F87E83500B54378 /* normal_01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = normal_01.png; sourceTree = "<group>"; };
@@ -594,9 +588,6 @@
 				D362158012575DC7003A97DC /* tabbar@2x.png */,
 				D34A0540125631C5005BC82B /* navigation.png */,
 				D34A0541125631C5005BC82B /* navigation@2x.png */,
-				8D3ECB8F0F8929FA0090DCB1 /* timelineBackground_01.png */,
-				8D3ECB900F8929FA0090DCB1 /* timelineBackground_02.png */,
-				8D3ECB910F8929FA0090DCB1 /* timelineBackground_03.png */,
 			);
 			name = backgrounds;
 			path = resources/backgrounds;
@@ -1242,9 +1233,6 @@
 				8DBB731E0F87E83500B54378 /* pushed_04.png in Resources */,
 				8DBB731F0F87E83500B54378 /* pushed_05.png in Resources */,
 				8DBB73950F87F3A200B54378 /* normal_04_.png in Resources */,
-				8D3ECB920F8929FA0090DCB1 /* timelineBackground_01.png in Resources */,
-				8D3ECB930F8929FA0090DCB1 /* timelineBackground_02.png in Resources */,
-				8D3ECB940F8929FA0090DCB1 /* timelineBackground_03.png in Resources */,
 				8D3C40150F8FC26300E69E26 /* more_button_normal.png in Resources */,
 				8D3C40160F8FC26300E69E26 /* more_button_pushed.png in Resources */,
 				8DDE39B00F92579E00B007C3 /* allread_button_pushed.png in Resources */,
