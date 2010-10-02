@@ -136,5 +136,34 @@
 	iconContainer = [container retain];
 }
 
+- (NSString*) messageToSay {
+	
+	// this parsing function is a mess, seriously, wrap an url in a mess
+	// Cocoa is not good with this kind of stuff, a lot of code wasted 
+	// with NSRange and NSString to search for URLs inside a string...
+	
+	// fortunately I've found RegexKitLite .h and .m (added to misc folder)
+	// also needed to add "-licucore" in "Other linker Flags" property in target info  (it took a lot of time)
+
+	NSString* regexToDelete = @"http[A-Za-z0-9!#$%&'()*+,./:;<=>?@^_`{|}~-]*";
+	NSString* textPurged;
+	
+	//removing URLs
+	textPurged = [text stringByReplacingOccurrencesOfRegex:regexToDelete
+															  withString:@" reference to U R L "];
+	
+	//removing mention symbols
+	textPurged = [textPurged stringByReplacingOccurrencesOfString:@"@"
+																		withString:@" mention to "];
+	
+	//removing hash tags symbols
+	textPurged = [textPurged stringByReplacingOccurrencesOfString:@"#"
+																		withString:@" hash tag for "];
+	
+	NSString* messageToSay = [NSString stringWithFormat:@"User %@ says %@", name, textPurged];
+	
+	return messageToSay;
+	
+}
 
 @end

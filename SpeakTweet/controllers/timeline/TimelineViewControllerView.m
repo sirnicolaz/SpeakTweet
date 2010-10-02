@@ -28,6 +28,9 @@
 		[fliteEngine setVolume:volume];
 	}
 
+	// e questo no? bisogna metterlo dopo che setta la voce
+	// (ecco perché non andava nei primissimi test)
+	//[fliteEngine setPitch:140.0 variance:10.0 speed:1.3];
 	
 }
 
@@ -225,7 +228,7 @@
 -(void)playTweetAtIndex:(NSInteger)index{
 	Status *currentStatus = [timeline statusAtIndex:index];
 	Message *currentMessage = currentStatus.message;
-	NSString *messageToSay = currentMessage.text;
+	NSString *messageToSay = [currentMessage messageToSay];
 	if(messageToSay != nil){
 		[fliteEngine speakText:messageToSay];
 	}

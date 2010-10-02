@@ -50,6 +50,7 @@
 		8DDF88C00FA48CF100E59517 /* reload_button_loading_b.png in Resources */ = {isa = PBXBuildFile; fileRef = 8DDF88BE0FA48CF100E59517 /* reload_button_loading_b.png */; };
 		8DDF88C10FA48CF100E59517 /* reload_button_normal_b.png in Resources */ = {isa = PBXBuildFile; fileRef = 8DDF88BF0FA48CF100E59517 /* reload_button_normal_b.png */; };
 		8DDF89340FA48FB600E59517 /* more_button_normal_b.png in Resources */ = {isa = PBXBuildFile; fileRef = 8DDF89330FA48FB600E59517 /* more_button_normal_b.png */; };
+		D336F6C312569DF700EB43B1 /* RegexKitLite.m in Sources */ = {isa = PBXBuildFile; fileRef = D336F6C212569DF700EB43B1 /* RegexKitLite.m */; };
 		D34A04B312562E2F005BC82B /* readme.html in Resources */ = {isa = PBXBuildFile; fileRef = D34A04B212562E2F005BC82B /* readme.html */; };
 		D34A0542125631C5005BC82B /* navigation.png in Resources */ = {isa = PBXBuildFile; fileRef = D34A0540125631C5005BC82B /* navigation.png */; };
 		D34A0543125631C5005BC82B /* navigation@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D34A0541125631C5005BC82B /* navigation@2x.png */; };
@@ -362,6 +363,8 @@
 		8DDF88BE0FA48CF100E59517 /* reload_button_loading_b.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = reload_button_loading_b.png; sourceTree = "<group>"; };
 		8DDF88BF0FA48CF100E59517 /* reload_button_normal_b.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = reload_button_normal_b.png; sourceTree = "<group>"; };
 		8DDF89330FA48FB600E59517 /* more_button_normal_b.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = more_button_normal_b.png; sourceTree = "<group>"; };
+		D336F6C112569DF700EB43B1 /* RegexKitLite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegexKitLite.h; sourceTree = "<group>"; };
+		D336F6C212569DF700EB43B1 /* RegexKitLite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegexKitLite.m; sourceTree = "<group>"; };
 		D34A04B212562E2F005BC82B /* readme.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = readme.html; sourceTree = "<group>"; };
 		D34A0540125631C5005BC82B /* navigation.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = navigation.png; sourceTree = "<group>"; };
 		D34A0541125631C5005BC82B /* navigation@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "navigation@2x.png"; sourceTree = "<group>"; };
@@ -1008,8 +1011,8 @@
 			children = (
 				D3D7CC2E12541CE000ECC114 /* app */,
 				D3D7CC6912541CE000ECC114 /* models */,
-				D3D7CCA912541CE100ECC114 /* views */,
 				D3D7CC3112541CE000ECC114 /* controllers */,
+				D3D7CCA912541CE100ECC114 /* views */,
 				D3D7CC6412541CE000ECC114 /* misc */,
 			);
 			path = SpeakTweet;
@@ -1128,6 +1131,8 @@
 		D3D7CC6412541CE000ECC114 /* misc */ = {
 			isa = PBXGroup;
 			children = (
+				D336F6C112569DF700EB43B1 /* RegexKitLite.h */,
+				D336F6C212569DF700EB43B1 /* RegexKitLite.m */,
 				D3D7CC6512541CE000ECC114 /* EGORefreshTableHeaderView.h */,
 				D3D7CC6612541CE000ECC114 /* EGORefreshTableHeaderView.m */,
 				D7BB3798125677BC00C0F155 /* FliteTTS.h */,
@@ -2082,6 +2087,7 @@
 				D7BB38A61256783900C0F155 /* us_pos_cart.c in Sources */,
 				D7BB38A71256783900C0F155 /* us_text.c in Sources */,
 				D7BB38A81256783900C0F155 /* usenglish.c in Sources */,
+				D336F6C312569DF700EB43B1 /* RegexKitLite.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2108,6 +2114,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/gtm/TigerGcov\"",
 				);
+				OTHER_LDFLAGS = "-licucore";
 				PRODUCT_NAME = SpeakTweet;
 				SDKROOT = iphonesimulator4.1;
 			};

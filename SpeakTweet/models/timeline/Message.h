@@ -1,6 +1,8 @@
 #import <UIKit/UIKit.h>
 #import "User.h"
 #import "IconRepository.h"
+#import "RegexKitLite.h"
+
 
 enum ReplyType {
     _MESSAGE_REPLY_TYPE_NORMAL = 0,
@@ -46,4 +48,5 @@ enum MessageStatus {
 - (void) finishedToSetProperties:(BOOL)forDirectMessage;
 - (void) hilightUserReplyWithScreenName:(NSString*)screenName;
 - (void) setIconForURL:(NSString*)url;
+- (NSString*) messageToSay;
 @end
