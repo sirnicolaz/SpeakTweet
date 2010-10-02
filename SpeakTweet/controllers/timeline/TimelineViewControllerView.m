@@ -55,11 +55,11 @@
 	//ST: here we have images for the reload button that can be replaced with the one for the play button
 	//if ([[Configuration instance] darkColorTheme]) {
 		if (normal) {
-			[headReloadButton setBackgroundImage:[UIImage imageNamed:@"reload_button_normal_b.png"] forState:UIControlStateNormal];
-			[headReloadButton setBackgroundImage:[UIImage imageNamed:@"reload_button_normal_b.png"] forState:UIControlStateHighlighted];
+			[headReloadButton setBackgroundImage:[UIImage imageNamed:@"play.png"] forState:UIControlStateNormal];
+			[headReloadButton setBackgroundImage:[UIImage imageNamed:@"play.png"] forState:UIControlStateHighlighted];
 		} else {
-			[headReloadButton setBackgroundImage:[UIImage imageNamed:@"reload_button_loading_b.png"] forState:UIControlStateNormal];
-			[headReloadButton setBackgroundImage:[UIImage imageNamed:@"reload_button_loading_b.png"] forState:UIControlStateHighlighted];
+			[headReloadButton setBackgroundImage:[UIImage imageNamed:@"play_loading.png"] forState:UIControlStateNormal];
+			[headReloadButton setBackgroundImage:[UIImage imageNamed:@"play_loading.png"] forState:UIControlStateHighlighted];
 		}
 	/*} else {
 		if (normal) {
@@ -317,7 +317,7 @@
 
 - (UIBarButtonItem*)clearButtonItem {
 	UIBarButtonItem *b = [[UIBarButtonItem alloc] 
-						  initWithImage:[UIImage imageNamed:@"speak.png"]
+						  initWithImage:[UIImage imageNamed:@"checkmark.png"]
 //						  initWithImage:[UIImage imageNamed:@"unread_clear.png"]
 						  style:UIBarButtonItemStyleBordered 
 						  target:self action:@selector(clearButton:)];

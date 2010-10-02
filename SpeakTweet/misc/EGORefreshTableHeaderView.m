@@ -27,9 +27,9 @@
 #import "EGORefreshTableHeaderView.h"
 
 
-#define TEXT_COLOR	 [UIColor colorWithRed:87.0/255.0 green:108.0/255.0 blue:137.0/255.0 alpha:1.0]
-#define BORDER_COLOR [UIColor colorWithRed:87.0/255.0 green:108.0/255.0 blue:137.0/255.0 alpha:1.0]
-
+#define TEXT_COLOR	 [UIColor colorWithRed:230.0/255.0 green:230.0/255.0 blue:230.0/255.0 alpha:1.0]
+#define BORDER_COLOR  [UIColor colorWithRed:230.0/255.0 green:230.0/255.0 blue:230.0/255.0 alpha:1.0]
+#define FLIP_ANIMATION_DURATION 0.18f
 
 @implementation EGORefreshTableHeaderView
 
@@ -73,11 +73,11 @@
 		arrowImage = [[CALayer alloc] init];
 		arrowImage.frame = CGRectMake(25.0f, frame.size.height - 65.0f, 30.0f, 55.0f);
 		arrowImage.contentsGravity = kCAGravityResizeAspect;
-		arrowImage.contents = (id)[UIImage imageNamed:@"blueArrow.png"].CGImage;
+		arrowImage.contents = (id)[UIImage imageNamed:@"whiteArrow.png"].CGImage;
 		[[self layer] addSublayer:arrowImage];
 		[arrowImage release];
 		
-		activityView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+		activityView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
 		activityView.frame = CGRectMake(25.0f, frame.size.height - 38.0f, 20.0f, 20.0f);
 		activityView.hidesWhenStopped = YES;
 		[self addSubview:activityView];
@@ -92,8 +92,8 @@
 	CGContextDrawPath(context,  kCGPathFillStroke);
 	[BORDER_COLOR setStroke];
 	CGContextBeginPath(context);
-	CGContextMoveToPoint(context, 0.0f, self.bounds.size.height - 1);
-	CGContextAddLineToPoint(context, self.bounds.size.width, self.bounds.size.height - 1);
+	CGContextMoveToPoint(context, 0.0f, self.bounds.size.height); // self.bounds.size.height - 1 
+	CGContextAddLineToPoint(context, self.bounds.size.width, self.bounds.size.height); // self.bounds.size.height - 1
 	CGContextStrokePath(context);
 }
 
@@ -115,7 +115,7 @@
 			
 			statusLabel.text = @"Release to refresh...";
 			[CATransaction begin];
-			[CATransaction setAnimationDuration:.18];
+			[CATransaction setAnimationDuration:FLIP_ANIMATION_DURATION];
 			arrowImage.transform = CATransform3DMakeRotation((M_PI / 180.0) * 180.0f, 0.0f, 0.0f, 1.0f);
 			[CATransaction commit];
 			
@@ -124,7 +124,7 @@
 			
 			if (_state == EGOOPullRefreshPulling) {
 				[CATransaction begin];
-				[CATransaction setAnimationDuration:.18];
+				[CATransaction setAnimationDuration:FLIP_ANIMATION_DURATION];
 				arrowImage.transform = CATransform3DIdentity;
 				[CATransaction commit];
 			}

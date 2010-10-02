@@ -58,7 +58,8 @@
 - (UIView*)reloadView {
 	//ST: here we have the reload button that can be replaced by the play button
 	UIButton *b = [UIButton buttonWithType:UIButtonTypeCustom];
-	b.frame = CGRectMake(0, 0, 320, 55);
+	//ST: play button sizes
+	b.frame = CGRectMake(0, 0, 320, 44);
 	//[b addTarget:self action:@selector(reloadButton:) forControlEvents:UIControlEventTouchUpInside];
 	//ST: we try now to replace the reloadButton function with the playTweets one
 	[b addTarget:self action:@selector(playTweetsAction:) forControlEvents:UIControlEventTouchUpInside];
@@ -74,7 +75,8 @@
 
 - (void)viewDidLoad {
 	
-	tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 55, 320, 313)
+	//ST: position of tableView
+	tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 44, 320, 313)
 											 style:UITableViewStylePlain];
 	tableView.delegate = self;
 	tableView.dataSource = self;
@@ -85,7 +87,8 @@
 	//ST: setting the load on drag handler
 	if (refreshHeaderView == nil) {
 		refreshHeaderView = [[EGORefreshTableHeaderView alloc] initWithFrame:CGRectMake(0.0f, 0.0f - self.tableView.bounds.size.height, 320.0f, self.tableView.bounds.size.height)];
-		refreshHeaderView.backgroundColor = [UIColor colorWithRed:226.0/255.0 green:231.0/255.0 blue:237.0/255.0 alpha:1.0];
+		//ST: set the color of the background for the refreshHeader (gray is 40-40-40-1)
+		refreshHeaderView.backgroundColor = [UIColor colorWithRed:0.0/255.0 green:0.0/255.0 blue:0.0/255.0 alpha:1.0];
 		[self.tableView addSubview:refreshHeaderView];
 		self.tableView.showsVerticalScrollIndicator = YES;
 		[refreshHeaderView release];
