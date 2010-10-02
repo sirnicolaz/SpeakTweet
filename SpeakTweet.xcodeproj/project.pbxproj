@@ -50,6 +50,8 @@
 		8DDF88C00FA48CF100E59517 /* reload_button_loading_b.png in Resources */ = {isa = PBXBuildFile; fileRef = 8DDF88BE0FA48CF100E59517 /* reload_button_loading_b.png */; };
 		8DDF88C10FA48CF100E59517 /* reload_button_normal_b.png in Resources */ = {isa = PBXBuildFile; fileRef = 8DDF88BF0FA48CF100E59517 /* reload_button_normal_b.png */; };
 		8DDF89340FA48FB600E59517 /* more_button_normal_b.png in Resources */ = {isa = PBXBuildFile; fileRef = 8DDF89330FA48FB600E59517 /* more_button_normal_b.png */; };
+		D335F63412577A390032F52F /* libVocalKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D335F633125779ED0032F52F /* libVocalKit.a */; };
+		D335F64C12577AC50032F52F /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D335F64B12577AC50032F52F /* libiconv.dylib */; };
 		D336F6C312569DF700EB43B1 /* RegexKitLite.m in Sources */ = {isa = PBXBuildFile; fileRef = D336F6C212569DF700EB43B1 /* RegexKitLite.m */; };
 		D34A04B312562E2F005BC82B /* readme.html in Resources */ = {isa = PBXBuildFile; fileRef = D34A04B212562E2F005BC82B /* readme.html */; };
 		D34A0542125631C5005BC82B /* navigation.png in Resources */ = {isa = PBXBuildFile; fileRef = D34A0540125631C5005BC82B /* navigation.png */; };
@@ -313,6 +315,23 @@
 		F1E17DDD0FBE9DFF0023636F /* OAToken.m in Sources */ = {isa = PBXBuildFile; fileRef = F1E17DB80FBE9DFF0023636F /* OAToken.m */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		D335F632125779ED0032F52F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D335F629125779ED0032F52F /* VocalKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D2AAC07E0554694100DB518D /* libVocalKit.a */;
+			remoteInfo = VocalKit;
+		};
+		D335F64712577A630032F52F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D335F629125779ED0032F52F /* VocalKit.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = D2AAC07D0554694100DB518D /* VocalKit */;
+			remoteInfo = VocalKit;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		1D6058910D05DD3D006BFB54 /* SpeakTweet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpeakTweet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -365,6 +384,8 @@
 		8DDF88BE0FA48CF100E59517 /* reload_button_loading_b.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = reload_button_loading_b.png; sourceTree = "<group>"; };
 		8DDF88BF0FA48CF100E59517 /* reload_button_normal_b.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = reload_button_normal_b.png; sourceTree = "<group>"; };
 		8DDF89330FA48FB600E59517 /* more_button_normal_b.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = more_button_normal_b.png; sourceTree = "<group>"; };
+		D335F629125779ED0032F52F /* VocalKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = VocalKit.xcodeproj; path = VocalKit/VocalKit.xcodeproj; sourceTree = SOURCE_ROOT; };
+		D335F64B12577AC50032F52F /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = usr/lib/libiconv.dylib; sourceTree = SDKROOT; };
 		D336F6C112569DF700EB43B1 /* RegexKitLite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegexKitLite.h; sourceTree = "<group>"; };
 		D336F6C212569DF700EB43B1 /* RegexKitLite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegexKitLite.m; sourceTree = "<group>"; };
 		D34A04B212562E2F005BC82B /* readme.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = readme.html; sourceTree = "<group>"; };
@@ -802,6 +823,8 @@
 				8D1EF37B0FA6C46200BD452F /* libxml2.2.dylib in Frameworks */,
 				D704E6A5124769F9005BBFAD /* AVFoundation.framework in Frameworks */,
 				D70AB4231248EF2E0027DDC5 /* QuartzCore.framework in Frameworks */,
+				D335F63412577A390032F52F /* libVocalKit.a in Frameworks */,
+				D335F64C12577AC50032F52F /* libiconv.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -819,6 +842,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				D335F629125779ED0032F52F /* VocalKit.xcodeproj */,
 				D704E58C124768FA005BBFAD /* Other Sources */,
 				D3D7CC2D12541CE000ECC114 /* SpeakTweet */,
 				F1474FD20FD3F486007D9F4C /* uickit */,
@@ -855,6 +879,7 @@
 				8DBA55A70E96A9F700109F5D /* AudioToolbox.framework */,
 				D704E6A4124769F9005BBFAD /* AVFoundation.framework */,
 				D70AB4221248EF2E0027DDC5 /* QuartzCore.framework */,
+				D335F64B12577AC50032F52F /* libiconv.dylib */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -983,6 +1008,14 @@
 				8D4408F90FA6E6B70087F6ED /* GTMObjectSingleton.h */,
 			);
 			path = Foundation;
+			sourceTree = "<group>";
+		};
+		D335F62F125779ED0032F52F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D335F633125779ED0032F52F /* libVocalKit.a */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		D38830DF1254167700F728C5 /* app_icons */ = {
@@ -1739,6 +1772,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				D335F64812577A630032F52F /* PBXTargetDependency */,
 			);
 			name = SpeakTweet;
 			productName = ntlniph;
@@ -1762,12 +1796,28 @@
 			);
 			mainGroup = 29B97314FDCFA39411CA2CEA /* CustomTemplate */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = D335F62F125779ED0032F52F /* Products */;
+					ProjectRef = D335F629125779ED0032F52F /* VocalKit.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				1D6058900D05DD3D006BFB54 /* SpeakTweet */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		D335F633125779ED0032F52F /* libVocalKit.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libVocalKit.a;
+			remoteRef = D335F632125779ED0032F52F /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		1D60588D0D05DD3D006BFB54 /* Resources */ = {
@@ -2101,6 +2151,14 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		D335F64812577A630032F52F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = VocalKit;
+			targetProxy = D335F64712577A630032F52F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
 		1D6058940D05DD3E006BFB54 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -2189,11 +2247,17 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
+					./VocalKit/,
+					./VocalKit/include,
 					/usr/include/libxml2,
 					/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS2.0.sdk/usr/include/libxml2,
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CFLAGS = "-I/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.0.sdk/usr/include/libxml2";
+				OTHER_LDFLAGS = (
+					"-all_load",
+					"-ObjC",
+				);
 				PREBINDING = NO;
 				SDKROOT = iphonesimulator4.1;
 			};

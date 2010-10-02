@@ -1,0 +1,125 @@
+VocalKit
+========
+
+VocalKit is a wrapper for available open source Speech related packages.   It's goal is to ease the development of voice recognition solutions for the iPhone by providing a nice, simple Objective-C API.
+
+Currently VocalKit is in an Alpha version and just wraps [Pocket Sphinx][].  When enabled, it will post notifications for the recognized speech.  It does not currently configure Pocket Sphinx programmatically, it just configures ps from a file.   It also does not trigger speech processing when the user stops speaking.  Anyone interested in helping is greatly appreciated.
+
+Please review the wiki if you run into any problems.
+
+Example:
+
+        [vk startListening];
+        ....
+        [vk stopListening];
+
+    ....
+
+    - (void) recognizedTextNotification:(NSNotification*)notification {
+        NSDictionary *dict = [notification userInfo];
+        NSString *phrase = [dict objectForKey:VKRecognizedPhraseNotificationTextKey];
+        [textView setText:phrase];
+    }
+
+
+If you want to help, the following area's could use input:
+
+1. Help define the API for Finite State Gramar creation
+
+2. Add another (or better) pocket sphinx configuration.   An FSG example would be great.
+
+3. Add better HMM models or models for other languages.
+
+
+Discussion and Questions about VocalKit should go to the [Google Group][] or as an issue here. 
+
+  
+Allowing support for Julius is a design goal, but not priorities.   
+ 
+ 
+Getting Started with VocalKit
+=============================
+
+To get started, clone the resository and open 'VocalKit/VocalKitTest/VocalKitText.xcodeproj'.   This project is setup with the WSJ 5k word corpus.  The test is not a great representation of Pocket Sphinx's capabilities, and I hope to get a better tuned example up soon.  Copying this project is the simplest way to get started with Pocket Sphinx.
+
+
+
+Adding VocalKit to your project (Thanks to [Three20][])
+===========================================================================
+
+VocalKit is compiled as a static library, and the easiest way to add it to your
+project is to use Xcode's "dependent project" facilities.  Here is how:  
+**Estimated time:** 5 minutes.
+
+1. Clone the vocalkit git repository: `git clone git://github.com/KingOfBrian/VocalKit.git`.  Make sure 
+   you store the repository in a permanent place because Xcode will need to reference the files
+   every time you compile your project.
+
+2. Locate the "VocalKit.xcodeproj" file under "VocalKit/".  Drag VocalKit.xcodeproj and
+   drop it onto the root of your Xcode project's "Groups and Files"  sidebar.  A dialog will
+   appear -- make sure "Copy items" is unchecked and "Reference Type" is "Relative to Project"
+   before clicking "Add".
+
+3. Now you need to link the VocalKit static library to your project.  Click the "VocalKit.xcodeproj" 
+   item that has just been added to the sidebar.  Under the "Details" table, you will see a single
+   item: libVocalKit.a.  Check the checkbox on the far right of libVocalKit.a.
+
+4. Now you need to add VocalKit as a dependency of your project, so Xcode compiles it whenever
+   you compile your project.  Expand the "Targets" section of the sidebar and double-click your
+   application's target.  Under the "General" tab you will see a "Direct Dependencies" section. 
+   Click the "+" button, select "VocalKit", and click "Add Target".
+
+5. Now you need to add the Audio Toolbox and iconv framework to your project.  Right click on the
+   "Frameworks" group in your project (or equivalent) and select Add > Existing Frameworks. 
+   Then locate AudioToolbox.framework and libiconv.dylib and add it to the project.
+
+6. Finally, we need to tell your project where to find the VocalKit and pocketsphinx headers.  Open your
+   "Project Settings" and go to the "Build" tab. Look for "Header Search Paths" and double-click
+   it.  Add the following:
+     - The relative path from your project's directory to the VocalKit directory.
+	 - The relative path from your project's directory to the VocalKit/include directory.
+
+7. While you are in Project Settings, go to "Other Linker Flags" under the "Linker" section, and
+   add "-ObjC" and "-all_load" to the list of flags.
+
+8. You're ready to go.  Just #import "VKController.h" anywhere you want to use VocalKit Wrapper class
+
+
+
+Modifying VocalKit to build from Pocket Sphinx or Flite sources
+===============================================
+
+VocalKit comes with multi-architecture static libraries for Pocket Sphinx and Flite.   
+Follow these steps to configure VocalKit to compile from your custom built libraries.
+
+1. Build Pocket Sphinx and Sphinx Base using the 'build_for_iphone.sh' shell script.   
+   This will place the libraries in a platform selectable directory.   Follow the README for more information.
+
+2. Remove include, libflite*, libpocketsphinx, and libsphinxbase from the Frameworks folder
+
+3. In project settings, search for "Header Search Paths" and add these paths:
+
+- "$(HOME)$(SDK_DIR)/include/pocketsphinx"
+- "$(HOME)$(SDK_DIR)/include/sphinxbase"
+- "$(HOME)$(SDK_DIR)/include/flite"
+
+4. In project settings, search for "Library Search Paths" and add "$(HOME)$(SDK_DIR)/lib"
+
+5. While you are in Project Settings, go to "Other Linker Flags" under the "Linker" section, and
+   add "-lpocketsphinx", "-lsphinxbase", "-lflite", "-lflite_cmu_us_slt", "-lflite_cmulex", "-lflite_usenglish"
+   
+
+Packaging Considerations
+=======================
+
+Pocketsphinx and Flite are LARGE -- 16MB for all the multi-architecture static libraries!  Bundled into your app 
+it should strip out unused symbols and shrink down to around 5MB.  If you are submitting to the app store, only 
+include both flite and pocket sphinx if you are actually using features from pocketsphinx and flite.  
+
+
+
+
+[Pocket Sphinx]: http://cmusphinx.sourceforge.net/
+[Google Group]: http://groups.google.com/group/vocalkit
+[Three20]: http://github.com/facebook/three20
+[CMU]: http://cmusphinx.sourceforge.net/
