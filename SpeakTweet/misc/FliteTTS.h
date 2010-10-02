@@ -29,12 +29,15 @@
 #import <Foundation/Foundation.h>
 #import <AVFoundation/AVFoundation.h>
 
+#import <VKController.h>
+#import <VKFliteSpeaker.h>
 
 @interface FliteTTS : NSObject <AVAudioPlayerDelegate> {
 	//NSData *soundObj;		// doesn't work yet - see note in FliteTTS.m
 	AVAudioPlayer* audioPlayer;
 	id onFinishPlayingDelegate;
 	SEL onFinishPlayingSelector;
+	VKFliteSpeaker *vkSpeaker;
 }
 
 // Use these:

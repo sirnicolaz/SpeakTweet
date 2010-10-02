@@ -9,7 +9,7 @@
 	29B97313FDCFA39411CA2CEA /* Project object */ = {
 		activeBuildConfigurationName = Debug;
 		activeExecutable = D71B9D4712421D8A0008DDC0 /* ntlniph */;
-		activeSDKPreference = iphonesimulator4.1;
+		activeSDKPreference = iphoneos4.1;
 		activeTarget = 1D6058900D05DD3D006BFB54 /* SpeakTweet */;
 		addToTargets = (
 			1D6058900D05DD3D006BFB54 /* SpeakTweet */,
@@ -65,8 +65,8 @@
 					PBXFileDataSource_Warnings_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 307656202;
-			PBXWorkspaceStateSaveDate = 307656202;
+			PBXPerProjectTemplateStateSaveDate = 307727552;
+			PBXWorkspaceStateSaveDate = 307727552;
 		};
 		perUserProjectItems = {
 			D704E53912476574005BBFAD = D704E53912476574005BBFAD /* PBXTextBookmark */;
@@ -121,7 +121,7 @@
 			D79E42FD124E285C00A06859 = D79E42FD124E285C00A06859 /* PBXTextBookmark */;
 			D79E4326124E318000A06859 = D79E4326124E318000A06859 /* PBXTextBookmark */;
 			D79E4334124E323200A06859 = D79E4334124E323200A06859 /* PBXTextBookmark */;
-			D7BB37881256761600C0F155 /* PBXTextBookmark */ = D7BB37881256761600C0F155 /* PBXTextBookmark */;
+			D7BB37881256761600C0F155 = D7BB37881256761600C0F155 /* PBXTextBookmark */;
 			D7BE77FD124A348900E6A29E = D7BE77FD124A348900E6A29E /* PBXTextBookmark */;
 			D7BE7840124A6E5300E6A29E = D7BE7840124A6E5300E6A29E /* PBXTextBookmark */;
 			D7BFBBA61249E88900E424EE = D7BFBBA61249E88900E424EE /* PBXTextBookmark */;
@@ -306,11 +306,6 @@
 		name = FliteTTS_HTS.m;
 		path = "/Users/nicolamiotto/Developement/iOS/SpeakTweet/speak-tweet/SpeakTweet/misc/FliteTTS_HTS.m";
 		sourceTree = "<absolute>";
-		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {908, 6409}}";
-			sepNavSelRange = "{14431, 0}";
-			sepNavVisRange = "{13940, 692}";
-		};
 	};
 	D3D7CD1912541DC400ECC114 /* main.m */ = {
 		uiCtxt = {
@@ -555,11 +550,6 @@
 		name = cst_alloc.h;
 		path = "/Users/nicolamiotto/Developement/iOS/SpeakTweet/speak-tweet/flite+hts_engine-1.00/flite/include/cst_alloc.h";
 		sourceTree = "<absolute>";
-		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {818, 1079}}";
-			sepNavSelRange = "{0, 0}";
-			sepNavVisRange = "{3095, 1159}";
-		};
 	};
 	D70AB427125250230069DDCA /* cst_args.h */ = {
 		isa = PBXFileReference;
@@ -568,11 +558,6 @@
 		name = cst_args.h;
 		path = "/Users/nicolamiotto/Developement/iOS/SpeakTweet/speak-tweet/flite+hts_engine-1.00/flite/include/cst_args.h";
 		sourceTree = "<absolute>";
-		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {818, 650}}";
-			sepNavSelRange = "{0, 0}";
-			sepNavVisRange = "{1216, 1923}";
-		};
 	};
 	D70AB43E1248F14C0027DDC5 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
@@ -627,11 +612,6 @@
 		name = cst_ffeature.c;
 		path = "/Users/nicolamiotto/Developement/iOS/SpeakTweet/speak-tweet/flite+hts_engine-1.00/flite/src/hrg/cst_ffeature.c";
 		sourceTree = "<absolute>";
-		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {818, 2236}}";
-			sepNavSelRange = "{0, 0}";
-			sepNavVisRange = "{2128, 1508}";
-		};
 	};
 	D70AB4D1125251480069DDCA /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
@@ -764,7 +744,7 @@
 		argumentStrings = (
 		);
 		autoAttachOnCrash = 1;
-		breakpointsEnabled = 1;
+		breakpointsEnabled = 0;
 		configStateDict = {
 		};
 		customDataFormattersEnabled = 1;
@@ -1088,16 +1068,16 @@
 	};
 	D7BB3798125677BC00C0F155 /* FliteTTS.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {818, 611}}";
-			sepNavSelRange = "{0, 0}";
-			sepNavVisRange = "{0, 1254}";
+			sepNavIntBoundsRect = "{{0, 0}, {818, 689}}";
+			sepNavSelRange = "{1664, 0}";
+			sepNavVisRange = "{1190, 720}";
 		};
 	};
 	D7BB3799125677BC00C0F155 /* FliteTTS.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {908, 2249}}";
-			sepNavSelRange = "{4300, 0}";
-			sepNavVisRange = "{2959, 943}";
+			sepNavIntBoundsRect = "{{0, 0}, {908, 1521}}";
+			sepNavSelRange = "{1439, 0}";
+			sepNavVisRange = "{1295, 379}";
 		};
 	};
 	D7BE77FD124A348900E6A29E /* PBXTextBookmark */ = {

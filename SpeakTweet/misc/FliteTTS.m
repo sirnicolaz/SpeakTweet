@@ -27,15 +27,6 @@
 //
 
 #import "FliteTTS.h"
-#import "flite.h"
-
-cst_voice *register_cmu_us_kal();
-cst_voice *register_cmu_us_kal16();
-cst_voice *register_cmu_us_rms();
-cst_voice *register_cmu_us_awb();
-cst_voice *register_cmu_us_slt();
-cst_wave *sound;
-cst_voice *voice;
 
 static int test = 0;
 static float volumeLevel = 0.5;
@@ -45,13 +36,9 @@ static float volumeLevel = 0.5;
 -(id)init
 {
     self = [super init];
-	flite_init();
-	// Set a default voice
-	//voice = register_cmu_us_kal();
-	//voice = register_cmu_us_kal16();
-	//voice = register_cmu_us_rms();
-	//voice = register_cmu_us_awb();
-	//voice = register_cmu_us_slt();
+	
+	vkSpeaker = [[VKFliteSpeaker alloc] init];
+	
 	[self setVoice:@"man"];
     return self;
 }
@@ -84,39 +71,28 @@ static float volumeLevel = 0.5;
 	{	// string is empty
 		cleanString = [NSMutableString stringWithString:@""];
 	}
-	sound = flite_text_to_wave([cleanString UTF8String], voice);
 	
 	
-	/*
-	// copy sound into soundObj -- doesn't yet work -- can anyone help fix this?
-	soundObj = [NSData dataWithBytes:sound length:sizeof(sound)]; // find out wy this doesn't work
-	NSError *sAudioPlayerErr;
-	AVAudioPlayer *sAudioPlayer = [[AVAudioPlayer alloc] initWithData:soundObj error:&sAudioPlayerErr];
-	NSLog(@"%@", [sAudioPlayerErr localizedDescription]);
-	[sAudioPlayer setDelegate:self];
-	[sAudioPlayer prepareToPlay];
-	[sAudioPlayer play];
-	NSLog(@"%@", [sAudioPlayerErr localizedDescription]);
-	*/
+	NSString *file = [NSString stringWithFormat:@"%@/test.wav", 
+					  [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject]];
 	
-	NSArray *filePaths = NSSearchPathForDirectoriesInDomains (NSDocumentDirectory, NSUserDomainMask, YES);
-	NSString *recordingDirectory = [filePaths objectAtIndex: 0];
-	// Pick a file name
-	NSString *tempFilePath = [NSString stringWithFormat: @"%@/%s%i", recordingDirectory, "temp.wav", test];	// save wave to disk
-	char *path;	
-	path = (char*)[tempFilePath UTF8String];
-	cst_wave_save_riff(sound, path);
-	// Play the sound back.
-	NSError *err;
-	[audioPlayer stop];
-	audioPlayer =  [[AVAudioPlayer alloc] initWithContentsOfURL:[NSURL fileURLWithPath:tempFilePath] error:&err];
+	
+	NSLog(@"Speakers = %@", [vkSpeaker speakers]);
+	[vkSpeaker speakText:cleanString toFile:file];
+	
+	NSURL *url = [NSURL fileURLWithPath:file];
+	
+    NSError *error;
+	
+    [audioPlayer stop];
+	audioPlayer =  [[AVAudioPlayer alloc] initWithContentsOfURL:url error:&error];
 	[audioPlayer setDelegate:self];
 	[audioPlayer setVolume:volumeLevel];
 	//[audioPlayer prepareToPlay];
 	[audioPlayer play];
 	// Remove file
-	[[NSFileManager defaultManager] removeItemAtPath:tempFilePath error:nil];
-	
+	[[NSFileManager defaultManager] removeItemAtURL:url error:nil];
+
 }
 
 
@@ -126,27 +102,19 @@ static float volumeLevel = 0.5;
 }
 -(void)setPitch:(float)pitch variance:(float)variance speed:(float)speed
 {
-	feat_set_float(voice->features,"int_f0_target_mean", pitch);
-	feat_set_float(voice->features,"int_f0_target_stddev",variance);
-	feat_set_float(voice->features,"duration_stretch",speed);
+	
 }
 
 -(void)setVoice:(NSString *)voicename
 {
-	if([voicename isEqualToString:@"cmu_us_kal"]) {
-		voice = register_cmu_us_kal();
-	}
-	else if([voicename isEqualToString:@"cmu_us_kal16"]) {
-		voice = register_cmu_us_kal16();
-	}
-	else if([voicename isEqualToString:@"cmu_us_rms"]) {
-		voice = register_cmu_us_rms();
-	}
-	else if([voicename isEqualToString:@"man"]) {
-		voice = register_cmu_us_awb();
+
+	if([voicename isEqualToString:@"man"]) {
+		[vkSpeaker setSpeaker:(NSString*)[[vkSpeaker speakers] objectAtIndex:0]];
+		//voice = register_cmu_us_awb();
 	}
 	else if([voicename isEqualToString:@"woman"]) {
-		voice = register_cmu_us_slt();
+		[vkSpeaker setSpeaker:(NSString*)[[vkSpeaker speakers] objectAtIndex:0]];
+		//voice = register_cmu_us_slt();
 	}
 }
 
