@@ -20,17 +20,17 @@ enum MessageStatus {
 @class Message;
 
 @interface Message : NSObject {
-    NSString *statusId;
-    NSString *name;
-    NSString *screenName;
-    NSString *text;
+   NSString *statusId;
+   NSString *name;
+   NSString *screenName;
+	NSString *text;
 	NSString *source;
 	NSString *in_reply_to_status_id;
 	NSString *in_reply_to_screen_name;
-    NSDate *timestamp;
-    enum ReplyType replyType;
-    enum MessageStatus status;
-    User *user;
+   NSDate *timestamp;
+   enum ReplyType replyType;
+   enum MessageStatus status;
+   User *user;
 	BOOL favorited;
 	IconContainer *iconContainer;
 }

@@ -4,7 +4,7 @@
 #import "AccelerometerSensor.h"
 #import "IconRepository.h"
 #import "RateLimit.h"
-#import "FliteTTS.h"
+#import "FliteWrapper.h"
 #import "EGORefreshTableHeaderView.h"
 
 @interface TimelineViewController (Private)
@@ -21,7 +21,7 @@
 
 - (id)init {
 	[super init];	
-	fliteEngine = [[FliteTTS alloc] initWithOnFinishDelegate:self whenFinishPlayingExecute:@selector(playTweets)];
+	fliteEngine = [[FliteWrapper alloc] initWithOnFinishDelegate:self whenFinishPlayingExecute:@selector(playTweets)];
 
 	selectedVoice = [[Configuration instance] voice];
 	[fliteEngine setVoice:selectedVoice];	

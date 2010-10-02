@@ -2,7 +2,7 @@
 #import "Configuration.h"
 #import "Colors.h"
 #import "AppDelegate.h"
-#import "FliteTTS.h"
+#import "FliteWrapper.h"
 
 @interface TimelineViewController(Private)
 - (UIView*)moreTweetView;
@@ -236,7 +236,8 @@
 		isPlaying = NO;
 		[self stopPlaying];
 	}
-	NSLog(@"Playing %@ at index %i", messageToSay, index);
+	NSLog(@"Playing '%@'", messageToSay);
+	NSLog(@"At index %i", index);
 }
 
 //ST: delegate method to be called by on play button press

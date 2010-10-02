@@ -61,16 +61,16 @@
 }
 
 - (void) dealloc {
-    [statusId release];
-    [name release];
-    [screenName release];
-    [text release];
-    [timestamp release];
-    [source release];
+   [statusId release];
+   [name release];
+   [screenName release];
+   [text release];
+   [timestamp release];
+	[source release];
 	[in_reply_to_status_id release];
 	[in_reply_to_screen_name release];
 	[iconContainer release];
-    [super dealloc];
+   [super dealloc];
 }
 
 - (BOOL) isEqual:(id)anObject {
@@ -152,6 +152,12 @@
 	textPurged = [text stringByReplacingOccurrencesOfRegex:regexToDelete
 															  withString:@" reference to U R L "];
 	
+	regexToDelete = @":P|:-P|;P|;-P|:p|:-p|;p|;-p|:D|:-D|;D|;-D|xd|XD|xD|o_O|O_o|O_O|[*_*]*";
+	
+	//removing smiles
+	textPurged = [textPurged stringByReplacingOccurrencesOfRegex:regexToDelete
+															  withString:@""];
+	
 	//removing mention symbols
 	textPurged = [textPurged stringByReplacingOccurrencesOfString:@"@"
 																		withString:@" mention to "];
@@ -160,7 +166,7 @@
 	textPurged = [textPurged stringByReplacingOccurrencesOfString:@"#"
 																		withString:@" hash tag for "];
 	
-	NSString* messageToSay = [NSString stringWithFormat:@"User %@ says %@", name, textPurged];
+	NSString* messageToSay = [NSString stringWithFormat:@"%@ says %@", name, textPurged];
 	
 	return messageToSay;
 	

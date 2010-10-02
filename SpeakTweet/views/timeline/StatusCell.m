@@ -180,7 +180,7 @@
 		starView = nil;
 	}
 	
-	unreadView.frame = CGRectMake(302, 2, 16, 16);
+	unreadView.frame = CGRectMake(303, 0, 17, 18);
 	
 	//if ([[Configuration instance] darkColorTheme]) {
 		unreadView.image = [[Images sharedInstance] unreadDark];

@@ -2,7 +2,7 @@
 #import "TweetViewController.h"
 
 #import "EGORefreshTableHeaderView.h"
-#import "FliteTTS.h"
+#import "FliteWrapper.h"
 
 @implementation TimelineViewController(TableView)
 #pragma mark Private

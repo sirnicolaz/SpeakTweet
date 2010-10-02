@@ -1,8 +1,8 @@
 //
-//  FliteTTS.m
-//  iPhone Text To Speech based on Flite
+//  FliteWrapper.m
+//  Text To Speech wrapper based on Flite
 //
-//  Copyright (c) 2010 Sam Foster
+//  Copyright (c) 2010 Nicola Miotto, Alberto De Bortoli
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -22,16 +22,12 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 //
-//  Author: Sam Foster <samfoster@gmail.com> <http://cmang.org>
-//  Copyright 2010. All rights reserved.
-//
 
-#import "FliteTTS.h"
+#import "FliteWrapper.h"
 
-static int test = 0;
 static float volumeLevel = 0.5;
 
-@implementation FliteTTS
+@implementation FliteWrapper
 
 -(id)init
 {
@@ -54,41 +50,24 @@ static float volumeLevel = 0.5;
 };
 
 -(void)speakText:(NSString *)text
-{
-	NSMutableString *cleanString;
-	cleanString = [NSMutableString stringWithString:@""];
-	if([text length] > 1)
-	{
-		int x = 0;
-		while (x < [text length])
-		{
-			unichar ch = [text characterAtIndex:x];
-			[cleanString appendFormat:@"%c", ch];
-			x++;
-		}
-	}
-	if(cleanString == nil)
-	{	// string is empty
-		cleanString = [NSMutableString stringWithString:@""];
-	}
-	
-	
-	NSString *file = [NSString stringWithFormat:@"%@/test.wav", 
-					  [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject]];
-	
+{	
+	NSString *file = [NSString stringWithFormat:@"%@/spokenTweet.wav", 
+					[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject]];
 	
 	NSLog(@"Speakers = %@", [vkSpeaker speakers]);
-	[vkSpeaker speakText:cleanString toFile:file];
+	[vkSpeaker speakText:text toFile:file];
 	
 	NSURL *url = [NSURL fileURLWithPath:file];
 	
-    NSError *error;
+   NSError *error;
 	
-    [audioPlayer stop];
+	[audioPlayer stop];
+	[audioPlayer release];
+
 	audioPlayer =  [[AVAudioPlayer alloc] initWithContentsOfURL:url error:&error];
 	[audioPlayer setDelegate:self];
 	[audioPlayer setVolume:volumeLevel];
-	//[audioPlayer prepareToPlay];
+	[audioPlayer prepareToPlay];
 	[audioPlayer play];
 	// Remove file
 	[[NSFileManager defaultManager] removeItemAtURL:url error:nil];
@@ -96,17 +75,19 @@ static float volumeLevel = 0.5;
 }
 
 
--(void)setVolume:(float)level
-{
+-(void)setVolume:(float)level {
+	
 	volumeLevel = level;
 }
--(void)setPitch:(float)pitch variance:(float)variance speed:(float)speed
-{
-	
+
+
+-(void)setPitch:(float)pitch variance:(float)variance speed:(float)speed {
+	//	feat_set_float(voice->features,"int_f0_target_mean", pitch);
+	//	feat_set_float(voice->features,"int_f0_target_stddev",variance);
+	//	feat_set_float(voice->features,"duration_stretch",speed);	
 }
 
--(void)setVoice:(NSString *)voicename
-{
+-(void)setVoice:(NSString *)voicename {
 
 	if([voicename isEqualToString:@"man"]) {
 		[vkSpeaker setSpeaker:(NSString*)[[vkSpeaker speakers] objectAtIndex:0]];
@@ -118,13 +99,13 @@ static float volumeLevel = 0.5;
 	}
 }
 
--(void)stopTalking
-{
+
+-(void)stopTalking {
 	[audioPlayer stop];
 }
 
--(void)audioPlayerDidFinishPlaying: (AVAudioPlayer*)audioPlayer successfully: (BOOL)flag
-{
+
+-(void)audioPlayerDidFinishPlaying: (AVAudioPlayer*)audioPlayer successfully: (BOOL)flag {
 	[onFinishPlayingDelegate performSelector:onFinishPlayingSelector];
 	NSLog(@"Finished");
 }

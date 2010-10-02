@@ -1,8 +1,8 @@
 //
-//  FliteTTS.h
-//  iPhone Text To Speech based on Flite
+//  FliteWrapper.h
+//  Text To Speech wrapper based on Flite
 //
-//  Copyright (c) 2010 Sam Foster
+//  Copyright (c) 2010 Nicola Miotto, Alberto De Bortoli
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -22,9 +22,6 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 //
-//  Author: Sam Foster <samfoster@gmail.com> <http://cmang.org>
-//  Copyright 2010. All rights reserved.
-//
 
 #import <Foundation/Foundation.h>
 #import <AVFoundation/AVFoundation.h>
@@ -32,8 +29,7 @@
 #import <VKController.h>
 #import <VKFliteSpeaker.h>
 
-@interface FliteTTS : NSObject <AVAudioPlayerDelegate> {
-	//NSData *soundObj;		// doesn't work yet - see note in FliteTTS.m
+@interface FliteWrapper : NSObject <AVAudioPlayerDelegate> {
 	AVAudioPlayer* audioPlayer;
 	id onFinishPlayingDelegate;
 	SEL onFinishPlayingSelector;

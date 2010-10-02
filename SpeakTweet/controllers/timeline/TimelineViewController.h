@@ -7,7 +7,7 @@
 #import "AccelerometerSensor.h"
 #import "Timeline.h"
 
-@class FliteTTS;
+@class FliteWrapper;
 @class AppDelegate;
 @class TweetViewController;
 @class Status;
@@ -62,7 +62,7 @@
 	//but we will setup an array of indexes for each table
 	NSObject *nextIndexToReadLocker;
 	NSInteger nextIndexToRead;
-	FliteTTS *fliteEngine;
+	FliteWrapper *fliteEngine;
 	NSString *selectedVoice;
 	float volume;
 	
