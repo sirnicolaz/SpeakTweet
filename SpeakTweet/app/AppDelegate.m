@@ -17,6 +17,18 @@
 #import "ConfigurationKeys.h"
 #import "TwitterAccountViewController.h"
 
+
+// ST: for the background image on the navigation bar
+@implementation UINavigationBar (Background)
+
+- (void)drawRect:(CGRect)rect {
+	UIImage *image = [UIImage imageNamed: @"navigation.png"];
+	[image drawInRect:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
+}
+@end
+// ST: end custom
+
+
 @implementation AppDelegate
 
 @synthesize window;
@@ -125,6 +137,19 @@
 		[NSArray arrayWithObjects:nfri, nrep, nsdm, nsfv, nset, nil]];
 
 	[self setTabOrderIfSaved];
+	
+	
+	
+	//ST: custom tabbat background
+	CGRect frame = CGRectMake(0, 0, 320, 49);
+	UIView* view = [[UIView alloc] initWithFrame:frame];
+	UIImage* tabBarBackgroundImage = [UIImage imageNamed:@"tabbar.png"];
+	UIColor* color = [[UIColor alloc] initWithPatternImage:tabBarBackgroundImage];
+	
+	[view setBackgroundColor:color];
+	[color release];
+	[[tabBarController tabBar] insertSubview:view atIndex:0];
+	[view release];
 }
 
 - (void)startup {
@@ -149,6 +174,9 @@
 }
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application {
+	
+	
+	
 	CacheCleaner *cc = [CacheCleaner sharedCacheCleaner];
 	cc.delegate = self;
 	BOOL alertShown = [cc bootup];

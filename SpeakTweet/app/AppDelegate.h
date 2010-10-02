@@ -11,6 +11,12 @@
 @class FavoriteViewController;
 @class DirectMessageViewController;
 
+// ST: for the background image on the navigation bar
+@interface UITabBarController (private)
+- (UITabBar*) tabBar;
+@end
+// ST: end custom
+
 @interface AppDelegate : NSObject <UIApplicationDelegate, UITabBarControllerDelegate, CacheCleanerDelegate> {
 	UIWindow *window;
 	UITabBarController *tabBarController;

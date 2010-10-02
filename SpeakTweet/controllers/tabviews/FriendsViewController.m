@@ -10,17 +10,6 @@
 #define TITLE_NAME @"SpeakTweet"
 
 
-// ST: for the background image on the navigtion bar
-@implementation UINavigationBar (UINavigationBarCategory)
-
-/*- (void)drawRect:(CGRect)rect {
-	UIImage *image = [UIImage imageNamed: @"navigation.png"];
-	[image drawInRect:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
-}*/
-@end
-// end ST
-
-
 @implementation FriendsViewController
 
 @synthesize mentionsViewController;

@@ -112,7 +112,7 @@ static float volumeLevel = 0.5;
 	audioPlayer =  [[AVAudioPlayer alloc] initWithContentsOfURL:[NSURL fileURLWithPath:tempFilePath] error:&err];
 	[audioPlayer setDelegate:self];
 	[audioPlayer setVolume:volumeLevel];
-	[audioPlayer prepareToPlay];
+	//[audioPlayer prepareToPlay];
 	[audioPlayer play];
 	// Remove file
 	[[NSFileManager defaultManager] removeItemAtPath:tempFilePath error:nil];
