@@ -72,21 +72,21 @@
 	}*/
 }
 
-- (UIView*)playButtonItem{
+//- (UIView*)playButtonItem{
 	
 	//UIBarButtonItem *b = [[UIBarButtonItem alloc] 
 //							initWithImage:[UIImage imageNamed:@"play.jpg"]
 //	 //					  initWithImage:[UIImage imageNamed:@"unread_clear.png"]
 //									style:UIBarButtonItemStyleBordered 
 //									target:self action:@selector(playTweets:)];
-	UIButton *b = [UIButton buttonWithType:UIButtonTypeCustom];
+	/*UIButton *b = [UIButton buttonWithType:UIButtonTypeCustom];
 	b.frame = CGRectMake(0, 0, 320, 55);
 	[b addTarget:self action:@selector(playTweetsAction:) forControlEvents:UIControlEventTouchUpInside];
 	
 	[b retain];
 	return b;
 	
-}
+}*/
 
 - (void)setupTableView {
 	self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
