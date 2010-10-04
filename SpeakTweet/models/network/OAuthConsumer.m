@@ -14,6 +14,8 @@
 
 #import "AppDelegate.h"
 
+#import "RegexKitLite.h"
+
 @implementation OAuthConsumer
 
 GTMOBJECT_SINGLETON_BOILERPLATE(OAuthConsumer, sharedInstance)
@@ -37,6 +39,7 @@ GTMOBJECT_SINGLETON_BOILERPLATE(OAuthConsumer, sharedInstance)
 																	   realm:nil   // our service provider doesn't specify a realm
 														   signatureProvider:nil]  // use the default method, HMAC-SHA1
 																		autorelease]; 
+	[request setCallbackURL:SPEAKTWEET_OAUTH_CALLBACK_URL];
 	
     [request setHTTPMethod:@"POST"];
 	
@@ -68,6 +71,12 @@ GTMOBJECT_SINGLETON_BOILERPLATE(OAuthConsumer, sharedInstance)
 	LOG(@"response: %@", response);
 	
 	OAToken *token = [[[OAToken alloc] initWithHTTPResponseBody:response] autorelease];
+	
+	//ST: picking up the verifier fromthe response
+	NSString *regex = @"oauth_verifier=[A-Za-z0-9]*";
+	NSString *oauthParam = [response stringByMatching:regex];
+	NSString *verifier = [oauthParam stringByReplacingOccurrencesOfString:@"oauth_verifier=" withString:@""];
+	NSLog(@"Verifier %@",verifier);
 		
 	NSURL *url = [NSURL URLWithString:@"https://api.twitter.com/oauth/access_token"];
 	
@@ -77,6 +86,7 @@ GTMOBJECT_SINGLETON_BOILERPLATE(OAuthConsumer, sharedInstance)
 																	  realm:nil   // our service provider doesn't specify a realm
 														  signatureProvider:nil] autorelease]; // use the default method, HMAC-SHA1
 	
+	[request setVerifier:verifier];
 	[request setHTTPMethod:@"POST"];
 	
 	OADataFetcher *fetcher = [[[OADataFetcher alloc] init] autorelease];

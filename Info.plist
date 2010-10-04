@@ -41,7 +41,7 @@
 		<dict>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>natsulion</string>
+				<string>speaktweet</string>
 			</array>
 			<key>CFBundleURLName</key>
 			<string>org.natsulion.natsuliphoneprotocol</string>
