@@ -155,7 +155,7 @@
 	regexToDelete = @":P|:-P|;P|;-P|:p|:-p|;p|;-p|:D|:-D|;D|;-D|xd|XD|xD|o_O|O_o|O_O|[*_*]*";
 	
 	//removing smiles
-	textPurged = [textPurged stringByReplacingOccurrencesOfRegex:regexToDelete
+	textPurged = [textPurged  stringByReplacingOccurrencesOfRegex:regexToDelete
 															  withString:@""];
 	
 	//removing mention symbols
