@@ -24,5 +24,4 @@
 #define OAUTH_WAIT_FOR_CALLBACK		@"oAuthWaitForCallback"
 
 // callback: http://iphone.natsulion.org/oauth_callback
-
-
+#define SPEAKTWEET_OAUTH_CALLBACK_URL @"speaktweet:///oauth_callback"

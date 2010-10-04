@@ -42,6 +42,8 @@
     id<OASignatureProviding> signatureProvider;
     NSString *nonce;
     NSString *timestamp;
+	NSString *callback_url;
+	NSString *verifier;
 }
 @property(readonly) NSString *signature;
 @property(readonly) NSString *nonce;
@@ -59,6 +61,9 @@ signatureProvider:(id<OASignatureProviding, NSObject>)aProvider;
 signatureProvider:(id<OASignatureProviding, NSObject>)aProvider
             nonce:(NSString *)aNonce
         timestamp:(NSString *)aTimestamp;
+
+- (void)setCallbackURL:(NSString *)url;
+- (void)setVerifier:(NSString *)aVerifier;
 
 - (void)prepare;
 
