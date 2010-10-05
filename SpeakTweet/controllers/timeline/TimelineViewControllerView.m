@@ -184,30 +184,45 @@
 }
 
 
+-(BOOL)hasTableViewReachedTheEnd
+{
+	NSArray *paths = [self.tableView indexPathsForVisibleRows];
+	NSInteger lastRowIndex = [self.tableView numberOfRowsInSection:0];
+	
+	for (NSIndexPath *path in paths) {
+		if ([path row] == lastRowIndex-1)
+		{
+			return YES;
+		}
+	}
+	return NO;
+}
+
 //ST: after taking the first row height, the function scroll the table view
 //to the next row to be the first visible
 -(void)scrollToNextRow{
 	
 	//Get the second visible row (table start from index 0)
-	NSIndexPath *secondCellIndexPath = [self getVisibleCellIndexPathAtPosition:1];
-	
-	if (secondCellIndexPath != nil) {
-		
-		//ST: it means that the scroll reched the end
-		if([secondCellIndexPath row]+1 <= [self getNextIndexToRead]){
-			
-			[self setNextIndexToRead:[self getNextIndexToRead]+1];
-			
-		}
-		else{
-			[self.tableView scrollToRowAtIndexPath:secondCellIndexPath
+	NSIndexPath *secondVisibleCellIndexPath = [self getVisibleCellIndexPathAtPosition:1];
+	if (secondVisibleCellIndexPath != nil) {
+
+		[self.tableView scrollToRowAtIndexPath:secondVisibleCellIndexPath
 								  atScrollPosition:UITableViewScrollPositionTop
 										  animated:YES];
 		
-			//NSInteger indexToRead = [self getVisibleCellTableIndexAtPosition:0];
-			//[self setNextIndexToRead:indexToRead];
+		
+		//If the secondCellIndexPath and the secondVisibleCellIndexPath are equal, it means
+		//that the scroll view hasn't moved and so the table reached the end.
+		if ([self hasTableViewReachedTheEnd] && 
+			[secondVisibleCellIndexPath row] <= [self getNextIndexToRead]) {
 			
-			[self setNextIndexToRead:[secondCellIndexPath row]];
+			NSLog(@"Table finished");
+			[self setNextIndexToRead:[self getNextIndexToRead]+1];
+		}
+		else
+		{
+			NSLog(@"Continuing");
+			[self setNextIndexToRead:[secondVisibleCellIndexPath row]];
 		}
 	}
 }
@@ -239,17 +254,18 @@
 	if(messageToSay != nil){
 			NSURL* messageURL = [fliteEngine synthesize:messageToSay];
 		
-			[self stopActivityIndicator];
+			[(TimelineViewController*)sender stopActivityIndicator];
 			
 			[fliteEngine speakText:messageURL];
 		
 			NSLog(@"Playing '%@'", messageToSay);
-			NSLog(@"At index %i", [self getNextIndexToRead]-1);
-		
+			
 		}
 		else{
+			NSLog(@"Stop playing");
 			isPlaying = NO;
 			[self stopPlaying];
+			[self removeVisualPlayMode];
 	}
 }
 
@@ -399,7 +415,16 @@
 
 -(void) startActivityIndicator {
 	
-	NSIndexPath* cellIndexPath = [self getVisibleCellIndexPathAtPosition:1];
+	NSIndexPath* cellIndexPath;
+	if([self getNextIndexToRead] == 0 && 
+	   [self getVisibleCellTableIndexAtPosition:0] == 0)
+	{
+		cellIndexPath = [self getVisibleCellIndexPathAtPosition:0];
+	}
+	else {
+		cellIndexPath = [self getVisibleCellIndexPathAtPosition:1];
+	}
+
 	UITableViewCell* cellToNotCover = [self.tableView cellForRowAtIndexPath:cellIndexPath];
 	
 	[self.view addSubview:overlayLayer];
@@ -412,14 +437,6 @@
 	[overlayLayer addSubview:activityView];
 	[activityView startAnimating];
 	
-}
-
-
--(void)stopActivityIndicator {
-	
-	//ST: ActivityIndicator stuff...
-	[activityView stopAnimating];
-	[activityView removeFromSuperview];
 }
 
 @end

@@ -196,5 +196,16 @@
 	return 0;
 }
 
+
+
+-(void)stopActivityIndicator {
+	
+	NSLog(@"Stopping activity indicator");
+	//ST: ActivityIndicator stuff...
+	[activityView stopAnimating];
+	[activityView removeFromSuperview];
+}
+
+
 @end
 

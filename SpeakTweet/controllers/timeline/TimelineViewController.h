@@ -84,6 +84,8 @@
 @property(assign,getter=isReloading) BOOL reloading;
 
 @property(nonatomic, retain) UITableView *tableView;
+
+- (void)stopActivityIndicator;
 @end
 
 @interface TimelineViewController(Accerlerometer) <AccelerometerSensorDelegate>
@@ -108,7 +110,6 @@
 - (void)overlayAnimation:(CGRect)frame;
 - (void)playModeButtonAnimation:(BOOL)state;
 - (void)startActivityIndicator;
-- (void)stopActivityIndicator;
 @end
 
 

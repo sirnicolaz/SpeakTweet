@@ -47,9 +47,10 @@
 	[self performSelector:@selector(stopReadTrackTimer) withObject:nil afterDelay:2.0];
 	
 	//ST: to resume the play from the current new position
+	
+	NSLog(@"Stop decelerating");
 	if( isPlaying == YES){
 		[self playTweets];
-
 	}
 }
 
