@@ -267,29 +267,26 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateExpansionKey</key>
 							<array>
 								<string>29B97314FDCFA39411CA2CEA</string>
+								<string>D3D8EC591257A1C5009FE482</string>
 								<string>D3D7CC2D12541CE000ECC114</string>
-								<string>D3D7CC2E12541CE000ECC114</string>
-								<string>D3D7CC6912541CE000ECC114</string>
-								<string>D3D7CC6D12541CE000ECC114</string>
-								<string>D3D7CC7112541CE000ECC114</string>
 								<string>D3D7CCA912541CE100ECC114</string>
+								<string>D3D7CC3112541CE000ECC114</string>
+								<string>D3D7CC4B12541CE000ECC114</string>
 								<string>D3D7CC6412541CE000ECC114</string>
-								<string>F1E17D820FBE9DFF0023636F</string>
-								<string>29B97317FDCFA39411CA2CEA</string>
-								<string>29B97323FDCFA39411CA2CEA</string>
-								<string>19C28FACFE9D520D11CA2CBB</string>
 								<string>1C37FBAC04509CD000000102</string>
 								<string>1C37FAAC04509CD000000102</string>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>97</integer>
+									<integer>32</integer>
+									<integer>31</integer>
+									<integer>3</integer>
 									<integer>0</integer>
 								</array>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
-							<string>{{0, 1049}, {379, 660}}</string>
+							<string>{{0, 29}, {379, 660}}</string>
 						</dict>
 						<key>PBXTopSmartGroupGIDs</key>
 						<array/>
@@ -322,7 +319,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>D71B9D5512421DAB0008DDC0</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>Info.plist</string>
+								<string>VKFliteSpeaker.m</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -330,11 +327,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>D71B9D5612421DAB0008DDC0</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>Info.plist</string>
+										<string>VKFliteSpeaker.m</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>D72A238A125A3139002F55D2</string>
+										<string>D70F4C0F125B6D3F002D20DB</string>
 										<key>history</key>
 										<array>
 											<string>D71B9D84124265460008DDC0</string>
@@ -421,14 +418,12 @@
 											<string>D7C61B7812555BD0004ED36D</string>
 											<string>D7C61B7F12555C3E004ED36D</string>
 											<string>D7C61B8012555C3E004ED36D</string>
-											<string>D7C61B8812555D00004ED36D</string>
 											<string>D7C61B8A12555D00004ED36D</string>
 											<string>D7C61BB012555F68004ED36D</string>
 											<string>D7C61BB112555F68004ED36D</string>
 											<string>D7C61BB212555F68004ED36D</string>
 											<string>D72A22501259E62D002F55D2</string>
 											<string>D72A22521259E62D002F55D2</string>
-											<string>D72A22531259E62D002F55D2</string>
 											<string>D72A2302125A1609002F55D2</string>
 											<string>D72A230E125A192E002F55D2</string>
 											<string>D72A231A125A19B9002F55D2</string>
@@ -439,7 +434,10 @@
 											<string>D72A2347125A20F5002F55D2</string>
 											<string>D72A235C125A22EF002F55D2</string>
 											<string>D72A2376125A24C7002F55D2</string>
-											<string>D72A22A91259E945002F55D2</string>
+											<string>D70F4C0A125B6D3F002D20DB</string>
+											<string>D70F4C0B125B6D3F002D20DB</string>
+											<string>D70F4C0C125B6D3F002D20DB</string>
+											<string>D70F4C0D125B6D3F002D20DB</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -453,18 +451,18 @@
 							<key>GeometryConfiguration</key>
 							<dict>
 								<key>Frame</key>
-								<string>{{0, 0}, {879, 475}}</string>
+								<string>{{0, 0}, {879, 442}}</string>
 								<key>RubberWindowFrame</key>
 								<string>0 59 1280 719 0 0 1280 778 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXNavigatorGroup</string>
 							<key>Proportion</key>
-							<string>475pt</string>
+							<string>442pt</string>
 						</dict>
 						<dict>
 							<key>Proportion</key>
-							<string>198pt</string>
+							<string>231pt</string>
 							<key>Tabs</key>
 							<array>
 								<dict>
@@ -478,9 +476,7 @@
 									<key>GeometryConfiguration</key>
 									<dict>
 										<key>Frame</key>
-										<string>{{10, 27}, {879, 171}}</string>
-										<key>RubberWindowFrame</key>
-										<string>0 59 1280 719 0 0 1280 778 </string>
+										<string>{{10, 27}, {879, 204}}</string>
 									</dict>
 									<key>Module</key>
 									<string>XCDetailModule</string>
@@ -534,7 +530,9 @@
 									<key>GeometryConfiguration</key>
 									<dict>
 										<key>Frame</key>
-										<string>{{10, 27}, {879, 165}}</string>
+										<string>{{10, 27}, {879, 204}}</string>
+										<key>RubberWindowFrame</key>
+										<string>0 59 1280 719 0 0 1280 778 </string>
 									</dict>
 									<key>Module</key>
 									<string>PBXBuildResultsModule</string>
@@ -562,11 +560,11 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>D72A2385125A25B3002F55D2</string>
+				<string>D70F4C11125B6D3F002D20DB</string>
 				<string>1CA23ED40692098700951B8B</string>
-				<string>D72A2386125A25B3002F55D2</string>
+				<string>D70F4C12125B6D3F002D20DB</string>
 				<string>D71B9D5512421DAB0008DDC0</string>
-				<string>D72A2387125A25B3002F55D2</string>
+				<string>D70F4C13125B6D3F002D20DB</string>
 				<string>1CA23EDF0692099D00951B8B</string>
 				<string>1CA23EE00692099D00951B8B</string>
 				<string>1CA23EE10692099D00951B8B</string>
@@ -715,14 +713,14 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>D72A238B125A3139002F55D2</string>
+				<string>D70F4BA2125B6304002D20DB</string>
 				<string>1CCC7628064C1048000F2A68</string>
 				<string>1CCC7629064C1048000F2A68</string>
-				<string>D72A238C125A3139002F55D2</string>
-				<string>D72A238D125A3139002F55D2</string>
-				<string>D72A238E125A3139002F55D2</string>
-				<string>D72A238F125A3139002F55D2</string>
-				<string>D72A2390125A3139002F55D2</string>
+				<string>D70F4BA3125B6304002D20DB</string>
+				<string>D70F4BA4125B6304002D20DB</string>
+				<string>D70F4BA5125B6304002D20DB</string>
+				<string>D70F4BA6125B6304002D20DB</string>
+				<string>D70F4BA7125B6304002D20DB</string>
 			</array>
 			<key>ToolbarConfigUserDefaultsMinorVersion</key>
 			<string>2</string>

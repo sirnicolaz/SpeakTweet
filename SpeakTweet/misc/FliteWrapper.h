@@ -40,7 +40,8 @@
 //ST: added another initialization method ought to handle to "on finish playing" event
 -(id)initWithOnFinishDelegate:(id)delegate 
 	whenFinishPlayingExecute:(SEL)selector; 
--(void)speakText:(NSString *)text;
+-(void)speakText:(NSURL *)url;
+-(NSURL *)synthesize:(NSString *)text;
 -(void)stopTalking;
 -(void)setPitch:(float)pitch variance:(float)variance speed:(float)speed;
 -(void)setVoice:(NSString *)voicename;

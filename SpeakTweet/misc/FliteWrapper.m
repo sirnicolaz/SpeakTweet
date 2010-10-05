@@ -49,17 +49,10 @@ static float volumeLevel = 0.5;
 	return self;
 };
 
--(void)speakText:(NSString *)text
+-(void)speakText:(NSURL *)url
 {	
-	NSString *file = [NSString stringWithFormat:@"%@/spokenTweet.wav", 
-					[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject]];
 	
-	NSLog(@"Speakers = %@", [vkSpeaker speakers]);
-	[vkSpeaker speakText:text toFile:file];
-	
-	NSURL *url = [NSURL fileURLWithPath:file];
-	
-   NSError *error;
+	NSError *error;
 	
 	[audioPlayer stop];
 	[audioPlayer release];
@@ -72,6 +65,20 @@ static float volumeLevel = 0.5;
 	// Remove file
 	[[NSFileManager defaultManager] removeItemAtURL:url error:nil];
 
+}
+
+-(NSURL *)synthesize:(NSString *)text
+{
+	NSString *file = [NSString stringWithFormat:@"%@/spokenTweet.wav", 
+					  [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject]];
+	
+	NSLog(@"Speakers = %@", [vkSpeaker speakers]);
+	[vkSpeaker speakText:text toFile:file];
+	
+	NSURL *url = [NSURL fileURLWithPath:file];
+	
+	return url;
+	
 }
 
 

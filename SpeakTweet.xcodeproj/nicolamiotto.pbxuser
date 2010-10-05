@@ -79,8 +79,8 @@
 					PBXFileDataSource_Warnings_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 307957236;
-			PBXWorkspaceStateSaveDate = 307957236;
+			PBXPerProjectTemplateStateSaveDate = 307980605;
+			PBXWorkspaceStateSaveDate = 307980605;
 		};
 		perUserProjectItems = {
 			D704E53912476574005BBFAD = D704E53912476574005BBFAD /* PBXTextBookmark */;
@@ -111,6 +111,11 @@
 			D70AB514125253760069DDCA = D70AB514125253760069DDCA /* PBXTextBookmark */;
 			D70AB515125253760069DDCA = D70AB515125253760069DDCA /* PBXTextBookmark */;
 			D70AB516125253760069DDCA = D70AB516125253760069DDCA /* PBXTextBookmark */;
+			D70F4C0A125B6D3F002D20DB /* PBXTextBookmark */ = D70F4C0A125B6D3F002D20DB /* PBXTextBookmark */;
+			D70F4C0B125B6D3F002D20DB /* PBXTextBookmark */ = D70F4C0B125B6D3F002D20DB /* PBXTextBookmark */;
+			D70F4C0C125B6D3F002D20DB /* PBXTextBookmark */ = D70F4C0C125B6D3F002D20DB /* PBXTextBookmark */;
+			D70F4C0D125B6D3F002D20DB /* XCBuildMessageTextBookmark */ = D70F4C0D125B6D3F002D20DB /* XCBuildMessageTextBookmark */;
+			D70F4C0F125B6D3F002D20DB /* PBXTextBookmark */ = D70F4C0F125B6D3F002D20DB /* PBXTextBookmark */;
 			D71B9D84124265460008DDC0 = D71B9D84124265460008DDC0 /* PBXTextBookmark */;
 			D71B9D86124265460008DDC0 = D71B9D86124265460008DDC0 /* PBXTextBookmark */;
 			D71B9D88124265460008DDC0 = D71B9D88124265460008DDC0 /* PBXTextBookmark */;
@@ -259,7 +264,7 @@
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {818, 1027}}";
 			sepNavSelRange = "{0, 0}";
-			sepNavVisRange = "{1698, 613}";
+			sepNavVisRange = "{134, 1015}";
 		};
 	};
 	D3D7CC5512541CE000ECC114 /* TimelineViewControllerView.m */ = {
@@ -728,6 +733,67 @@
 		vrLen = 815;
 		vrLoc = 0;
 	};
+	D70F4C0A125B6D3F002D20DB /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = D3D7CC5412541CE000ECC114 /* TimelineViewControllerTimeline.m */;
+		name = "TimelineViewControllerTimeline.m: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 1015;
+		vrLoc = 134;
+	};
+	D70F4C0B125B6D3F002D20DB /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = D7BB3799125677BC00C0F155 /* FliteWrapper.m */;
+		name = "FliteWrapper.m: 70";
+		rLen = 37;
+		rLoc = 2029;
+		rType = 0;
+		vrLen = 755;
+		vrLoc = 1641;
+	};
+	D70F4C0C125B6D3F002D20DB /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = D7BB3798125677BC00C0F155 /* FliteWrapper.h */;
+		name = "FliteWrapper.h: 44";
+		rLen = 0;
+		rLoc = 1781;
+		rType = 0;
+		vrLen = 1146;
+		vrLoc = 805;
+	};
+	D70F4C0D125B6D3F002D20DB /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "Implicit declaration of function 'register_cmu_us_slt'";
+		fRef = D70F4C0E125B6D3F002D20DB /* VKFliteSpeaker.m */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 1;
+		rLoc = 23;
+		rType = 1;
+	};
+	D70F4C0E125B6D3F002D20DB /* VKFliteSpeaker.m */ = {
+		isa = PBXFileReference;
+		name = VKFliteSpeaker.m;
+		path = "/Users/nicolamiotto/Developement/iOS/SpeakTweet/speak-tweet/VocalKit/VKFliteSpeaker.m";
+		sourceTree = "<absolute>";
+	};
+	D70F4C0F125B6D3F002D20DB /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = D70F4C10125B6D3F002D20DB /* VKFliteSpeaker.m */;
+		name = "VKFliteSpeaker.m: 24";
+		rLen = 0;
+		rLoc = 459;
+		rType = 0;
+		vrLen = 724;
+		vrLoc = 0;
+	};
+	D70F4C10125B6D3F002D20DB /* VKFliteSpeaker.m */ = {
+		isa = PBXFileReference;
+		name = VKFliteSpeaker.m;
+		path = "/Users/nicolamiotto/Developement/iOS/SpeakTweet/speak-tweet/VocalKit/VKFliteSpeaker.m";
+		sourceTree = "<absolute>";
+	};
 	D71B9D4712421D8A0008DDC0 /* speaktweet */ = {
 		isa = PBXExecutable;
 		activeArgIndices = (
@@ -1166,16 +1232,16 @@
 	};
 	D7BB3798125677BC00C0F155 /* FliteWrapper.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {818, 689}}";
-			sepNavSelRange = "{1664, 0}";
-			sepNavVisRange = "{1190, 720}";
+			sepNavIntBoundsRect = "{{0, 0}, {818, 650}}";
+			sepNavSelRange = "{1781, 0}";
+			sepNavVisRange = "{805, 1146}";
 		};
 	};
 	D7BB3799125677BC00C0F155 /* FliteWrapper.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {908, 1521}}";
-			sepNavSelRange = "{1439, 0}";
-			sepNavVisRange = "{1295, 379}";
+			sepNavIntBoundsRect = "{{0, 0}, {824, 1599}}";
+			sepNavSelRange = "{2029, 37}";
+			sepNavVisRange = "{1641, 755}";
 		};
 	};
 	D7BE77FD124A348900E6A29E /* PBXTextBookmark */ = {
