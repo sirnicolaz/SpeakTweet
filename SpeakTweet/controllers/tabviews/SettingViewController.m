@@ -28,12 +28,12 @@
 															 @"woman",
 															 @"man", nil]
 										withUserDefaultsKey:ST_PREFERENCE_VOICE],
-					   [UICPrototypeTableCell cellForSelect:@"Volume"
+					   /*[UICPrototypeTableCell cellForSelect:@"Volume"
 										   withSelectTitles:[NSArray arrayWithObjects:
 															 @"quiet",
 															 @"normal",
 															 @"loud", nil]
-										withUserDefaultsKey:ST_PREFERENCE_VOLUME],
+										withUserDefaultsKey:ST_PREFERENCE_VOLUME],*/
 					   nil];
 	
 	NSArray *g2 = [NSArray arrayWithObjects:

@@ -108,6 +108,8 @@
 - (void)removeVisualPlayMode;
 - (void)overlayAnimation:(CGRect)frame;
 - (void)playModeButtonAnimation:(BOOL)state;
+- (void)startActivityIndicator;
+- (void)stopActivityIndicator;
 @end
 
 

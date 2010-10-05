@@ -73,7 +73,7 @@ static NSString* voice_from_index(int index)
 //ST: pick up the volume level from the selected index
 static float volume_from_index(int index)
 {
-	switch (index) {
+	/*switch (index) {
 		case 0:
 			return 0.1;
 		case 1:
@@ -82,7 +82,9 @@ static float volume_from_index(int index)
 			return 1.0;
 		default:
 			return 0.5;
-	}
+	}*/
+	
+	return 0.5;
 }
 
 - (int)refreshIntervalSeconds {

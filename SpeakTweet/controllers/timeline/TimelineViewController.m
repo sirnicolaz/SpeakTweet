@@ -106,7 +106,7 @@
 	overlayLayer = [[UIImageView alloc] initWithFrame:CGRectMake(0, 480, 320, 480)];
 	overlayLayer.layer.masksToBounds = YES;
 	overlayLayer.layer.borderColor = [[UIColor blackColor] CGColor];
-	overlayLayer.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.5];
+	overlayLayer.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.8];
 	
 	//ST: ActivityIndicator stuff...
 	activityView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];

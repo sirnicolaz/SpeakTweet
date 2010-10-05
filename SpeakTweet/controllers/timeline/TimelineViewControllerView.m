@@ -226,15 +226,18 @@
 //ST:play the tweet at the given position
 -(void)playTweetAtIndex:(NSInteger)index{
 	
-	BOOL state = [self setVisualPlayMode];
+	//BOOL state = [self setVisualPlayMode];
+
 	
 	Status *currentStatus = [timeline statusAtIndex:index];
 	Message *currentMessage = currentStatus.message;
 	NSString *messageToSay = [currentMessage messageToSay];
 	
-	if (state == TRUE) {
+	//if (state == TRUE) {
 		if(messageToSay != nil){
 			NSURL* messageURL = [fliteEngine synthesize:messageToSay];
+			[self performSelector:@selector(stopActivityIndicator) withObject:nil afterDelay:0];
+			
 			[fliteEngine speakText:messageURL];
 		
 			NSLog(@"Playing '%@'", messageToSay);
@@ -244,7 +247,7 @@
 			isPlaying = NO;
 			[self stopPlaying];
 		}
-	}
+	//}
 }
 
 //ST: delegate method to be called by on play button press
@@ -252,6 +255,9 @@
 	
 	if(isPlaying == NO){
 		isPlaying = YES;
+		
+		[self startActivityIndicator];
+		
 		rightIndex = 0;
 		//for some reasons, seekToFirstVisible can't keep the table
 		//view as it is if the first row is the first visible one. So
@@ -259,7 +265,9 @@
 		//use playTweetAtIndex without scrolling the view.
 		if([self getNextIndexToRead] == 0 && [self getVisibleCellTableIndexAtPosition:0] == 0)
 		{
-			[self playTweetAtIndex:0];
+			[self performSelector:@selector(playTweetAtIndex:) withObject:0 afterDelay:0];
+			
+			//[self playTweetAtIndex:0];
 			[self setNextIndexToRead:1];
 			//[self playModeButtonAnimation:TRUE];
 			
@@ -358,18 +366,11 @@
 
 - (BOOL)setVisualPlayMode {
 	
-	NSIndexPath* cellIndexPath = [self getVisibleCellIndexPathAtPosition:0];
-	UITableViewCell* cellToNotCover = [self.tableView cellForRowAtIndexPath:cellIndexPath];
 	
-	//[playButtonView addSubview:activityView];
+	[playButtonView addSubview:activityView];
 	[playButtonView addSubview:synthWorking];
-	//[activityView startAnimating];
+	[activityView startAnimating];
 	
-
-	//ST: setting overlay layer
-	[self.view addSubview:overlayLayer];
-	
-	[self overlayAnimation:CGRectMake(0, PLAY_BUTTON_HEIGTH + cellToNotCover.bounds.size.height, 320, 480)];
 
 	return TRUE;
 }
@@ -402,5 +403,30 @@
 	
 }
 
+
+-(void) startActivityIndicator {
+	
+	NSIndexPath* cellIndexPath = [self getVisibleCellIndexPathAtPosition:0];
+	UITableViewCell* cellToNotCover = [self.tableView cellForRowAtIndexPath:cellIndexPath];
+	
+	[self.view addSubview:overlayLayer];
+	[self overlayAnimation:CGRectMake(0, PLAY_BUTTON_HEIGTH + cellToNotCover.bounds.size.height, 320, 480)];
+
+	//ST: ActivityIndicator stuff...
+	activityView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+	activityView.frame = CGRectMake(50.0f, 50.0f, 20.0f, 20.0f);
+	activityView.hidesWhenStopped = YES;
+	[overlayLayer addSubview:activityView];
+	[activityView startAnimating];
+	
+}
+
+
+-(void) stopActivityIndicator {
+	
+	//ST: ActivityIndicator stuff...
+	[activityView stopAnimating];
+	[activityView removeFromSuperview];
+}
 
 @end

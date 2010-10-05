@@ -98,6 +98,7 @@ static float volumeLevel = 0.5;
 
 	if([voicename isEqualToString:@"man"]) {
 		[vkSpeaker setSpeaker:(NSString*)[[vkSpeaker speakers] objectAtIndex:0]];
+		//[vkSpeaker 
 		//voice = register_cmu_us_awb();
 	}
 	else if([voicename isEqualToString:@"woman"]) {
