@@ -87,7 +87,6 @@
 	tableView.delegate = self;
 	tableView.dataSource = self;
 	
-	//[self prepareSpeaker];
 	[self setupTableView];
 	
 	//ST: setting the load on drag handler

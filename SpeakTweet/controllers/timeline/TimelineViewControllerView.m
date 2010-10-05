@@ -4,6 +4,7 @@
 #import "AppDelegate.h"
 #import "FliteWrapper.h"
 
+#include <unistd.h>
 
 @interface TimelineViewController(Private)
 - (UIView*)moreTweetView;
@@ -35,10 +36,7 @@
 	
 }
 
--(void)prepareSpeaker
-{
-	[fliteEngine speakText:@""];
-}
+
 
 - (UIView*)nowloadingView {
 	
@@ -228,19 +226,24 @@
 //ST:play the tweet at the given position
 -(void)playTweetAtIndex:(NSInteger)index{
 	
-	[self setVisualPlayMode];
+	BOOL state = [self setVisualPlayMode];
 	
 	Status *currentStatus = [timeline statusAtIndex:index];
 	Message *currentMessage = currentStatus.message;
 	NSString *messageToSay = [currentMessage messageToSay];
-	if(messageToSay != nil){
-		[fliteEngine speakText:messageToSay];
-		NSLog(@"Playing '%@'", messageToSay);
-		NSLog(@"At index %i", index);
-	}
-	else{
-		isPlaying = NO;
-		[self stopPlaying];
+	
+	if (state == TRUE) {
+		if(messageToSay != nil){
+			NSURL* messageURL = [fliteEngine synthesize:messageToSay];
+			[fliteEngine speakText:messageURL];
+		
+			NSLog(@"Playing '%@'", messageToSay);
+			NSLog(@"At index %i", index);
+		}
+		else{
+			isPlaying = NO;
+			[self stopPlaying];
+		}
 	}
 }
 
@@ -353,14 +356,14 @@
 }
 
 
-- (void)setVisualPlayMode {
+- (BOOL)setVisualPlayMode {
 	
 	NSIndexPath* cellIndexPath = [self getVisibleCellIndexPathAtPosition:0];
 	UITableViewCell* cellToNotCover = [self.tableView cellForRowAtIndexPath:cellIndexPath];
 	
-	[playButtonView addSubview:activityView];
+	//[playButtonView addSubview:activityView];
 	[playButtonView addSubview:synthWorking];
-	[activityView startAnimating];
+	//[activityView startAnimating];
 	
 
 	//ST: setting overlay layer
@@ -368,6 +371,7 @@
 	
 	[self overlayAnimation:CGRectMake(0, PLAY_BUTTON_HEIGTH + cellToNotCover.bounds.size.height, 320, 480)];
 
+	return TRUE;
 }
 
 

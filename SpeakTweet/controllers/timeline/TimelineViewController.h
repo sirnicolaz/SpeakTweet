@@ -104,8 +104,7 @@
 - (void)stopPlaying;
 - (void)seekToFirstVisible;
 - (void)setupSpeaker;
-- (void)prepareSpeaker;
-- (void)setVisualPlayMode;
+- (BOOL)setVisualPlayMode;
 - (void)removeVisualPlayMode;
 - (void)overlayAnimation:(CGRect)frame;
 - (void)playModeButtonAnimation:(BOOL)state;
