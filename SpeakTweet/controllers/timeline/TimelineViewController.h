@@ -7,6 +7,9 @@
 #import "AccelerometerSensor.h"
 #import "Timeline.h"
 
+#define PLAY_BUTTON_HEIGTH		44
+
+
 @class FliteWrapper;
 @class AppDelegate;
 @class TweetViewController;
@@ -19,6 +22,8 @@
 	//ST: play calculating mode
 	UIActivityIndicatorView *activityView;
 	UILabel* synthWorking;
+	UIImageView* overlayLayer;
+	NSInteger* rightIndex;
 	
 	Timeline *timeline;
 	
@@ -41,12 +46,7 @@
 	UIActivityIndicatorView *footerActivityIndicatorView;
 	BOOL evenInv;
 	
-	UIButton *headReloadButton;
-	
-	//ST: we add a new view ought to be placed above the table. Here we'll have the static play button
-	UIViewController *buttonBarView;
-	UITabBar *playButtonTabBar;
-	UIBarButtonItem *playButton;
+	UIButton *playButton;
 	
 	UIButton *moreButton;
 				
@@ -62,7 +62,8 @@
 	
 	NSString *lastTopStatusId;
 	
-	//ST: it's the next index to be read by the speaker. For test purpose we have just one index now
+	//ST: it's the next index to be read by the speaker.
+	//For test purpose we have just one index now
 	//but we will setup an array of indexes for each table
 	NSObject *nextIndexToReadLocker;
 	NSInteger nextIndexToRead;
@@ -103,7 +104,11 @@
 - (void)stopPlaying;
 - (void)seekToFirstVisible;
 - (void)setupSpeaker;
--(void)prepareSpeaker;
+- (void)prepareSpeaker;
+- (void)setVisualPlayMode;
+- (void)removeVisualPlayMode;
+- (void)overlayAnimation:(CGRect)frame;
+- (void)playModeButtonAnimation:(BOOL)state;
 @end
 
 

@@ -7,6 +7,7 @@
 #import "FliteWrapper.h"
 #import "EGORefreshTableHeaderView.h"
 
+
 @interface TimelineViewController (Private)
 
 - (void)dataSourceDidFinishLoadingNewData;
@@ -40,11 +41,16 @@
 	[nowloadingView release];
 	[footerActivityIndicatorView release];
 	[lastTopStatusId release];
-	[headReloadButton release];
+	[playButton release];
 	[moreButton release];
 	[playButtonView release];
 	[tableView release];
 	[fliteEngine release];
+	
+	[activityView release];
+	[synthWorking release];
+	[overlayLayer release];
+	
 	
 	//ST: we add a new view ought to be placed above the table. Here we'll have the static play button
 	//[buttonBarView release];
@@ -64,7 +70,7 @@
 	//ST: we try now to replace the reloadButton function with the playTweets one
 	[b addTarget:self action:@selector(playTweetsAction:) forControlEvents:UIControlEventTouchUpInside];
 	
-	headReloadButton = [b retain];
+	playButton = [b retain];
 	
 	[self setReloadButtonNormal:YES];
 	playButtonView = b;
@@ -96,6 +102,27 @@
 	
 	[self.view addSubview:[self reloadView]];
 	[self.view addSubview:tableView];
+	
+	//ST: overlay layer
+	overlayLayer = [[UIImageView alloc] initWithFrame:CGRectMake(0, 480, 320, 480)];
+	overlayLayer.layer.masksToBounds = YES;
+	overlayLayer.layer.borderColor = [[UIColor blackColor] CGColor];
+	overlayLayer.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.5];
+	
+	//ST: ActivityIndicator stuff...
+	activityView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
+	activityView.frame = CGRectMake(245.0f, 10.0f, 20.0f, 20.0f);
+	activityView.hidesWhenStopped = YES;
+	
+	synthWorking = [[UILabel alloc] initWithFrame:CGRectMake(30.0f, 10.0f, 100.0f, 20.0f)];
+	synthWorking.text = @"Stop vocal";
+	synthWorking.backgroundColor = [UIColor blackColor];
+	synthWorking.textColor = [UIColor whiteColor];
+	synthWorking.textAlignment = UITextAlignmentCenter;
+	synthWorking.font = [UIFont boldSystemFontOfSize:16];
+	
+	
+	
 	
 }
 
@@ -138,11 +165,15 @@
 - (void)viewWillDisappear:(BOOL)animated {
 	[IconRepository removeObserver:self];
 	[AccelerometerSensor sharedInstance].delegate = nil;
+	
+	//ST: stop playing stuff
 	[self stopPlaying];
 	isPlaying = FALSE;
 	enable_read = FALSE;
+	
 	[timeline suspend];
 }
+
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
 	// Return YES for supported orientations
