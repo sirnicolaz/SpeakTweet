@@ -4,6 +4,7 @@
 #import "AppDelegate.h"
 #import "FliteWrapper.h"
 
+
 @interface TimelineViewController(Private)
 - (UIView*)moreTweetView;
 - (UIView*)autopagerizeTweetView;
@@ -47,7 +48,7 @@
 	[ai startAnimating];
 
 	CGSize s = ai.frame.size;
-	ai.frame = CGRectMake((320-s.width)/2, (368-s.height)/2 - 44, s.width, s.height); // !!
+	ai.frame = CGRectMake((320-s.width)/2, (368-s.height)/2 - PLAY_BUTTON_HEIGTH, s.width, s.height); // !!
 	return ai;
 }
 
@@ -55,19 +56,19 @@
 	//ST: here we have images for the reload button that can be replaced with the one for the play button
 	//if ([[Configuration instance] darkColorTheme]) {
 		if (normal) {
-			[headReloadButton setBackgroundImage:[UIImage imageNamed:@"play.png"] forState:UIControlStateNormal];
-			[headReloadButton setBackgroundImage:[UIImage imageNamed:@"play.png"] forState:UIControlStateHighlighted];
+			[playButton setBackgroundImage:[UIImage imageNamed:@"play.png"] forState:UIControlStateNormal];
+			[playButton setBackgroundImage:[UIImage imageNamed:@"play.png"] forState:UIControlStateHighlighted];
 		} else {
-			[headReloadButton setBackgroundImage:[UIImage imageNamed:@"play_loading.png"] forState:UIControlStateNormal];
-			[headReloadButton setBackgroundImage:[UIImage imageNamed:@"play_loading.png"] forState:UIControlStateHighlighted];
+			[playButton setBackgroundImage:[UIImage imageNamed:@"play_loading.png"] forState:UIControlStateNormal];
+			[playButton setBackgroundImage:[UIImage imageNamed:@"play_loading.png"] forState:UIControlStateHighlighted];
 		}
 	/*} else {
 		if (normal) {
-			[headReloadButton setBackgroundImage:[UIImage imageNamed:@"reload_button_normal.png"] forState:UIControlStateNormal];
-			[headReloadButton setBackgroundImage:[UIImage imageNamed:@"reload_button_pushed.png"] forState:UIControlStateHighlighted];
+			[playButton setBackgroundImage:[UIImage imageNamed:@"reload_button_normal.png"] forState:UIControlStateNormal];
+			[playButton setBackgroundImage:[UIImage imageNamed:@"reload_button_pushed.png"] forState:UIControlStateHighlighted];
 		} else {
-			[headReloadButton setBackgroundImage:[UIImage imageNamed:@"reload_button_loading.png"] forState:UIControlStateNormal];
-			[headReloadButton setBackgroundImage:[UIImage imageNamed:@"reload_button_loading_pushed.png"] forState:UIControlStateHighlighted];
+			[playButton setBackgroundImage:[UIImage imageNamed:@"reload_button_loading.png"] forState:UIControlStateNormal];
+			[playButton setBackgroundImage:[UIImage imageNamed:@"reload_button_loading_pushed.png"] forState:UIControlStateHighlighted];
 		}
 	}*/
 }
@@ -157,7 +158,7 @@
 	//  For getting the cells themselves
 	if(paths != nil){
 		NSInteger currentPosition = 0;
-		for( NSIndexPath *path in paths)
+		for(NSIndexPath *path in paths)
 		{
 			if(currentPosition == position){
 				indexPath = path;
@@ -217,8 +218,8 @@
 	if (firstVisibleIndexPath != nil) {
 				
 		[self.tableView scrollToRowAtIndexPath:firstVisibleIndexPath
-							  atScrollPosition:UITableViewScrollPositionTop
-									  animated:YES];
+									 atScrollPosition:UITableViewScrollPositionTop
+												animated:YES];
 		
 		[self setNextIndexToRead:[firstVisibleIndexPath row]+1];
 	}
@@ -227,18 +228,20 @@
 //ST:play the tweet at the given position
 -(void)playTweetAtIndex:(NSInteger)index{
 	
+	[self setVisualPlayMode];
+	
 	Status *currentStatus = [timeline statusAtIndex:index];
 	Message *currentMessage = currentStatus.message;
 	NSString *messageToSay = [currentMessage messageToSay];
 	if(messageToSay != nil){
 		[fliteEngine speakText:messageToSay];
+		NSLog(@"Playing '%@'", messageToSay);
+		NSLog(@"At index %i", index);
 	}
 	else{
 		isPlaying = NO;
 		[self stopPlaying];
 	}
-	NSLog(@"Playing '%@'", messageToSay);
-	NSLog(@"At index %i", index);
 }
 
 //ST: delegate method to be called by on play button press
@@ -246,49 +249,27 @@
 	
 	if(isPlaying == NO){
 		isPlaying = YES;
-		
-		//ST: ActivityIndicator stuff...
-		activityView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
-		activityView.frame = CGRectMake(245.0f, 10.0f, 20.0f, 20.0f);
-		activityView.hidesWhenStopped = YES;
-		[playButtonView addSubview:activityView];
-		
-		[activityView startAnimating];
-		
-		
-		synthWorking = [[UILabel alloc] initWithFrame:CGRectMake(30.0f, 10.0f, 100.0f, 20.0f)];
-		synthWorking.text = @"Stop vocal";
-		synthWorking.backgroundColor = [UIColor blackColor];
-		synthWorking.textColor = [UIColor whiteColor];
-		synthWorking.textAlignment = UITextAlignmentCenter;
-		synthWorking.font = [UIFont boldSystemFontOfSize:16];
-		[playButtonView addSubview:synthWorking];
-		
-		
-
-		
+		rightIndex = 0;
 		//for some reasons, seekToFirstVisible can't keep the table
 		//view as it is if the first row is the first visible one. So
 		//in order to play the first tweet it's necessary to directly
 		//use playTweetAtIndex without scrolling the view.
 		if([self getNextIndexToRead] == 0 && [self getVisibleCellTableIndexAtPosition:0] == 0)
 		{
-			[self setNextIndexToRead:1];
 			[self playTweetAtIndex:0];
+			[self setNextIndexToRead:1];
+			//[self playModeButtonAnimation:TRUE];
+			
 		}
 		else {
 			[self seekToFirstVisible];
 		}
 	}
 	else {
-		[activityView stopAnimating];
-		[activityView release];
-		
-		[synthWorking removeFromSuperview];
-		[synthWorking release];
-		
+		[self setNextIndexToRead:[self getNextIndexToRead]-1];
 		isPlaying = NO;
 		[self stopPlaying];
+		[self removeVisualPlayMode];
 	}
 }
 
@@ -306,6 +287,7 @@
 	//ST: here we're gonna write what needed for palying tweets
 	NSInteger indexToRead;
 	indexToRead = [self getNextIndexToRead];
+	
 	[self playTweetAtIndex:indexToRead];
 	[self scrollToNextRow];
 }
@@ -368,6 +350,52 @@
 			
 		}
 	}
+}
+
+
+- (void)setVisualPlayMode {
+	
+	NSIndexPath* cellIndexPath = [self getVisibleCellIndexPathAtPosition:0];
+	UITableViewCell* cellToNotCover = [self.tableView cellForRowAtIndexPath:cellIndexPath];
+	
+	[playButtonView addSubview:activityView];
+	[playButtonView addSubview:synthWorking];
+	[activityView startAnimating];
+	
+
+	//ST: setting overlay layer
+	[self.view addSubview:overlayLayer];
+	
+	[self overlayAnimation:CGRectMake(0, PLAY_BUTTON_HEIGTH + cellToNotCover.bounds.size.height, 320, 480)];
+
+}
+
+
+-(void) overlayAnimation:(CGRect)new_frame{
+	[UIView beginAnimations:nil context:nil];
+	[UIView setAnimationDuration:0.45];
+	[UIView setAnimationDelegate:self]; 
+	overlayLayer.frame = new_frame;
+	[UIView commitAnimations];
+}
+
+
+-(void) playModeButtonAnimation:(BOOL)state {
+	if (state == TRUE) {
+		[UIView beginAnimations:nil context:nil];
+		[UIView setAnimationDuration:0.45];
+		[UIView setAnimationDelegate:self]; 
+		playButton.frame = CGRectMake(0, -44, 320, 44);
+		[UIView commitAnimations];
+	}
+}
+
+-(void) removeVisualPlayMode {
+	
+	[activityView stopAnimating];
+	[synthWorking removeFromSuperview];
+	[self overlayAnimation:CGRectMake(0, 480, 320, 480)];
+	
 }
 
 
