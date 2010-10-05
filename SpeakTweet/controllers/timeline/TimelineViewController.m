@@ -80,7 +80,7 @@
 											 style:UITableViewStylePlain];
 	tableView.delegate = self;
 	tableView.dataSource = self;
-
+	
 	//[self prepareSpeaker];
 	[self setupTableView];
 	

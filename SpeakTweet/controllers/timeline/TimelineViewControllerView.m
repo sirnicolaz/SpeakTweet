@@ -47,7 +47,7 @@
 	[ai startAnimating];
 
 	CGSize s = ai.frame.size;
-	ai.frame = CGRectMake((320-s.width)/2, (368-s.height)/2, s.width, s.height); // !!
+	ai.frame = CGRectMake((320-s.width)/2, (368-s.height)/2 - 44, s.width, s.height); // !!
 	return ai;
 }
 
@@ -226,6 +226,7 @@
 
 //ST:play the tweet at the given position
 -(void)playTweetAtIndex:(NSInteger)index{
+	
 	Status *currentStatus = [timeline statusAtIndex:index];
 	Message *currentMessage = currentStatus.message;
 	NSString *messageToSay = [currentMessage messageToSay];
@@ -242,9 +243,30 @@
 
 //ST: delegate method to be called by on play button press
 -(IBAction)playTweetsAction:(id)sender{
-
+	
 	if(isPlaying == NO){
 		isPlaying = YES;
+		
+		//ST: ActivityIndicator stuff...
+		activityView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
+		activityView.frame = CGRectMake(245.0f, 10.0f, 20.0f, 20.0f);
+		activityView.hidesWhenStopped = YES;
+		[playButtonView addSubview:activityView];
+		
+		[activityView startAnimating];
+		
+		
+		synthWorking = [[UILabel alloc] initWithFrame:CGRectMake(30.0f, 10.0f, 100.0f, 20.0f)];
+		synthWorking.text = @"Stop vocal";
+		synthWorking.backgroundColor = [UIColor blackColor];
+		synthWorking.textColor = [UIColor whiteColor];
+		synthWorking.textAlignment = UITextAlignmentCenter;
+		synthWorking.font = [UIFont boldSystemFontOfSize:16];
+		[playButtonView addSubview:synthWorking];
+		
+		
+
+		
 		//for some reasons, seekToFirstVisible can't keep the table
 		//view as it is if the first row is the first visible one. So
 		//in order to play the first tweet it's necessary to directly
@@ -259,6 +281,11 @@
 		}
 	}
 	else {
+		[activityView stopAnimating];
+		[activityView release];
+		
+		[synthWorking removeFromSuperview];
+		[synthWorking release];
 		
 		isPlaying = NO;
 		[self stopPlaying];

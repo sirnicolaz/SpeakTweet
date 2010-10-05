@@ -16,6 +16,10 @@
 @class EGORefreshTableHeaderView;
 
 @interface TimelineViewController : UIViewController  <UITableViewDelegate, UITableViewDataSource>{
+	//ST: play calculating mode
+	UIActivityIndicatorView *activityView;
+	UILabel* synthWorking;
+	
 	Timeline *timeline;
 	
 	//ST: redefine the view structure to put the play button outside the table
