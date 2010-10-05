@@ -284,13 +284,12 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>67</integer>
-									<integer>50</integer>
+									<integer>97</integer>
 									<integer>0</integer>
 								</array>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
-							<string>{{0, 0}, {379, 660}}</string>
+							<string>{{0, 1049}, {379, 660}}</string>
 						</dict>
 						<key>PBXTopSmartGroupGIDs</key>
 						<array/>
@@ -318,14 +317,12 @@
 					<key>Dock</key>
 					<array>
 						<dict>
-							<key>BecomeActive</key>
-							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
 								<string>D71B9D5512421DAB0008DDC0</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>OAMutableURLRequest.m</string>
+								<string>Info.plist</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -333,11 +330,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>D71B9D5612421DAB0008DDC0</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>OAMutableURLRequest.m</string>
+										<string>Info.plist</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>D72A2377125A24D4002F55D2</string>
+										<string>D72A238A125A3139002F55D2</string>
 										<key>history</key>
 										<array>
 											<string>D71B9D84124265460008DDC0</string>
@@ -432,7 +429,6 @@
 											<string>D72A22501259E62D002F55D2</string>
 											<string>D72A22521259E62D002F55D2</string>
 											<string>D72A22531259E62D002F55D2</string>
-											<string>D72A22A91259E945002F55D2</string>
 											<string>D72A2302125A1609002F55D2</string>
 											<string>D72A230E125A192E002F55D2</string>
 											<string>D72A231A125A19B9002F55D2</string>
@@ -443,6 +439,7 @@
 											<string>D72A2347125A20F5002F55D2</string>
 											<string>D72A235C125A22EF002F55D2</string>
 											<string>D72A2376125A24C7002F55D2</string>
+											<string>D72A22A91259E945002F55D2</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -456,18 +453,18 @@
 							<key>GeometryConfiguration</key>
 							<dict>
 								<key>Frame</key>
-								<string>{{0, 0}, {879, 481}}</string>
+								<string>{{0, 0}, {879, 475}}</string>
 								<key>RubberWindowFrame</key>
 								<string>0 59 1280 719 0 0 1280 778 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXNavigatorGroup</string>
 							<key>Proportion</key>
-							<string>481pt</string>
+							<string>475pt</string>
 						</dict>
 						<dict>
 							<key>Proportion</key>
-							<string>192pt</string>
+							<string>198pt</string>
 							<key>Tabs</key>
 							<array>
 								<dict>
@@ -481,7 +478,9 @@
 									<key>GeometryConfiguration</key>
 									<dict>
 										<key>Frame</key>
-										<string>{{10, 27}, {879, 175}}</string>
+										<string>{{10, 27}, {879, 171}}</string>
+										<key>RubberWindowFrame</key>
+										<string>0 59 1280 719 0 0 1280 778 </string>
 									</dict>
 									<key>Module</key>
 									<string>XCDetailModule</string>
@@ -536,8 +535,6 @@
 									<dict>
 										<key>Frame</key>
 										<string>{{10, 27}, {879, 165}}</string>
-										<key>RubberWindowFrame</key>
-										<string>0 59 1280 719 0 0 1280 778 </string>
 									</dict>
 									<key>Module</key>
 									<string>PBXBuildResultsModule</string>
@@ -565,11 +562,11 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>D72A22331259DB7C002F55D2</string>
+				<string>D72A2385125A25B3002F55D2</string>
 				<string>1CA23ED40692098700951B8B</string>
-				<string>D72A22341259DB7C002F55D2</string>
+				<string>D72A2386125A25B3002F55D2</string>
 				<string>D71B9D5512421DAB0008DDC0</string>
-				<string>D72A22351259DB7C002F55D2</string>
+				<string>D72A2387125A25B3002F55D2</string>
 				<string>1CA23EDF0692099D00951B8B</string>
 				<string>1CA23EE00692099D00951B8B</string>
 				<string>1CA23EE10692099D00951B8B</string>
@@ -718,14 +715,14 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>D72A22581259E62D002F55D2</string>
+				<string>D72A238B125A3139002F55D2</string>
 				<string>1CCC7628064C1048000F2A68</string>
 				<string>1CCC7629064C1048000F2A68</string>
-				<string>D72A22591259E62D002F55D2</string>
-				<string>D72A225A1259E62D002F55D2</string>
-				<string>D72A225B1259E62D002F55D2</string>
-				<string>D72A225C1259E62D002F55D2</string>
-				<string>D72A225D1259E62D002F55D2</string>
+				<string>D72A238C125A3139002F55D2</string>
+				<string>D72A238D125A3139002F55D2</string>
+				<string>D72A238E125A3139002F55D2</string>
+				<string>D72A238F125A3139002F55D2</string>
+				<string>D72A2390125A3139002F55D2</string>
 			</array>
 			<key>ToolbarConfigUserDefaultsMinorVersion</key>
 			<string>2</string>
@@ -759,8 +756,6 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>D72A225E1259E62D002F55D2</string>
-		<string>D72A225F1259E62D002F55D2</string>
 		<string>/Users/nicolamiotto/Developement/iOS/SpeakTweet/speak-tweet/SpeakTweet.xcodeproj</string>
 	</array>
 	<key>WindowString</key>

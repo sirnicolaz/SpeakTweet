@@ -44,7 +44,7 @@
 				<string>speaktweet</string>
 			</array>
 			<key>CFBundleURLName</key>
-			<string>org.natsulion.natsuliphoneprotocol</string>
+			<string>org.nicolamiotto.speaktweet</string>
 		</dict>
 	</array>
 </dict>
