@@ -99,7 +99,7 @@
 	//ST: in this case the user has dragged the scroll to e specific position and tha view will not decelerate
 	if (decelerate == NO && isPlaying == YES) {
 		
-		[self seekToFirstVisible];
+		[self playTweets];
 
 	}
 }

@@ -204,7 +204,10 @@
 								  atScrollPosition:UITableViewScrollPositionTop
 										  animated:YES];
 		
-			[self setNextIndexToRead:[secondCellIndexPath row]+1];
+			//NSInteger indexToRead = [self getVisibleCellTableIndexAtPosition:0];
+			//[self setNextIndexToRead:indexToRead];
+			
+			[self setNextIndexToRead:[secondCellIndexPath row]];
 		}
 	}
 }
@@ -219,35 +222,35 @@
 									 atScrollPosition:UITableViewScrollPositionTop
 												animated:YES];
 		
-		[self setNextIndexToRead:[firstVisibleIndexPath row]+1];
+		NSInteger indexToRead = [self getVisibleCellTableIndexAtPosition:0];
+		[self setNextIndexToRead:indexToRead];
 	}
 }
 
 //ST:play the tweet at the given position
--(void)playTweetAtIndex:(NSInteger)index{
+-(void)playTweetAtIndex:(id)sender{
 	
 	//BOOL state = [self setVisualPlayMode];
-
 	
-	Status *currentStatus = [timeline statusAtIndex:index];
+	Status *currentStatus = [timeline statusAtIndex:[self getNextIndexToRead]];
 	Message *currentMessage = currentStatus.message;
 	NSString *messageToSay = [currentMessage messageToSay];
 	
-	//if (state == TRUE) {
-		if(messageToSay != nil){
+	if(messageToSay != nil){
 			NSURL* messageURL = [fliteEngine synthesize:messageToSay];
-			[self performSelector:@selector(stopActivityIndicator) withObject:nil afterDelay:0];
+		
+			[self stopActivityIndicator];
 			
 			[fliteEngine speakText:messageURL];
 		
 			NSLog(@"Playing '%@'", messageToSay);
-			NSLog(@"At index %i", index);
+			NSLog(@"At index %i", [self getNextIndexToRead]-1);
+		
 		}
 		else{
 			isPlaying = NO;
 			[self stopPlaying];
-		}
-	//}
+	}
 }
 
 //ST: delegate method to be called by on play button press
@@ -255,29 +258,29 @@
 	
 	if(isPlaying == NO){
 		isPlaying = YES;
-		
 		[self startActivityIndicator];
-		
-		rightIndex = 0;
 		//for some reasons, seekToFirstVisible can't keep the table
 		//view as it is if the first row is the first visible one. So
 		//in order to play the first tweet it's necessary to directly
 		//use playTweetAtIndex without scrolling the view.
 		if([self getNextIndexToRead] == 0 && [self getVisibleCellTableIndexAtPosition:0] == 0)
 		{
-			[self performSelector:@selector(playTweetAtIndex:) withObject:0 afterDelay:0];
-			
-			//[self playTweetAtIndex:0];
-			[self setNextIndexToRead:1];
-			//[self playModeButtonAnimation:TRUE];
-			
+			[self setNextIndexToRead:0];
+			[self startActivityIndicator];
 		}
 		else {
-			[self seekToFirstVisible];
+			[self scrollToFirstVisible];
+			[self startActivityIndicator];
 		}
+
+			
+			NSInvocationOperation *operation = [[NSInvocationOperation alloc] initWithTarget:self
+																					selector:@selector(playTweetAtIndex:) object:self];
+			NSOperationQueue *opQueue = [[NSOperationQueue alloc] init];
+			
+			[opQueue addOperation: operation];
 	}
 	else {
-		[self setNextIndexToRead:[self getNextIndexToRead]-1];
 		isPlaying = NO;
 		[self stopPlaying];
 		[self removeVisualPlayMode];
@@ -296,11 +299,15 @@
 //ST: it plays the next tweet
 -(void)playTweets{
 	//ST: here we're gonna write what needed for palying tweets
-	NSInteger indexToRead;
-	indexToRead = [self getNextIndexToRead];
-	
-	[self playTweetAtIndex:indexToRead];
 	[self scrollToNextRow];
+	[self startActivityIndicator];
+	
+	NSInvocationOperation *operation = [[NSInvocationOperation alloc] initWithTarget:self
+																			selector:@selector(playTweetAtIndex:) object:self];
+	NSOperationQueue *opQueue = [[NSOperationQueue alloc] init];
+	
+	[opQueue addOperation: operation];
+	
 }
 
 
@@ -309,15 +316,6 @@
 	[fliteEngine stopTalking];
 }
 
-
--(void)seekToFirstVisible{
-	
-	//ST: it's necessary to reset the speaker to get the audioplayer working after stop. Dunno why
-	//[self setupSpeaker];
-	[self scrollToFirstVisible];
-	[self playTweets];
-	
-}
 
 - (void)iconUpdate:(NSNotification*)sender {
 	IconContainer *container = (IconContainer*)sender.object;
@@ -353,11 +351,6 @@
 		if (! [(AppDelegate*)[[UIApplication sharedApplication] delegate] 
 				isInMoreTab:self]){
 			[[self navigationItem] setLeftBarButtonItem:[self clearButtonItem]];
-			
-			//ST: let's try to put the header button out of the timeline table view
-			//buttonBarView = [[UIViewController alloc] init];
-			//[buttonBarView.view addSubview:[self reloadView]];
-			//[[self navigationItem] setLeftBarButtonItem:[self playButtonItem]];
 			
 		}
 	}
@@ -406,7 +399,7 @@
 
 -(void) startActivityIndicator {
 	
-	NSIndexPath* cellIndexPath = [self getVisibleCellIndexPathAtPosition:0];
+	NSIndexPath* cellIndexPath = [self getVisibleCellIndexPathAtPosition:1];
 	UITableViewCell* cellToNotCover = [self.tableView cellForRowAtIndexPath:cellIndexPath];
 	
 	[self.view addSubview:overlayLayer];
@@ -422,7 +415,7 @@
 }
 
 
--(void) stopActivityIndicator {
+-(void)stopActivityIndicator {
 	
 	//ST: ActivityIndicator stuff...
 	[activityView stopAnimating];

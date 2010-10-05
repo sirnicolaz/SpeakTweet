@@ -48,7 +48,7 @@
 	
 	//ST: to resume the play from the current new position
 	if( isPlaying == YES){
-		[self seekToFirstVisible];
+		[self playTweets];
 
 	}
 }

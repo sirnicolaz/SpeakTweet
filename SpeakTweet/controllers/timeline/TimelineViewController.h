@@ -102,7 +102,6 @@
 - (NSInteger)getVisibleCellTableIndexAtPosition:(NSInteger)position;
 - (void)playTweets;
 - (void)stopPlaying;
-- (void)seekToFirstVisible;
 - (void)setupSpeaker;
 - (BOOL)setVisualPlayMode;
 - (void)removeVisualPlayMode;
