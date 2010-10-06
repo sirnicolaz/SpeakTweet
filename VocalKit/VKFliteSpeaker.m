@@ -7,7 +7,6 @@
 //
 
 #import "VKFliteSpeaker.h"
-
 #import "flite_version.h"
 #include <AudioToolbox/AudioToolbox.h>
 
@@ -41,10 +40,12 @@
 	if (desired_voice == 0) {
 		desired_voice = flite_voice_select(NULL);
 	}
-	feat_copy_into(feature_config,desired_voice->features);
+	//feat_copy_into(feature_config,desired_voice->features);
 	
 	// statement sudatissimo di setPitch
-	[self setPitch:pitch variance:variance speed:speed];
+	if (desired_voice->name == "cmu_us_slt") {
+		[self setPitch:pitch variance:variance speed:speed];
+	}
 	
 	durs = flite_text_to_speech([text UTF8String],desired_voice,[filename UTF8String]);
 }
@@ -66,7 +67,15 @@
 }
 
 - (void) setSpeaker:(NSString*)speakerName {
-	desired_voice = flite_voice_select([speakerName UTF8String]);
+	//desired_voice = flite_voice_select([speakerName UTF8String]);
+	if([speakerName isEqualToString:@"man"])
+	{
+		desired_voice = register_cmu_us_rms(NULL);
+	}
+	else {
+		desired_voice = register_cmu_us_slt(NULL);
+	}
+
 }
 
 

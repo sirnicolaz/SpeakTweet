@@ -28,6 +28,7 @@
 	
 	volume = [[Configuration instance] volume];
 	[fliteEngine setVolume:volume];
+	stopped = YES;
 	
 	return self;
 }
@@ -52,7 +53,7 @@
 	
 	//ST: we add a new view ought to be placed above the table. Here we'll have the static play button
 	//[buttonBarView release];
-	nextIndexToReadLocker = [[NSObject alloc] init];
+	locker = [[NSObject alloc] init];
 	 
 	
     [super dealloc];

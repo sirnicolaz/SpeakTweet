@@ -127,7 +127,7 @@
 
 //ST: set the next row index to read (still dunno if useful)
 -(void)setNextIndexToRead:(NSInteger)value{
-	@synchronized(nextIndexToReadLocker){
+	@synchronized(locker){
 		nextIndexToRead = value;
 		NSLog(@"New index to read %i", value);
 	}
@@ -135,7 +135,7 @@
 
 //ST: get the next visible row index to read
 -(NSInteger)getNextIndexToRead{
-	@synchronized(nextIndexToReadLocker){
+	@synchronized(locker){
 		return nextIndexToRead;
 	}
 }
@@ -255,8 +255,11 @@
 		
 		[opQueue addOperation: operation];
 		
-		[fliteEngine speakText:messageURL];
-		
+		@synchronized(locker){
+			if(stopped == NO){
+				[fliteEngine speakText:messageURL];
+			}
+		}
 			NSLog(@"Playing '%@'", messageToSay);
 			
 	}
@@ -292,6 +295,9 @@
 
 		
 		isPlaying = YES;
+		@synchronized(locker){
+			stopped = NO;
+		}
 		
 		NSInvocationOperation *operation = [[NSInvocationOperation alloc] initWithTarget:self
 																					selector:@selector(playTweetAtIndex:) object:self];
@@ -338,7 +344,10 @@
 
 //ST: stop playing tweets
 - (void)stopPlaying{
-	[fliteEngine stopTalking];
+	@synchronized(locker){
+		stopped = YES;
+		[fliteEngine stopTalking];
+	}
 }
 
 

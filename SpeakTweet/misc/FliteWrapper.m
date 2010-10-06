@@ -102,12 +102,13 @@ static float volumeLevel = 0.5;
 -(void)setVoice:(NSString *)voicename {
 
 	if([voicename isEqualToString:@"man"]) {
-		[vkSpeaker setSpeaker:(NSString*)[[vkSpeaker speakers] objectAtIndex:0]];
-		//[vkSpeaker 
+		//[vkSpeaker setSpeaker:(NSString*)[[vkSpeaker speakers] objectAtIndex:0]];
+		[vkSpeaker setSpeaker:@"man"];
 		//voice = register_cmu_us_awb();
 	}
 	else if([voicename isEqualToString:@"woman"]) {
-		[vkSpeaker setSpeaker:(NSString*)[[vkSpeaker speakers] objectAtIndex:0]];
+		//[vkSpeaker setSpeaker:(NSString*)[[vkSpeaker speakers] objectAtIndex:0]];
+		[vkSpeaker setSpeaker:@"woman"];
 		//voice = register_cmu_us_slt();
 	}
 }

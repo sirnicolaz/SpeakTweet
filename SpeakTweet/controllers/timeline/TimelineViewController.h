@@ -28,6 +28,7 @@
 	UIActivityIndicatorView *activityView;
 	UIImageView* overlayLayer;
 	NSURL* urlToPlay;
+	BOOL stopped;
 	
 	Timeline *timeline;
 	
@@ -69,7 +70,7 @@
 	//ST: it's the next index to be read by the speaker.
 	//For test purpose we have just one index now
 	//but we will setup an array of indexes for each table
-	NSObject *nextIndexToReadLocker;
+	NSObject *locker;
 	NSInteger nextIndexToRead;
 	FliteWrapper *fliteEngine;
 	NSString *selectedVoice;
