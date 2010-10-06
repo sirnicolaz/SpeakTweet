@@ -68,12 +68,19 @@ static float volumeLevel = 0.5;
 }
 
 -(NSURL *)synthesize:(NSString *)text
+			  withPitch:(float)pitch
+		  withVariance:(float)variance
+			  withSpeed:(float)speed
 {
 	NSString *file = [NSString stringWithFormat:@"%@/spokenTweet.wav", 
 					  [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject]];
 	
 	NSLog(@"Speakers = %@", [vkSpeaker speakers]);
-	[vkSpeaker speakText:text toFile:file];
+	[vkSpeaker speakText:text
+					  toFile:file
+				  withPitch:pitch
+			  withVariance:variance
+				  withSpeed:speed];
 	
 	NSURL *url = [NSURL fileURLWithPath:file];
 	
@@ -89,9 +96,7 @@ static float volumeLevel = 0.5;
 
 
 -(void)setPitch:(float)pitch variance:(float)variance speed:(float)speed {
-	//	feat_set_float(voice->features,"int_f0_target_mean", pitch);
-	//	feat_set_float(voice->features,"int_f0_target_stddev",variance);
-	//	feat_set_float(voice->features,"duration_stretch",speed);	
+	[vkSpeaker setPitch:pitch variance:variance speed:speed];
 }
 
 -(void)setVoice:(NSString *)voicename {

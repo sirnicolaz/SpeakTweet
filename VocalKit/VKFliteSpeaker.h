@@ -19,11 +19,15 @@
 	
 }
 
-- (void) speakText:(NSString*) text toFile:(NSString*) filename;
-
 - (NSArray*) speakers;
 - (void) setSpeaker:(NSString*)speakerName;
+- (void) speakText:(NSString*)text
+				toFile:(NSString*)filename
+			withPitch:(float)pitch
+		withVariance:(float)variance
+			withSpeed:(float)speed;
 
+- (void)setPitch:(float)pitch variance:(float)variance speed:(float)speed;
 - (void) setIntegerValue:(int)iValue forKey:(NSString*)key;
 - (void) setFloatValue:(float)fValue forKey:(NSString*)key;
 - (void) setStringValue:(NSString*)string forKey:(NSString*)key;

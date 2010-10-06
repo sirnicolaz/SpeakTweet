@@ -114,6 +114,7 @@
 		864882981189EEA8002AB038 /* VKDecoder.h in Headers */ = {isa = PBXBuildFile; fileRef = 864882971189EEA8002AB038 /* VKDecoder.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA747D9F0F9514B9006C5449 /* VocalKit_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = AA747D9E0F9514B9006C5449 /* VocalKit_Prefix.pch */; };
 		AACBBE4A0F95108600F1A2B1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
+		D3702F47125CCD8800BF1826 /* libflite_cmu_us_rms.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D3702F46125CCD8800BF1826 /* libflite_cmu_us_rms.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -228,6 +229,7 @@
 		AA747D9E0F9514B9006C5449 /* VocalKit_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VocalKit_Prefix.pch; sourceTree = SOURCE_ROOT; };
 		AACBBE490F95108600F1A2B1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D2AAC07E0554694100DB518D /* libVocalKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libVocalKit.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		D3702F46125CCD8800BF1826 /* libflite_cmu_us_rms.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libflite_cmu_us_rms.a; path = libs/libflite_cmu_us_rms.a; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -244,6 +246,7 @@
 				860701AD1193940F00FE23C0 /* libflite.a in Frameworks */,
 				860701AE1193940F00FE23C0 /* libpocketsphinx.a in Frameworks */,
 				860701AF1193940F00FE23C0 /* libsphinxbase.a in Frameworks */,
+				D3702F47125CCD8800BF1826 /* libflite_cmu_us_rms.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -275,6 +278,7 @@
 			children = (
 				860701B01193942700FE23C0 /* include */,
 				860701A41193940F00FE23C0 /* libflite_cmu_us_slt.a */,
+				D3702F46125CCD8800BF1826 /* libflite_cmu_us_rms.a */,
 				860701A51193940F00FE23C0 /* libflite_cmulex.a */,
 				860701A61193940F00FE23C0 /* libflite_usenglish.a */,
 				860701A71193940F00FE23C0 /* libflite.a */,

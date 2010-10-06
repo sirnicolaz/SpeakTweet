@@ -27,10 +27,6 @@
 		[fliteEngine setVolume:volume];
 	}
 
-	// e questo no? bisogna metterlo dopo che setta la voce
-	// (ecco perché non andava nei primissimi test)
-	//[fliteEngine setPitch:140.0 variance:10.0 speed:1.3];
-	
 }
 
 
@@ -248,7 +244,10 @@
 	
 	if(messageToSay != nil){
 			
-		NSURL* messageURL = [fliteEngine synthesize:messageToSay];
+		NSURL* messageURL = [fliteEngine synthesize:messageToSay
+													 withPitch:PITCH
+												 withVariance:VARIANCE
+													 withSpeed:SPEED];
 	
 		NSInvocationOperation *operation = [[NSInvocationOperation alloc] initWithTarget:self
 																				selector:@selector(stopActivityIndicator) object:self];

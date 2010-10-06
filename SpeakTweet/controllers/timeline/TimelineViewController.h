@@ -7,8 +7,13 @@
 #import "AccelerometerSensor.h"
 #import "Timeline.h"
 
-#define PLAY_BUTTON_HEIGTH		44
+#define	PLAY_BUTTON_HEIGTH		44
 
+#define	PITCH							200
+#define	VARIANCE						20
+#define	SPEED							1.0
+
+//slt voice best params: 200, 20, 1.0
 
 @class FliteWrapper;
 @class AppDelegate;

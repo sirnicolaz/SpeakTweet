@@ -29,7 +29,11 @@
 	}
 	return self;
 }
-- (void) speakText:(NSString*) text toFile:(NSString*) filename {
+- (void) speakText:(NSString*)text
+				toFile:(NSString*)filename
+			withPitch:(float)pitch
+		withVariance:(float)variance
+			withSpeed:(float)speed{
 	float durs;
 	if (text == nil || [text isEqual:@""]) {
 		return;
@@ -38,6 +42,9 @@
 		desired_voice = flite_voice_select(NULL);
 	}
 	feat_copy_into(feature_config,desired_voice->features);
+	
+	// statement sudatissimo di setPitch
+	[self setPitch:pitch variance:variance speed:speed];
 	
 	durs = flite_text_to_speech([text UTF8String],desired_voice,[filename UTF8String]);
 }
@@ -69,11 +76,9 @@
 
 - (void) setFloatValue:(float)fValue forKey:(NSString*)key {
 	feat_set_float(feature_config, [key UTF8String], fValue);
+	feat_set_float(desired_voice->features, [key UTF8String], fValue);
+	
 }
-
-// [self setStringValue:@"Word" forKey:@"print_info_relation"
-// [self setStringValue:@"Segment" forKey:@"print_info_relation"
-
 - (void) setStringValue:(NSString*)string forKey:(NSString*)key {
 	feat_set_string(feature_config, [key UTF8String], [string UTF8String]);
 }
@@ -93,5 +98,12 @@
 	}
 	[super dealloc];
 }
+
+-(void)setPitch:(float)pitch variance:(float)variance speed:(float)speed {
+	[self setFloatValue:(float)pitch forKey:(NSString*)@"int_f0_target_mean"];
+	[self setFloatValue:(float)variance forKey:(NSString*)@"int_f0_target_stddev"];
+	[self setFloatValue:(float)speed forKey:(NSString*)@"duration_stretch"];
+}
+
 
 @end
