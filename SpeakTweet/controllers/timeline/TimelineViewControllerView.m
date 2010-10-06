@@ -4,15 +4,12 @@
 #import "AppDelegate.h"
 #import "FliteWrapper.h"
 
-#include <unistd.h>
-
 @interface TimelineViewController(Private)
 - (UIView*)moreTweetView;
 - (UIView*)autopagerizeTweetView;
 - (UIView*)nowloadingView;
 
 @end
-
 
 @implementation TimelineViewController(View)
 
@@ -245,27 +242,30 @@
 //ST:play the tweet at the given position
 -(void)playTweetAtIndex:(id)sender{
 	
-	//BOOL state = [self setVisualPlayMode];
-	
 	Status *currentStatus = [timeline statusAtIndex:[self getNextIndexToRead]];
 	Message *currentMessage = currentStatus.message;
 	NSString *messageToSay = [currentMessage messageToSay];
 	
 	if(messageToSay != nil){
-			NSURL* messageURL = [fliteEngine synthesize:messageToSay];
-		
-			[(TimelineViewController*)sender stopActivityIndicator];
 			
-			[fliteEngine speakText:messageURL];
+		NSURL* messageURL = [fliteEngine synthesize:messageToSay];
+	
+		NSInvocationOperation *operation = [[NSInvocationOperation alloc] initWithTarget:self
+																				selector:@selector(stopActivityIndicator) object:self];
+		NSOperationQueue *opQueue = [[NSOperationQueue alloc] init];
+		
+		[opQueue addOperation: operation];
+		
+		[fliteEngine speakText:messageURL];
 		
 			NSLog(@"Playing '%@'", messageToSay);
 			
-		}
-		else{
+	}
+	else{
 			NSLog(@"Stop playing");
 			isPlaying = NO;
 			[self stopPlaying];
-			[self removeVisualPlayMode];
+			[self displayLayer:FALSE toHeight:480];
 	}
 }
 
@@ -273,8 +273,6 @@
 -(IBAction)playTweetsAction:(id)sender{
 	
 	if(isPlaying == NO){
-		isPlaying = YES;
-		[self startActivityIndicator];
 		//for some reasons, seekToFirstVisible can't keep the table
 		//view as it is if the first row is the first visible one. So
 		//in order to play the first tweet it's necessary to directly
@@ -282,24 +280,30 @@
 		if([self getNextIndexToRead] == 0 && [self getVisibleCellTableIndexAtPosition:0] == 0)
 		{
 			[self setNextIndexToRead:0];
-			[self startActivityIndicator];
 		}
 		else {
 			[self scrollToFirstVisible];
+		}
+		if(![self hasTableViewReachedTheEnd]){
 			[self startActivityIndicator];
 		}
+		else {
+			[self displayLayer:FALSE toHeight:480];
+		}
 
-			
-			NSInvocationOperation *operation = [[NSInvocationOperation alloc] initWithTarget:self
+		
+		isPlaying = YES;
+		
+		NSInvocationOperation *operation = [[NSInvocationOperation alloc] initWithTarget:self
 																					selector:@selector(playTweetAtIndex:) object:self];
-			NSOperationQueue *opQueue = [[NSOperationQueue alloc] init];
+		NSOperationQueue *opQueue = [[NSOperationQueue alloc] init];
 			
-			[opQueue addOperation: operation];
+		[opQueue addOperation: operation];
 	}
 	else {
 		isPlaying = NO;
 		[self stopPlaying];
-		[self removeVisualPlayMode];
+		[self displayLayer:FALSE toHeight:480];
 	}
 }
 
@@ -316,7 +320,13 @@
 -(void)playTweets{
 	//ST: here we're gonna write what needed for palying tweets
 	[self scrollToNextRow];
-	[self startActivityIndicator];
+	if(![self hasTableViewReachedTheEnd]){
+		[self startActivityIndicator];
+	}
+	else {
+		[self displayLayer:FALSE toHeight:480];
+	}
+
 	
 	NSInvocationOperation *operation = [[NSInvocationOperation alloc] initWithTarget:self
 																			selector:@selector(playTweetAtIndex:) object:self];
@@ -372,52 +382,30 @@
 	}
 }
 
-
-- (BOOL)setVisualPlayMode {
+-(void)displayLayer:(BOOL)state toHeight:(NSInteger)height{
 	
-	
-	[playButtonView addSubview:activityView];
-	[playButtonView addSubview:synthWorking];
-	[activityView startAnimating];
-	
-
-	return TRUE;
-}
-
-
--(void) overlayAnimation:(CGRect)new_frame{
 	[UIView beginAnimations:nil context:nil];
 	[UIView setAnimationDuration:0.45];
 	[UIView setAnimationDelegate:self]; 
-	overlayLayer.frame = new_frame;
+	
+	if (state == TRUE) {
+		//lo setta in modo che la prima cella sia visibile
+		overlayLayer.frame = CGRectMake(0, PLAY_BUTTON_HEIGTH + height, 320, 480);
+	}
+	else {
+		//lo fa sparire
+		overlayLayer.frame = CGRectMake(0, height, 320, 480);
+	}
+	
 	[UIView commitAnimations];
 }
 
-
--(void) playModeButtonAnimation:(BOOL)state {
-	if (state == TRUE) {
-		[UIView beginAnimations:nil context:nil];
-		[UIView setAnimationDuration:0.45];
-		[UIView setAnimationDelegate:self]; 
-		playButton.frame = CGRectMake(0, -44, 320, 44);
-		[UIView commitAnimations];
-	}
-}
-
--(void) removeVisualPlayMode {
-	
-	[activityView stopAnimating];
-	[synthWorking removeFromSuperview];
-	[self overlayAnimation:CGRectMake(0, 480, 320, 480)];
-	
-}
 
 
 -(void) startActivityIndicator {
 	
 	NSIndexPath* cellIndexPath;
-	if([self getNextIndexToRead] == 0 && 
-	   [self getVisibleCellTableIndexAtPosition:0] == 0)
+	if(isPlaying == FALSE)
 	{
 		cellIndexPath = [self getVisibleCellIndexPathAtPosition:0];
 	}
@@ -428,15 +416,21 @@
 	UITableViewCell* cellToNotCover = [self.tableView cellForRowAtIndexPath:cellIndexPath];
 	
 	[self.view addSubview:overlayLayer];
-	[self overlayAnimation:CGRectMake(0, PLAY_BUTTON_HEIGTH + cellToNotCover.bounds.size.height, 320, 480)];
-
+	[self displayLayer:TRUE toHeight:cellToNotCover.bounds.size.height];
+	
 	//ST: ActivityIndicator stuff...
-	activityView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
-	activityView.frame = CGRectMake(50.0f, 50.0f, 20.0f, 20.0f);
-	activityView.hidesWhenStopped = YES;
-	[overlayLayer addSubview:activityView];
 	[activityView startAnimating];
 	
 }
+
+
+-(void)stopActivityIndicator {
+	
+	NSLog(@"Stopping activity indicator");
+	//ST: ActivityIndicator stuff...
+	[activityView stopAnimating];
+	NSLog(@"Stopped");
+}
+
 
 @end

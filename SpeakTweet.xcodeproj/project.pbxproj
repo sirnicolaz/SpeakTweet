@@ -1441,7 +1441,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Alberto De Bortoli (H348E8ZLY2)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Nicola Miotto (458RFQE64U)";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -1459,7 +1459,7 @@
 				);
 				OTHER_LDFLAGS = "-licucore";
 				PRODUCT_NAME = SpeakTweet;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "408892CE-2241-4F56-B70E-9D63B854062C";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "52F021E2-6EAC-4952-A1F6-F1874F499281";
 				SDKROOT = iphoneos4.1;
 			};
 			name = Debug;

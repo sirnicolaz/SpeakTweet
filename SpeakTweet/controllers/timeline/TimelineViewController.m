@@ -7,7 +7,6 @@
 #import "FliteWrapper.h"
 #import "EGORefreshTableHeaderView.h"
 
-
 @interface TimelineViewController (Private)
 
 - (void)dataSourceDidFinishLoadingNewData;
@@ -48,7 +47,6 @@
 	[fliteEngine release];
 	
 	[activityView release];
-	[synthWorking release];
 	[overlayLayer release];
 	
 	
@@ -102,26 +100,21 @@
 	[self.view addSubview:[self reloadView]];
 	[self.view addSubview:tableView];
 	
+	urlToPlay = [[NSURL alloc] init];
+	
 	//ST: overlay layer
 	overlayLayer = [[UIImageView alloc] initWithFrame:CGRectMake(0, 480, 320, 480)];
 	overlayLayer.layer.masksToBounds = YES;
 	overlayLayer.layer.borderColor = [[UIColor blackColor] CGColor];
 	overlayLayer.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.8];
+	[self.view addSubview:overlayLayer];
+	
 	
 	//ST: ActivityIndicator stuff...
-	activityView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
-	activityView.frame = CGRectMake(245.0f, 10.0f, 20.0f, 20.0f);
+	activityView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+	activityView.frame = CGRectMake(320/2 - 17, 80, 34.0f, 34.0f);
 	activityView.hidesWhenStopped = YES;
-	
-	synthWorking = [[UILabel alloc] initWithFrame:CGRectMake(30.0f, 10.0f, 100.0f, 20.0f)];
-	synthWorking.text = @"Stop vocal";
-	synthWorking.backgroundColor = [UIColor blackColor];
-	synthWorking.textColor = [UIColor whiteColor];
-	synthWorking.textAlignment = UITextAlignmentCenter;
-	synthWorking.font = [UIFont boldSystemFontOfSize:16];
-	
-	
-	
+	[overlayLayer addSubview:activityView];	
 	
 }
 
@@ -171,6 +164,8 @@
 	enable_read = FALSE;
 	
 	[timeline suspend];
+	
+	[self displayLayer:FALSE toHeight:480];
 }
 
 
@@ -194,16 +189,6 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 	return 0;
-}
-
-
-
--(void)stopActivityIndicator {
-	
-	NSLog(@"Stopping activity indicator");
-	//ST: ActivityIndicator stuff...
-	[activityView stopAnimating];
-	[activityView removeFromSuperview];
 }
 
 

@@ -21,9 +21,8 @@
 @interface TimelineViewController : UIViewController  <UITableViewDelegate, UITableViewDataSource>{
 	//ST: play calculating mode
 	UIActivityIndicatorView *activityView;
-	UILabel* synthWorking;
 	UIImageView* overlayLayer;
-	NSInteger* rightIndex;
+	NSURL* urlToPlay;
 	
 	Timeline *timeline;
 	
@@ -85,7 +84,6 @@
 
 @property(nonatomic, retain) UITableView *tableView;
 
-- (void)stopActivityIndicator;
 @end
 
 @interface TimelineViewController(Accerlerometer) <AccelerometerSensorDelegate>
@@ -105,11 +103,9 @@
 - (void)playTweets;
 - (void)stopPlaying;
 - (void)setupSpeaker;
-- (BOOL)setVisualPlayMode;
-- (void)removeVisualPlayMode;
-- (void)overlayAnimation:(CGRect)frame;
-- (void)playModeButtonAnimation:(BOOL)state;
+- (void)stopActivityIndicator;
 - (void)startActivityIndicator;
+-(void)displayLayer:(BOOL)state toHeight:(NSInteger)height;
 @end
 
 

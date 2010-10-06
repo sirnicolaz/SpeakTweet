@@ -163,7 +163,7 @@
 																		withString:@" mention to "];
 	
 	//removing hash tags symbols
-	textPurged = [textPurged stringByReplacingOccurrencesOfString:@"#"
+	textPurged = [textPurged stringByReplacingOccurrencesOfString:@" #"
 																		withString:@" hash tag for "];
 	
 	NSString* messageToSay = [NSString stringWithFormat:@"%@ says %@", name, textPurged];
