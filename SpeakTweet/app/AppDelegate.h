@@ -19,6 +19,9 @@
 
 @interface AppDelegate : NSObject <UIApplicationDelegate, UITabBarControllerDelegate, CacheCleanerDelegate> {
 	UIWindow *window;
+	// splash screen fade out
+	UIImageView *splashView;
+	
 	UITabBarController *tabBarController;
 	
 	FriendsViewController *friendsViewController;

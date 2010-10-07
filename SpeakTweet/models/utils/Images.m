@@ -72,7 +72,6 @@ static Images *_instance;
 
 - (void)loadImages {
 	unreadDark = [[UIImage imageNamed:@"new-dark.png"] retain];
-	//unreadLight = [[UIImage imageNamed:@"new-light.png"] retain];
 	starHilighted = [[UIImage imageNamed:@"star-highlighted.png"] retain];
 
 	iconChat = [[UIImage imageNamed:@"icons_03.png"] retain];

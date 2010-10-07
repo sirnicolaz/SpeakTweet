@@ -40,8 +40,6 @@ static id _instance = nil;
 	lefthand = [[NSUserDefaults standardUserDefaults] boolForKey:PREFERENCE_LEFTHAND];
 	//ST: set the voice
 	voice = [[NSUserDefaults standardUserDefaults] integerForKey:ST_PREFERENCE_VOICE];
-	//ST: set volume
-	volume = [[NSUserDefaults standardUserDefaults] integerForKey:ST_PREFERENCE_VOLUME];
 
 	
 }

@@ -18,7 +18,6 @@
 #define OAUTH_PREFIX						@"SpeakTweet"
 
 #define ST_PREFERENCE_VOICE               @"voice"
-#define ST_PREFERENCE_VOLUME					@"volume"
 
 // conterrà un BOOL
 #define OAUTH_WAIT_FOR_CALLBACK		@"oAuthWaitForCallback"

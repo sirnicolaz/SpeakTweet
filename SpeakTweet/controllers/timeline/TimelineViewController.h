@@ -103,7 +103,7 @@
 - (void)setupTableView;
 - (void)setupNavigationBar;
 - (UIBarButtonItem*)clearButtonItem;
-- (void)setReloadButtonNormal:(BOOL)normal;
+- (void)setReloadButtonNormal;
 - (void)setupClearButton;
 - (NSInteger)getVisibleCellTableIndexAtPosition:(NSInteger)position;
 - (void)playTweets;
@@ -111,7 +111,7 @@
 - (void)setupSpeaker;
 - (void)stopActivityIndicator;
 - (void)startActivityIndicator;
--(void)displayLayer:(BOOL)state toHeight:(NSInteger)height;
+- (void)displayLayer:(BOOL)state toHeight:(NSInteger)height;
 @end
 
 

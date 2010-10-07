@@ -182,11 +182,7 @@
 	
 	unreadView.frame = CGRectMake(303, 0, 17, 18);
 	
-	//if ([[Configuration instance] darkColorTheme]) {
-		unreadView.image = [[Images sharedInstance] unreadDark];
-	//} else {
-	//	unreadView.image = [[Images sharedInstance] unreadLight];
-	//}
+	unreadView.image = [[Images sharedInstance] unreadDark];
 
 	UIImage *icon = status.message.iconContainer.iconImage;
 	if (icon == nil) {

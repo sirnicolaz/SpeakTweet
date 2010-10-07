@@ -28,12 +28,16 @@ static CacheCleaner *_instance;
     [[NSUserDefaults standardUserDefaults] synchronize];
 	
 	if (n >= 3) {
-		UIAlertView *alert = [[[UIAlertView alloc] initWithTitle:@"An unexpected abort detected"
+		/*UIAlertView *alert = [[[UIAlertView alloc] initWithTitle:@"An unexpected abort detected"
 														 message:@"Probably it was caused by cached data. Would you like to delete all cached data?"
 														delegate:self
 												cancelButtonTitle:@"Cancel" 
-											   otherButtonTitles:@"OK", nil] autorelease];
-		[alert show];
+											   otherButtonTitles:@"OK", nil] autorelease];*/
+		//[alert show];
+		
+		// non mostro l'alert ma faccio fare qui sotto quello che succederebbe premendo OK
+		[Cache removeAllCachedData];
+		[delegate cacheCleanerAlertClosed];
 		return YES;
 	}
 	

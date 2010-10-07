@@ -9,13 +9,13 @@
 }
 
 - (void)timeline:(Timeline*)timeline clientBegin:(TwitterClient*)client {
-	[self setReloadButtonNormal:NO];
+	[self setReloadButtonNormal];
 	[self footerActivityIndicator:TRUE];
 	[self insertNowloadingViewIfNeeds];
 }
 
 - (void)timeline:(Timeline*)timeline clientEnd:(TwitterClient*)client {
-	[self setReloadButtonNormal:YES];
+	[self setReloadButtonNormal];
 	[self footerActivityIndicator:FALSE];
 	[self removeNowloadingView];
 }

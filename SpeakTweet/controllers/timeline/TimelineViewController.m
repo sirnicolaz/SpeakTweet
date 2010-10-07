@@ -65,7 +65,7 @@
 	
 	playButton = [b retain];
 	
-	[self setReloadButtonNormal:YES];
+	[self setReloadButtonNormal];
 	playButtonView = b;
 	
 	return b;
@@ -144,7 +144,7 @@
 	[self setupSpeaker];
 	
 	[self setupNavigationBar];
-	[self setReloadButtonNormal:![timeline isClientActive]];
+	[self setReloadButtonNormal];
 }
 
 - (void)viewDidAppear:(BOOL)animated {

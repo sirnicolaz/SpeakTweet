@@ -615,6 +615,7 @@
 				GCC_PREFIX_HEADER = VocalKit_Prefix.pch;
 				GCC_VERSION = 4.2;
 				INSTALL_PATH = /usr/local/lib;
+				IPHONEOS_DEPLOYMENT_TARGET = 3.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/libs\"",
@@ -622,7 +623,7 @@
 				PRIVATE_HEADERS_FOLDER_PATH = include;
 				PRODUCT_NAME = VocalKit;
 				PUBLIC_HEADERS_FOLDER_PATH = include;
-				SDKROOT = iphoneos3.2;
+				SDKROOT = iphonesimulator4.1;
 			};
 			name = Debug;
 		};
@@ -649,6 +650,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = armv6;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Alberto De Bortoli (H348E8ZLY2)";
 				DEAD_CODE_STRIPPING = NO;
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -657,10 +659,11 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 3.0;
 				LIBRARY_SEARCH_PATHS = "";
 				OTHER_LDFLAGS = "-ObjC";
 				PREBINDING = NO;
-				SDKROOT = iphoneos3.2;
+				SDKROOT = iphonesimulator4.1;
 			};
 			name = Debug;
 		};

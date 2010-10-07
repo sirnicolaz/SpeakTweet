@@ -80,20 +80,20 @@
 	
 	int y = 70 ;
 	{
-		UIButton *b = [UIButton buttonWithType:UIButtonTypeCustom];
+		/*UIButton *b = [UIButton buttonWithType:UIButtonTypeCustom];
 		[b setFrame:CGRectMake(13, y, 148, 36)];
 		[b setBackgroundImage:[UIImage imageNamed:@"normal_01.png"] forState:UIControlStateNormal];
 		[b setBackgroundImage:[UIImage imageNamed:@"pushed_01.png"] forState:UIControlStateHighlighted];
 //		[b addTarget:self action:@selector(replyButtonAction:) forControlEvents:UIControlEventTouchUpInside];
-		[cell addSubview:b];
+		[cell addSubview:b];*/
 	}
 	{
-		UIButton *b = [UIButton buttonWithType:UIButtonTypeCustom];
+		/*UIButton *b = [UIButton buttonWithType:UIButtonTypeCustom];
 		[b setFrame:CGRectMake(13+148, y, 149, 36)];
 		[b setBackgroundImage:[UIImage imageNamed:@"normal_02.png"] forState:UIControlStateNormal];
 		[b setBackgroundImage:[UIImage imageNamed:@"pushed_02.png"] forState:UIControlStateHighlighted];
 //		[b addTarget:self action:@selector(retweetButtonAction:) forControlEvents:UIControlEventTouchUpInside];
-		[cell addSubview:b];
+		[cell addSubview:b];*/
 	}
 	
 	cell.accessoryType = UITableViewCellAccessoryNone;
@@ -113,10 +113,11 @@
 	if (userInfo) {
 		switch ([indexPath row]) {
 			case 0:
-				return 120;
+				return 70; //era 120 quando c'erano i pulsanti direct message e reply (che non funzionavano in natsulion)
 		}
 	} else {
-		if ([indexPath row] == 0) return 100;
+		if ([indexPath row] == 0) return 70; //era 100 quando c'erano i pulsanti direct message e reply (che non funzionavano in natsulion)
+
 	}
 	return 44;
 }

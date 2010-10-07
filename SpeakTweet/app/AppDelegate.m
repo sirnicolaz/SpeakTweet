@@ -37,6 +37,31 @@
 
 #define PREFERENCE_TABORDER		@"tabItemTitlesForTabOrder"
 
+- (void)startupAnimationDone:(NSString *)animationID finished:(NSNumber *)finished context:(void *)context {
+	[splashView removeFromSuperview];
+	[splashView release];
+}
+
+
+
+//splash screen fade out
+- (void) splashScreenAnimation {
+	splashView = [[UIImageView alloc] initWithFrame:CGRectMake(0,0, 320, 480)];
+	splashView.image = [UIImage imageNamed:@"Default.png"];
+	[window addSubview:splashView];
+	[window bringSubviewToFront:splashView];
+	[UIView beginAnimations:nil context:nil];
+	[UIView setAnimationDuration:0.50];
+	[UIView setAnimationTransition:UIViewAnimationTransitionNone forView:window cache:YES];
+	[UIView setAnimationDelegate:self]; 
+	[UIView setAnimationDidStopSelector:@selector(startupAnimationDone:finished:context:)];
+	splashView.alpha = 0.0;
+	//splashView.frame = CGRectMake(-60, -60, 440, 600);
+	[UIView commitAnimations];
+}
+
+
+
 - (void)setTabOrderIfSaved {
 	NSArray *tabItemTitles = [[NSUserDefaults standardUserDefaults] arrayForKey:PREFERENCE_TABORDER];
 	NSMutableArray *views = [NSMutableArray array];
@@ -154,11 +179,11 @@
 
 - (void)startup {
 	[self createViews];
-		
+	
 	window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 	[window addSubview:tabBarController.view];
 	[window makeKeyAndVisible];
-
+	
 #ifdef ENABLE_OAUTH	
 	if (! [[Account sharedInstance] waitForOAuthCallback] && 
 		! [[Account sharedInstance] valid]) {
@@ -171,12 +196,10 @@
 #endif
 	
 	applicationActive = YES;
+	
 }
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application {
-	
-	
-	
 	CacheCleaner *cc = [CacheCleaner sharedCacheCleaner];
 	cc.delegate = self;
 	BOOL alertShown = [cc bootup];
@@ -239,6 +262,9 @@
 	[friendsViewController.timeline prefetch];
 	[replysViewController.timeline prefetch];
 	[directMessageViewController.timeline prefetch];
+	
+	// devo metterla qui se voglio che sfumi anche quando avviata da background (multitasking)
+	[self splashScreenAnimation];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {

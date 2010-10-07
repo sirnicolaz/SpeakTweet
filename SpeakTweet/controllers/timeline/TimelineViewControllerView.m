@@ -43,53 +43,17 @@
 	return ai;
 }
 
-- (void)setReloadButtonNormal:(BOOL)normal {
+- (void)setReloadButtonNormal{
 	//ST: here we have images for the reload button that can be replaced with the one for the play button
 	//if ([[Configuration instance] darkColorTheme]) {
-		if (normal) {
-			[playButton setBackgroundImage:[UIImage imageNamed:@"play.png"] forState:UIControlStateNormal];
-			[playButton setBackgroundImage:[UIImage imageNamed:@"play.png"] forState:UIControlStateHighlighted];
-		} else {
-			[playButton setBackgroundImage:[UIImage imageNamed:@"play_loading.png"] forState:UIControlStateNormal];
-			[playButton setBackgroundImage:[UIImage imageNamed:@"play_loading.png"] forState:UIControlStateHighlighted];
-		}
-	/*} else {
-		if (normal) {
-			[playButton setBackgroundImage:[UIImage imageNamed:@"reload_button_normal.png"] forState:UIControlStateNormal];
-			[playButton setBackgroundImage:[UIImage imageNamed:@"reload_button_pushed.png"] forState:UIControlStateHighlighted];
-		} else {
-			[playButton setBackgroundImage:[UIImage imageNamed:@"reload_button_loading.png"] forState:UIControlStateNormal];
-			[playButton setBackgroundImage:[UIImage imageNamed:@"reload_button_loading_pushed.png"] forState:UIControlStateHighlighted];
-		}
-	}*/
+	[playButton setBackgroundImage:[UIImage imageNamed:@"play_w.png"] forState:UIControlStateNormal];
+	[playButton setBackgroundImage:[UIImage imageNamed:@"play_pw.png"] forState:UIControlStateHighlighted];
 }
 
-//- (UIView*)playButtonItem{
-	
-	//UIBarButtonItem *b = [[UIBarButtonItem alloc] 
-//							initWithImage:[UIImage imageNamed:@"play.jpg"]
-//	 //					  initWithImage:[UIImage imageNamed:@"unread_clear.png"]
-//									style:UIBarButtonItemStyleBordered 
-//									target:self action:@selector(playTweets:)];
-	/*UIButton *b = [UIButton buttonWithType:UIButtonTypeCustom];
-	b.frame = CGRectMake(0, 0, 320, 55);
-	[b addTarget:self action:@selector(playTweetsAction:) forControlEvents:UIControlEventTouchUpInside];
-	
-	[b retain];
-	return b;
-	
-}*/
+
 
 - (void)setupTableView {
 	self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-	//self.tableView.tableHeaderView = [self reloadView];
-	
-	
-	//UIBarButtonItem *playButton;
-
-	//[self.view addSubview:[self playButtonItem]];
-	
-
 }
 
 - (void)setupNavigationBar {
@@ -115,14 +79,6 @@
 		nowloadingView = nil;
 	}
 }
-
-//-(IBAction)reloadButton:(id)sender {
-//	if (![timeline isClientActive]) {
-//		[timeline getTimelineWithPage:0 autoload:NO];
-//	} else {
-//		[timeline clientCancel];
-//	}
-//}
 
 
 //ST: set the next row index to read (still dunno if useful)
@@ -244,7 +200,10 @@
 	NSString *messageToSay = [currentMessage messageToSay];
 	
 	if(messageToSay != nil){
-			
+		
+		//setta il tweet come letto (senza il segno a lato nella cella new-dark.png)
+		currentStatus.message.status = _MESSAGE_STATUS_READ;
+		
 		NSURL* messageURL = [fliteEngine synthesize:messageToSay
 													 withPitch:PITCH
 												 withVariance:VARIANCE
@@ -276,6 +235,9 @@
 -(IBAction)playTweetsAction:(id)sender{
 	
 	if(isPlaying == NO){
+		[playButton setBackgroundImage:[UIImage imageNamed:@"play_s.png"] forState:UIControlStateNormal];
+		[playButton setBackgroundImage:[UIImage imageNamed:@"play_ps.png"] forState:UIControlStateHighlighted];
+
 		//for some reasons, seekToFirstVisible can't keep the table
 		//view as it is if the first row is the first visible one. So
 		//in order to play the first tweet it's necessary to directly
@@ -306,6 +268,9 @@
 		[opQueue addOperation: operation];
 	}
 	else {
+		[playButton setBackgroundImage:[UIImage imageNamed:@"play_w.png"] forState:UIControlStateNormal];
+		[playButton setBackgroundImage:[UIImage imageNamed:@"play_pw.png"] forState:UIControlStateHighlighted];
+
 		isPlaying = NO;
 		[self stopPlaying];
 		[self displayLayer:FALSE toHeight:480];
