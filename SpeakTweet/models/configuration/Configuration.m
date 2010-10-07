@@ -40,7 +40,6 @@ static id _instance = nil;
 	lefthand = [[NSUserDefaults standardUserDefaults] boolForKey:PREFERENCE_LEFTHAND];
 	//ST: set the voice
 	voice = [[NSUserDefaults standardUserDefaults] integerForKey:ST_PREFERENCE_VOICE];
-
 	
 }
 
@@ -56,8 +55,9 @@ static int seconds_from_index(int index)
 static int count_from_index(int index)
 {
 	if (index > 3) return 0;
-
-	const int m[] = {100,200};
+	
+	const int m[] = {20,50,100,200};
+	NSLog(@"DIOCANEE %d", m[index]);
 	return m[index];
 }
 
@@ -72,15 +72,15 @@ static NSString* voice_from_index(int index)
 static float volume_from_index(int index)
 {
 	/*switch (index) {
-		case 0:
-			return 0.1;
-		case 1:
-			return 0.5;
-		case 2:
-			return 1.0;
-		default:
-			return 0.5;
-	}*/
+	 case 0:
+	 return 0.1;
+	 case 1:
+	 return 0.5;
+	 case 2:
+	 return 1.0;
+	 default:
+	 return 0.5;
+	 }*/
 	
 	return 0.5;
 }

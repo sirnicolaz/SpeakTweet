@@ -11,7 +11,7 @@
 
 @interface SettingViewController(Private)
 - (void)setupPrototypes;
-	
+
 @end
 
 @implementation SettingViewController
@@ -28,6 +28,12 @@
 															 @"woman",
 															 @"man", nil]
 										withUserDefaultsKey:ST_PREFERENCE_VOICE],
+					   /*[UICPrototypeTableCell cellForSelect:@"Volume"
+						withSelectTitles:[NSArray arrayWithObjects:
+						@"quiet",
+						@"normal",
+						@"loud", nil]
+						withUserDefaultsKey:ST_PREFERENCE_VOLUME],*/
 					   nil];
 	
 	NSArray *g2 = [NSArray arrayWithObjects:
@@ -41,52 +47,50 @@
 														 @"5 Minutes",
 														 @"10 Minutes", nil]
 									withUserDefaultsKey:PREFERENCE_REFRESH_INTERVAL],
-					
+				   
 				   [UICPrototypeTableCell cellForSwitch:@"UseSafari" 
 									withUserDefaultsKey:PREFERENCE_USE_SAFARI],
-
+				   
 				   //[UICPrototypeTableCell cellForSwitch:@"Dark color theme" 
-					//				withUserDefaultsKey:PREFERENCE_DARK_COLOR_THEME],
+				   //				withUserDefaultsKey:PREFERENCE_DARK_COLOR_THEME],
 				   
 				   [UICPrototypeTableCell cellForSwitch:@"Shake to fullscreen" 
 									withUserDefaultsKey:PREFERENCE_SHAKE_TO_FULLSCREEN],
-				   nil];
+				   //nil];
 	
-	NSArray *g3 = [NSArray arrayWithObjects:
+	//NSArray *g3 = [NSArray arrayWithObjects:
 				   [UICPrototypeTableCell cellForSwitch:@"AutoPagerize" 
 									withUserDefaultsKey:PREFERENCE_SHOW_MORE_TWEETS_MODE],
-
-				   [UICPrototypeTableCell cellForSelect:@"Initial load" 
+				   
+				   /*[UICPrototypeTableCell cellForSelect:@"Initial load" 
 									   withSelectTitles:[NSArray arrayWithObjects:
-														// @"20 posts", 
-														// @"50 Posts", 
+														 @"20 posts", 
+														 @"50 Posts", 
 														 @"100 Posts", 
 														 @"200 Posts", nil]
-									withUserDefaultsKey:PREFERENCE_FETCH_COUNT],
-
-				   [UICPrototypeTableCell cellForSwitch:@"AutoScroll" 
-									withUserDefaultsKey:PREFERENCE_AUTO_SCROLL],
+									withUserDefaultsKey:PREFERENCE_FETCH_COUNT],*/
+				   
+				   /*[UICPrototypeTableCell cellForSwitch:@"AutoScroll" 
+									withUserDefaultsKey:PREFERENCE_AUTO_SCROLL],*/
 				   
 				   [UICPrototypeTableCell cellForSwitch:@"Left-Handed controls" 
 									withUserDefaultsKey:PREFERENCE_LEFTHAND],
 				   
 				   nil];
 	
-	[[g3 objectAtIndex:1] setSelectedIndex:0];
-	
 	/*NSArray *g4 = [NSArray arrayWithObjects:
-				   [UICPrototypeTableCell cellForTitle:@"Footer"],
-				   nil];*/
-
+	 [UICPrototypeTableCell cellForTitle:@"Footer"],
+	 nil];*/
+	
 	NSArray *g5 = [NSArray arrayWithObjects:
-				   [UICPrototypeTableCell cellForTitle:@"About SpeakTweet! for iPhone"],
+				   [UICPrototypeTableCell cellForTitle:@"About SpeakTweet for iPhone"],
 				   nil];
 	
 	groups = [[NSArray arrayWithObjects:
 			   [UICPrototypeTableGroup groupWithCells:g1 withTitle:nil], 
 			   [UICPrototypeTableGroup groupWithCells:gVoice withTitle:nil],
 			   [UICPrototypeTableGroup groupWithCells:g2 withTitle:nil], 
-			   [UICPrototypeTableGroup groupWithCells:g3 withTitle:nil], 
+			   //[UICPrototypeTableGroup groupWithCells:g3 withTitle:nil], 
 			   //[UICPrototypeTableGroup groupWithCells:g4 withTitle:nil], 
 			   [UICPrototypeTableGroup groupWithCells:g5 withTitle:nil], 
 			   nil] retain];
@@ -110,29 +114,29 @@
 
 - (void)viewWillDisappear:(BOOL)animated {
 	[[Configuration instance] reload];
-
+	
 	[[Colors instance] setupColors];
 	[[AccelerometerSensor sharedInstance] updateByConfiguration];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 	UITableViewCell *cell = [super tableView:tableView cellForRowAtIndexPath:indexPath];
-
+	
 	// for "Twitter account" or "Footer" cell
 	/*if (([indexPath section] == 0) && [indexPath row] == 0) { //|| [indexPath section] == 3
-		cell.accessoryType = UITableViewCellAccessoryNone;
-	}*/
+	 cell.accessoryType = UITableViewCellAccessoryNone;
+	 }*/
 	
 	// for "About SpeakTweet for iPhone" cell
 	/*if ([indexPath section] == 3 && [indexPath row] == 0) {
-		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-	}*/
-
+	 cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+	 }*/
+	
 	return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-
+	
 	// for "Twitter account" cell
 	if ([indexPath section] == 0 && [indexPath row] == 0) {
 #ifdef ENABLE_OAUTH
@@ -144,16 +148,16 @@
 	
 	// for "Footer" cell
 	/*if ([indexPath section] == 3 && [indexPath row] == 0) {
-		UITableViewController *vc = [[[FooterSettingViewController alloc] 
-									  initWithStyle:UITableViewStyleGrouped] autorelease];
-		UINavigationController *nc = [[[UINavigationController alloc] 
-									   initWithRootViewController:vc] autorelease];
-		[nc.navigationBar setBarStyle:UIBarStyleBlackOpaque];
-		[self.tabBarController presentModalViewController:nc animated:YES];
-	}*/
-
+	 UITableViewController *vc = [[[FooterSettingViewController alloc] 
+	 initWithStyle:UITableViewStyleGrouped] autorelease];
+	 UINavigationController *nc = [[[UINavigationController alloc] 
+	 initWithRootViewController:vc] autorelease];
+	 [nc.navigationBar setBarStyle:UIBarStyleBlackOpaque];
+	 [self.tabBarController presentModalViewController:nc animated:YES];
+	 }*/
+	
 	// for "About SpeakTweet for iPhone" cell
-	if ([indexPath section] == 4 && [indexPath row] == 0) {
+	if ([indexPath section] == 3 && [indexPath row] == 0) {
 		UIViewController *vc = [[[AboutViewController alloc] init] autorelease];
 		[self.navigationController pushViewController:vc animated:YES];
 	}

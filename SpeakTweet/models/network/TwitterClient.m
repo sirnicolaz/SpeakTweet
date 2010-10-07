@@ -22,7 +22,7 @@
 - (void)getTimeline:(NSString*)path page:(int)page count:(int)count since_id:(NSString*)since_id {
 	NSString* url = [NSString stringWithFormat:@"%@%@.xml?count=%d", 
 					 [TwitterClient URLForTwitterWithAccount], path, count];
-		
+	
 	if (page >= 2) {
 		url = [NSString stringWithFormat:@"%@&page=%d&max_id=%@", url, page, since_id];
 	} else if (since_id) {
@@ -41,7 +41,7 @@
 	
 	[super requestGET:url username:username password:password];
 #endif	
-
+	
 	[delegate twitterClientBegin:self];
 }
 
@@ -59,7 +59,7 @@
 
 - (void)connection:(NSURLConnection *)c didReceiveResponse:(NSURLResponse *)response {
 	[super connection:c didReceiveResponse:response];
-
+	
 	if (rate_limit) {
 		[RateLimit shardInstance].rate_limit = rate_limit;
 		[RateLimit shardInstance].rate_limit_remaining = rate_limit_remaining;
@@ -75,11 +75,11 @@
 }
 
 - (void)requestSucceeded {
-
+	
 	if (statusCode == 200) {
 		if (parseResultXML) {
 			if (contentTypeIsXml) {		
-
+				
 				// finish parsing
 				[xmlParser parseXMLDataPartial:nil];
 				if (xmlParser.messages.count > 0) {
@@ -87,48 +87,48 @@
 				} else {
 					[delegate twitterClientSucceeded:self messages:nil];
 				}
-								
+				
 			} else {
 				[[Alert instance] alert:@"Invaild XML Format" 
-								withMessage:@"Twitter responded invalid format message, or please check your network environment."];
+							withMessage:@"Twitter responded invalid format message, or please check your network environment."];
 				[delegate twitterClientFailed:self];
 			}
 		} else {
 			[delegate twitterClientSucceeded:self messages:nil];
 		}
-				
+		
 	} else {
 		if (statusCode != 304) {
 			switch (statusCode) {
 				case 400:
 					[[Alert instance] alert:@"Twitter: exceeded the rate limit" 
-									withMessage:[NSString 
-												 stringWithFormat:@"The client has exceeded the rate limit. Clients are allowed %d requests per hour time period. The period will be in %@.", 
-												 [RateLimit shardInstance].rate_limit,
-												 [[RateLimit shardInstance].rate_limit_reset descriptionWithRateLimitRemaining]]];
+								withMessage:[NSString 
+											 stringWithFormat:@"The client has exceeded the rate limit. Clients are allowed %d requests per hour time period. The period will be in %@.", 
+											 [RateLimit shardInstance].rate_limit,
+											 [[RateLimit shardInstance].rate_limit_reset descriptionWithRateLimitRemaining]]];
 					
 					break;
 				case 401:
 				case 403:
 					if (screenNameForUserTimeline) {
 						[[Alert instance] alert:@"Protected" 
-										withMessage:[NSString 
-													 stringWithFormat:@"@%@ has protected their updates.", 
-													 screenNameForUserTimeline]];
+									withMessage:[NSString 
+												 stringWithFormat:@"@%@ has protected their updates.", 
+												 screenNameForUserTimeline]];
 					} else {
 						[[Alert instance] alert:@"Authorization Failed" 
-										withMessage:@"Wrong Username/Email and password combination."];
+									withMessage:@"Wrong Username/Email and password combination."];
 					}
 					break;
 				default:
-					{
-						NSString *msg = [NSString stringWithFormat:@"Twitter responded %d", statusCode];
-						if (requestForTimeline) {
-							[[Alert instance] alert:@"Retrieving timeline failed" withMessage:msg];
-						} else {
-							[[Alert instance] alert:@"Sending a message failed" withMessage:msg];
-						}
+				{
+					NSString *msg = [NSString stringWithFormat:@"Twitter responded %d", statusCode];
+					if (requestForTimeline) {
+						[[Alert instance] alert:@"Retrieving timeline failed" withMessage:msg];
+					} else {
+						[[Alert instance] alert:@"Sending a message failed" withMessage:msg];
 					}
+				}
 					break;
 			}
 		}
@@ -138,7 +138,7 @@
 	
 	[xmlParser release];
 	xmlParser = nil;
-
+	
 	[delegate twitterClientEnd:self];
 	[[HttpClientPool sharedInstance] releaseClient:self];
 }
@@ -158,7 +158,7 @@
 - (void)getFriendsTimelineWithPage:(int)page since_id:(NSString*)since_id {
 	int count = 100;
 	if (since_id == nil && page < 2) {
-		count = [[Configuration instance] fetchCount]; 
+		count = 100;//[[Configuration instance] fetchCount]; 
 	} else if (since_id && page < 2) {
 		count = 200;
 	}
@@ -223,7 +223,7 @@
 
 - (void)post:(NSString*)tweet reply_id:(NSString*)reply_id {
 	NSString* url = [NSString stringWithFormat:@"%@statuses/update.xml", 
-						[TwitterClient URLForTwitterWithAccount]];
+					 [TwitterClient URLForTwitterWithAccount]];
 	NSString *postString; 
 	if (reply_id == nil) { 
 		postString = [NSString stringWithFormat:@"status=%@&source=SpeakTweet",  
