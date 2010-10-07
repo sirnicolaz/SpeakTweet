@@ -231,6 +231,8 @@
 			<key>Layout</key>
 			<array>
 				<dict>
+					<key>BecomeActive</key>
+					<true/>
 					<key>ContentConfiguration</key>
 					<dict>
 						<key>PBXBottomSmartGroupGIDs</key>
@@ -268,6 +270,8 @@
 							<array>
 								<string>29B97314FDCFA39411CA2CEA</string>
 								<string>D3D7CC2D12541CE000ECC114</string>
+								<string>8DBA55C20E96B75800109F5D</string>
+								<string>D38830DF1254167700F728C5</string>
 								<string>19C28FACFE9D520D11CA2CBB</string>
 								<string>1C37FBAC04509CD000000102</string>
 								<string>1C37FAAC04509CD000000102</string>
@@ -275,6 +279,9 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
+									<integer>15</integer>
+									<integer>12</integer>
+									<integer>11</integer>
 									<integer>0</integer>
 								</array>
 							</array>
@@ -296,7 +303,7 @@
 							<real>309</real>
 						</array>
 						<key>RubberWindowFrame</key>
-						<string>0 195 1133 833 0 0 1680 1028 </string>
+						<string>-1 195 1133 833 0 0 1680 1028 </string>
 					</dict>
 					<key>Module</key>
 					<string>PBXSmartGroupTreeModule</string>
@@ -312,19 +319,13 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>D34FCD9912535B44009D6029</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>TwitterClient.m</string>
+								<string>&lt;No Editor&gt;</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
 									<dict>
 										<key>PBXProjectModuleGUID</key>
 										<string>D34FCD9A12535B44009D6029</string>
-										<key>PBXProjectModuleLabel</key>
-										<string>TwitterClient.m</string>
-										<key>_historyCapacity</key>
-										<integer>0</integer>
-										<key>bookmark</key>
-										<string>D3CCA3BA125E51F300A755FC</string>
 										<key>history</key>
 										<array>
 											<string>D34FD20612536372009D6029</string>
@@ -518,7 +519,6 @@
 											<string>D3CCA301125E2CF100A755FC</string>
 											<string>D3CCA303125E2CF100A755FC</string>
 											<string>D3CCA30C125E2DB100A755FC</string>
-											<string>D3CCA30E125E2DB100A755FC</string>
 											<string>D3CCA30F125E2DB100A755FC</string>
 											<string>D3CCA325125E2F6A00A755FC</string>
 											<string>D3CCA326125E2F6A00A755FC</string>
@@ -527,7 +527,6 @@
 											<string>D3CCA329125E2F6A00A755FC</string>
 											<string>D3CCA37F125E4CE500A755FC</string>
 											<string>D3CCA380125E4CE500A755FC</string>
-											<string>D3CCA381125E4CE500A755FC</string>
 											<string>D3CCA382125E4CE500A755FC</string>
 											<string>D3CCA383125E4CE500A755FC</string>
 											<string>D3CCA386125E4CE500A755FC</string>
@@ -536,14 +535,16 @@
 											<string>D3CCA3A0125E4F9600A755FC</string>
 											<string>D3CCA3A1125E4F9600A755FC</string>
 											<string>D3CCA3A2125E4F9600A755FC</string>
-											<string>D3CCA3A3125E4F9600A755FC</string>
-											<string>D3CCA3A4125E4F9600A755FC</string>
 											<string>D3CCA3A5125E4F9600A755FC</string>
 											<string>D3CCA3A6125E4F9600A755FC</string>
-											<string>D3CCA3B2125E51AD00A755FC</string>
 											<string>D3CCA3B3125E51AD00A755FC</string>
-											<string>D3CCA3B8125E51F300A755FC</string>
-											<string>D3CCA3B9125E51F300A755FC</string>
+											<string>D3CCA3C7125E542200A755FC</string>
+											<string>D3CCA3CF125E551200A755FC</string>
+											<string>D3CCA3D0125E551200A755FC</string>
+											<string>D3CCA3D1125E551200A755FC</string>
+											<string>D3CCA3D2125E551200A755FC</string>
+											<string>D3CCA3D8125E55E500A755FC</string>
+											<string>D3CCA3D9125E55E500A755FC</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -559,7 +560,7 @@
 								<key>Frame</key>
 								<string>{{0, 0}, {802, 465}}</string>
 								<key>RubberWindowFrame</key>
-								<string>0 195 1133 833 0 0 1680 1028 </string>
+								<string>-1 195 1133 833 0 0 1680 1028 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXNavigatorGroup</string>
@@ -588,8 +589,6 @@
 									<string>XCDetailModule</string>
 								</dict>
 								<dict>
-									<key>BecomeActive</key>
-									<true/>
 									<key>ContentConfiguration</key>
 									<dict>
 										<key>PBXProjectModuleGUID</key>
@@ -602,7 +601,7 @@
 										<key>Frame</key>
 										<string>{{10, 27}, {802, 295}}</string>
 										<key>RubberWindowFrame</key>
-										<string>0 195 1133 833 0 0 1680 1028 </string>
+										<string>-1 195 1133 833 0 0 1680 1028 </string>
 									</dict>
 									<key>Module</key>
 									<string>PBXProjectFindModule</string>
@@ -867,7 +866,7 @@
 		<string>/Users/alberto/Desktop/speak-tweet/SpeakTweet.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
-	<string>0 195 1133 833 0 0 1680 1028 </string>
+	<string>-1 195 1133 833 0 0 1680 1028 </string>
 	<key>WindowToolsV3</key>
 	<array>
 		<dict>

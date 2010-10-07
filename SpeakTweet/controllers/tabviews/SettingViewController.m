@@ -61,8 +61,7 @@
 														// @"20 posts", 
 														// @"50 Posts", 
 														 @"100 Posts", 
-														 @"200 Posts",
-														 @"500 Posts", nil]
+														 @"200 Posts", nil]
 									withUserDefaultsKey:PREFERENCE_FETCH_COUNT],
 
 				   [UICPrototypeTableCell cellForSwitch:@"AutoScroll" 
@@ -72,6 +71,8 @@
 									withUserDefaultsKey:PREFERENCE_LEFTHAND],
 				   
 				   nil];
+	
+	[[g3 objectAtIndex:1] setSelectedIndex:0];
 	
 	/*NSArray *g4 = [NSArray arrayWithObjects:
 				   [UICPrototypeTableCell cellForTitle:@"Footer"],

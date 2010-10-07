@@ -57,7 +57,7 @@ static int count_from_index(int index)
 {
 	if (index > 3) return 0;
 
-	const int m[] = {100,200,500};
+	const int m[] = {100,200};
 	return m[index];
 }
 

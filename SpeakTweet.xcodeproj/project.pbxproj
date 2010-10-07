@@ -80,7 +80,7 @@
 		D3CCA244125E15E400A755FC /* play_w@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D3CCA23C125E15E400A755FC /* play_w@2x.png */; };
 		D3CCA2F6125E2CAB00A755FC /* icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = D3CCA2F1125E2CAB00A755FC /* icon-72.png */; };
 		D3CCA2F7125E2CAB00A755FC /* icon-Small-50.png in Resources */ = {isa = PBXBuildFile; fileRef = D3CCA2F2125E2CAB00A755FC /* icon-Small-50.png */; };
-		D3CCA2F8125E2CAB00A755FC /* icon-Small29.png in Resources */ = {isa = PBXBuildFile; fileRef = D3CCA2F3125E2CAB00A755FC /* icon-Small29.png */; };
+		D3CCA2F8125E2CAB00A755FC /* icon-Small-29.png in Resources */ = {isa = PBXBuildFile; fileRef = D3CCA2F3125E2CAB00A755FC /* icon-Small-29.png */; };
 		D3CCA2F9125E2CAB00A755FC /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = D3CCA2F4125E2CAB00A755FC /* icon.png */; };
 		D3CCA2FA125E2CAB00A755FC /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D3CCA2F5125E2CAB00A755FC /* icon@2x.png */; };
 		D3D7CC01125419B200ECC114 /* browser_icons_01.png in Resources */ = {isa = PBXBuildFile; fileRef = D3D7CBEB125419B200ECC114 /* browser_icons_01.png */; };
@@ -303,7 +303,7 @@
 		D3CCA23C125E15E400A755FC /* play_w@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "play_w@2x.png"; sourceTree = "<group>"; };
 		D3CCA2F1125E2CAB00A755FC /* icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon-72.png"; path = "resources/app_icons/icon-72.png"; sourceTree = "<group>"; };
 		D3CCA2F2125E2CAB00A755FC /* icon-Small-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon-Small-50.png"; path = "resources/app_icons/icon-Small-50.png"; sourceTree = "<group>"; };
-		D3CCA2F3125E2CAB00A755FC /* icon-Small29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon-Small29.png"; path = "resources/app_icons/icon-Small29.png"; sourceTree = "<group>"; };
+		D3CCA2F3125E2CAB00A755FC /* icon-Small-29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon-Small-29.png"; path = "resources/app_icons/icon-Small-29.png"; sourceTree = "<group>"; };
 		D3CCA2F4125E2CAB00A755FC /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon.png; path = resources/app_icons/icon.png; sourceTree = "<group>"; };
 		D3CCA2F5125E2CAB00A755FC /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon@2x.png"; path = "resources/app_icons/icon@2x.png"; sourceTree = "<group>"; };
 		D3D7CBEB125419B200ECC114 /* browser_icons_01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = browser_icons_01.png; sourceTree = "<group>"; };
@@ -724,7 +724,7 @@
 			children = (
 				D3CCA2F1125E2CAB00A755FC /* icon-72.png */,
 				D3CCA2F2125E2CAB00A755FC /* icon-Small-50.png */,
-				D3CCA2F3125E2CAB00A755FC /* icon-Small29.png */,
+				D3CCA2F3125E2CAB00A755FC /* icon-Small-29.png */,
 				D3CCA2F4125E2CAB00A755FC /* icon.png */,
 				D3CCA2F5125E2CAB00A755FC /* icon@2x.png */,
 			);
@@ -1323,7 +1323,7 @@
 				D3CCA244125E15E400A755FC /* play_w@2x.png in Resources */,
 				D3CCA2F6125E2CAB00A755FC /* icon-72.png in Resources */,
 				D3CCA2F7125E2CAB00A755FC /* icon-Small-50.png in Resources */,
-				D3CCA2F8125E2CAB00A755FC /* icon-Small29.png in Resources */,
+				D3CCA2F8125E2CAB00A755FC /* icon-Small-29.png in Resources */,
 				D3CCA2F9125E2CAB00A755FC /* icon.png in Resources */,
 				D3CCA2FA125E2CAB00A755FC /* icon@2x.png in Resources */,
 			);
