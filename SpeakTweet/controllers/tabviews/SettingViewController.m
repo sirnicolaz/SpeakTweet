@@ -58,10 +58,11 @@
 
 				   [UICPrototypeTableCell cellForSelect:@"Initial load" 
 									   withSelectTitles:[NSArray arrayWithObjects:
-														 @"20 posts", 
-														 @"50 Posts", 
+														// @"20 posts", 
+														// @"50 Posts", 
 														 @"100 Posts", 
-														 @"200 Posts", nil]
+														 @"200 Posts",
+														 @"500 Posts", nil]
 									withUserDefaultsKey:PREFERENCE_FETCH_COUNT],
 
 				   [UICPrototypeTableCell cellForSwitch:@"AutoScroll" 

@@ -156,7 +156,7 @@
 /// public interfaces
 
 - (void)getFriendsTimelineWithPage:(int)page since_id:(NSString*)since_id {
-	int count = 20;
+	int count = 100;
 	if (since_id == nil && page < 2) {
 		count = [[Configuration instance] fetchCount]; 
 	} else if (since_id && page < 2) {
@@ -169,7 +169,7 @@
 }
 
 - (void)getRepliesTimelineWithPage:(int)page since_id:(NSString*)since_id {
-	int count = 20;
+	int count = 100;
 	if (since_id && page < 2) count = 200;
 	[self getTimeline:@"statuses/replies" 
 				 page:page 
@@ -178,7 +178,7 @@
 }
 
 - (void)getSentsTimelineWithPage:(int)page since_id:(NSString*)since_id {
-	int count = 20;
+	int count = 100;
 	if (since_id && page < 2) count = 200;
 	[self getTimeline:@"statuses/user_timeline" 
 				 page:page 
@@ -187,7 +187,7 @@
 }
 
 - (void)getDirectMessagesWithPage:(int)page since_id:(NSString*)since_id{
-	int count = 20;
+	int count = 100;
 	if (since_id && page < 2) count = 200;
 	requestForDirectMessage = YES;
 	[self getTimeline:@"direct_messages" 
@@ -200,7 +200,7 @@
 	requestForDirectMessage = YES;
 	[self getTimeline:@"direct_messages/sent" 
 				 page:page 
-				count:20 
+				count:100 
 			 since_id:nil];
 }
 
@@ -210,14 +210,14 @@
 	[screenNameForUserTimeline retain];
 	[self getTimeline:[NSString stringWithFormat:@"statuses/user_timeline/%@", screenName]
 				 page:page 
-				count:20 
+				count:100 
 			 since_id:since_id];
 }
 
 - (void)getStatusWithStatusId:(NSString*)statusId {
 	[self getTimeline:[NSString stringWithFormat:@"statuses/show/%@", statusId]
 				 page:1
-				count:20 
+				count:100 
 			 since_id:nil];
 }
 
