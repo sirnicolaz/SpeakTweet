@@ -28,7 +28,7 @@
 	
 	volume = [[Configuration instance] volume];
 	[fliteEngine setVolume:volume];
-	stopped = YES;
+	tweetToPlay = -1;
 	
 	return self;
 }
@@ -49,12 +49,6 @@
 	
 	[activityView release];
 	[overlayLayer release];
-	
-	
-	//ST: we add a new view ought to be placed above the table. Here we'll have the static play button
-	//[buttonBarView release];
-	locker = [[NSObject alloc] init];
-	 
 	
     [super dealloc];
 }
@@ -79,6 +73,13 @@
 
 
 - (void)viewDidLoad {
+	
+	
+	
+	//ST: we add a new view ought to be placed above the table. Here we'll have the static play button
+	//[buttonBarView release];
+	locker = [[NSObject alloc] init];
+	tweetToPlay = -1;
 	
 	//ST: position of tableView
 	tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 44, 320, 323)

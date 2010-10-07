@@ -28,7 +28,7 @@
 	UIActivityIndicatorView *activityView;
 	UIImageView* overlayLayer;
 	NSURL* urlToPlay;
-	BOOL stopped;
+	NSInteger tweetToPlay;
 	
 	Timeline *timeline;
 	

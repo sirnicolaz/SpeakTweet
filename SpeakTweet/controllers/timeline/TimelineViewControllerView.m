@@ -231,14 +231,15 @@
 												animated:YES];
 		
 		NSInteger indexToRead = [self getVisibleCellTableIndexAtPosition:0];
+		NSLog(@"Setting index %i", indexToRead);
 		[self setNextIndexToRead:indexToRead];
 	}
 }
 
 //ST:play the tweet at the given position
 -(void)playTweetAtIndex:(id)sender{
-	
-	Status *currentStatus = [timeline statusAtIndex:[self getNextIndexToRead]];
+	NSInteger next = [self getNextIndexToRead];
+	Status *currentStatus = [timeline statusAtIndex:next];
 	Message *currentMessage = currentStatus.message;
 	NSString *messageToSay = [currentMessage messageToSay];
 	
@@ -256,7 +257,7 @@
 		[opQueue addOperation: operation];
 		
 		@synchronized(locker){
-			if(stopped == NO){
+			if(next == tweetToPlay){
 				[fliteEngine speakText:messageURL];
 			}
 		}
@@ -293,10 +294,9 @@
 			[self displayLayer:FALSE toHeight:480];
 		}
 
-		
 		isPlaying = YES;
 		@synchronized(locker){
-			stopped = NO;
+			tweetToPlay = [self getNextIndexToRead];
 		}
 		
 		NSInvocationOperation *operation = [[NSInvocationOperation alloc] initWithTarget:self
@@ -331,7 +331,10 @@
 	else {
 		[self displayLayer:FALSE toHeight:480];
 	}
-
+	
+	@synchronized(locker){
+		tweetToPlay = [self getNextIndexToRead];
+	}
 	
 	NSInvocationOperation *operation = [[NSInvocationOperation alloc] initWithTarget:self
 																			selector:@selector(playTweetAtIndex:) object:self];
@@ -345,7 +348,7 @@
 //ST: stop playing tweets
 - (void)stopPlaying{
 	@synchronized(locker){
-		stopped = YES;
+		tweetToPlay = -1;
 		[fliteEngine stopTalking];
 	}
 }
