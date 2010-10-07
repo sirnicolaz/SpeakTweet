@@ -157,7 +157,8 @@
 	 }*/
 	
 	// for "About SpeakTweet for iPhone" cell
-	if ([indexPath section] == 3 && [indexPath row] == 0) {
+	if ([indexPath section] == 3
+		&& [indexPath row] == 0) {
 		UIViewController *vc = [[[AboutViewController alloc] init] autorelease];
 		[self.navigationController pushViewController:vc animated:YES];
 	}

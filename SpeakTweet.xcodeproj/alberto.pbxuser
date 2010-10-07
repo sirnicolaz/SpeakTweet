@@ -4301,7 +4301,7 @@
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {741, 2236}}";
 			sepNavSelRange = "{5366, 0}";
-			sepNavVisRange = "{4546, 1061}";
+			sepNavVisRange = "{4548, 1063}";
 		};
 	};
 	D3D7CC4C12541CE000ECC114 /* TimelineViewController.h */ = {
@@ -4476,8 +4476,8 @@
 	};
 	D3D7CC7012541CE000ECC114 /* ConfigurationKeys.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {741, 424}}";
-			sepNavSelRange = "{684, 0}";
+			sepNavIntBoundsRect = "{{0, 0}, {741, 399}}";
+			sepNavSelRange = "{416, 22}";
 			sepNavVisRange = "{0, 940}";
 		};
 	};
