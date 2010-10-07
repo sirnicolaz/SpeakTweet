@@ -1505,12 +1505,12 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
+					/usr/include/libxml2,
 					"./VocalKit/**",
 					"./VocalKit/include/**",
-					/usr/include/libxml2,
 					/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS2.0.sdk/usr/include/libxml2,
 				);
-				IPHONEOS_DEPLOYMENT_TARGET = 3.0;
+				IPHONEOS_DEPLOYMENT_TARGET = "";
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CFLAGS = "-I/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.0.sdk/usr/include/libxml2";
 				OTHER_LDFLAGS = (
@@ -1535,11 +1535,15 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
 					/usr/include/libxml2,
-					"./VocalKit/include/**",
 					"./VocalKit/**",
+					"./VocalKit/include/**",
 					/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS2.0.sdk/usr/include/libxml2,
 				);
-				IPHONEOS_DEPLOYMENT_TARGET = 3.0;
+				IPHONEOS_DEPLOYMENT_TARGET = "";
+				OTHER_LDFLAGS = (
+					"-all_load",
+					"-ObjC",
+				);
 				PREBINDING = NO;
 				PRODUCT_NAME = SpeakTweet;
 				PROVISIONING_PROFILE = "FDB452C6-F90A-46C1-812A-33360EB89AFD";
@@ -1562,10 +1566,12 @@
 					"FLITE_PLUS_HTS_ENGINE=1",
 				);
 				INFOPLIST_FILE = Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = "";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/gtm/TigerGcov\"",
 				);
+				OTHER_LDFLAGS = "-licucore";
 				PRODUCT_NAME = SpeakTweet;
 				PROVISIONING_PROFILE = "FDB452C6-F90A-46C1-812A-33360EB89AFD";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "FDB452C6-F90A-46C1-812A-33360EB89AFD";
