@@ -11,6 +11,8 @@
 @implementation VocalKitTestViewController
 @synthesize audioPlayer;
 
+
+
 - (IBAction) recordOrStopPressed:(id)sender {
 	if (![vk isListening]) {
 		[listenButton setTitle:@"Recognize" forState:UIControlStateNormal];
@@ -111,6 +113,7 @@
 			  object:nil];
 	
 	vkSpeaker = [[VKFliteSpeaker alloc] init];
+	//textView.delegate = self;
 }
 
 
@@ -139,5 +142,12 @@
 - (void)dealloc {
     [super dealloc];
 }
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+	
+	[textField resignFirstResponder];
+	return YES;
+}
+
 
 @end

@@ -78,23 +78,23 @@
 	[cell.contentView addSubview:iconview];	
 	
 	
-	int y = 70 ;
+	/*int y = 70 ;
 	{
-		/*UIButton *b = [UIButton buttonWithType:UIButtonTypeCustom];
+		UIButton *b = [UIButton buttonWithType:UIButtonTypeCustom];
 		[b setFrame:CGRectMake(13, y, 148, 36)];
 		[b setBackgroundImage:[UIImage imageNamed:@"normal_01.png"] forState:UIControlStateNormal];
 		[b setBackgroundImage:[UIImage imageNamed:@"pushed_01.png"] forState:UIControlStateHighlighted];
-//		[b addTarget:self action:@selector(replyButtonAction:) forControlEvents:UIControlEventTouchUpInside];
-		[cell addSubview:b];*/
+		[b addTarget:self action:@selector(replyButtonAction:) forControlEvents:UIControlEventTouchUpInside];
+		[cell addSubview:b];
 	}
 	{
 		/*UIButton *b = [UIButton buttonWithType:UIButtonTypeCustom];
 		[b setFrame:CGRectMake(13+148, y, 149, 36)];
 		[b setBackgroundImage:[UIImage imageNamed:@"normal_02.png"] forState:UIControlStateNormal];
 		[b setBackgroundImage:[UIImage imageNamed:@"pushed_02.png"] forState:UIControlStateHighlighted];
-//		[b addTarget:self action:@selector(retweetButtonAction:) forControlEvents:UIControlEventTouchUpInside];
-		[cell addSubview:b];*/
-	}
+		[b addTarget:self action:@selector(retweetButtonAction:) forControlEvents:UIControlEventTouchUpInside];
+		[cell addSubview:b];
+	}*/
 	
 	cell.accessoryType = UITableViewCellAccessoryNone;
 

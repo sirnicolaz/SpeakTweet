@@ -26,8 +26,8 @@
 #import <Foundation/Foundation.h>
 #import <AVFoundation/AVFoundation.h>
 
-#import <VKController.h>
-#import <VKFliteSpeaker.h>
+#import "VKController.h"
+#import "VKFliteSpeaker.h"
 
 @interface FliteWrapper : NSObject <AVAudioPlayerDelegate> {
 	AVAudioPlayer* audioPlayer;

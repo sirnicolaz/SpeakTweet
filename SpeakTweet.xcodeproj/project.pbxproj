@@ -60,6 +60,7 @@
 		D35C15071259E9EE00F13D75 /* icons_04@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D35C15061259E9EE00F13D75 /* icons_04@2x.png */; };
 		D362158112575DC7003A97DC /* tabbar.png in Resources */ = {isa = PBXBuildFile; fileRef = D362157F12575DC7003A97DC /* tabbar.png */; };
 		D362158212575DC7003A97DC /* tabbar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D362158012575DC7003A97DC /* tabbar@2x.png */; };
+		D383A5D8125F55510014F3D9 /* libVocalKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D3D8EC631257A1C5009FE482 /* libVocalKit.a */; };
 		D3C6F35912553DA4007A7656 /* tab1tl.png in Resources */ = {isa = PBXBuildFile; fileRef = D3C6F35112553DA4007A7656 /* tab1tl.png */; };
 		D3C6F35A12553DA4007A7656 /* tab1tl@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D3C6F35212553DA4007A7656 /* tab1tl@2x.png */; };
 		D3C6F35B12553DA4007A7656 /* tab2at.png in Resources */ = {isa = PBXBuildFile; fileRef = D3C6F35312553DA4007A7656 /* tab2at.png */; };
@@ -167,7 +168,6 @@
 		D3D7CD0C12541CE100ECC114 /* RateLimitView.m in Sources */ = {isa = PBXBuildFile; fileRef = D3D7CCC612541CE100ECC114 /* RateLimitView.m */; };
 		D3D7CD0D12541CE100ECC114 /* WebView.m in Sources */ = {isa = PBXBuildFile; fileRef = D3D7CCC912541CE100ECC114 /* WebView.m */; };
 		D3D7CD1A12541DC400ECC114 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D3D7CD1912541DC400ECC114 /* main.m */; };
-		D3D8EC651257A212009FE482 /* libVocalKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D3D8EC631257A1C5009FE482 /* libVocalKit.a */; };
 		D3D8EDE21257A39D009FE482 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3D8EDE11257A39D009FE482 /* AVFoundation.framework */; };
 		D70AB4231248EF2E0027DDC5 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D70AB4221248EF2E0027DDC5 /* QuartzCore.framework */; };
 		D7BB379A125677BC00C0F155 /* FliteWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = D7BB3799125677BC00C0F155 /* FliteWrapper.m */; };
@@ -204,18 +204,18 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		D383A645125F5DB30014F3D9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D3D8EC591257A1C5009FE482 /* VocalKit.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = D2AAC07D0554694100DB518D /* VocalKit */;
+			remoteInfo = VocalKit;
+		};
 		D3D8EC621257A1C5009FE482 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D3D8EC591257A1C5009FE482 /* VocalKit.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = D2AAC07E0554694100DB518D;
-			remoteInfo = VocalKit;
-		};
-		D3D8EC871257A23A009FE482 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D3D8EC591257A1C5009FE482 /* VocalKit.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = D2AAC07D0554694100DB518D;
 			remoteInfo = VocalKit;
 		};
 /* End PBXContainerItemProxy section */
@@ -532,8 +532,8 @@
 				8D1EF37B0FA6C46200BD452F /* libxml2.2.dylib in Frameworks */,
 				D70AB4231248EF2E0027DDC5 /* QuartzCore.framework in Frameworks */,
 				D335F64C12577AC50032F52F /* libiconv.dylib in Frameworks */,
-				D3D8EC651257A212009FE482 /* libVocalKit.a in Frameworks */,
 				D3D8EDE21257A39D009FE482 /* AVFoundation.framework in Frameworks */,
+				D383A5D8125F55510014F3D9 /* libVocalKit.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1189,7 +1189,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				D3D8EC881257A23A009FE482 /* PBXTargetDependency */,
+				D383A646125F5DB30014F3D9 /* PBXTargetDependency */,
 			);
 			name = SpeakTweet;
 			productName = ntlniph;
@@ -1457,10 +1457,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		D3D8EC881257A23A009FE482 /* PBXTargetDependency */ = {
+		D383A646125F5DB30014F3D9 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = VocalKit;
-			targetProxy = D3D8EC871257A23A009FE482 /* PBXContainerItemProxy */;
+			targetProxy = D383A645125F5DB30014F3D9 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1481,12 +1481,13 @@
 					DEBUG,
 				);
 				INFOPLIST_FILE = Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/gtm/TigerGcov\"",
 				);
 				OTHER_LDFLAGS = "-licucore";
-				PRODUCT_NAME = "SpeakTweet!";
+				PRODUCT_NAME = SpeakTweet;
 				SDKROOT = iphonesimulator4.1;
 			};
 			name = Debug;
@@ -1505,17 +1506,17 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
-					/usr/include/libxml2,
 					"./VocalKit/**",
 					"./VocalKit/include/**",
+					/usr/include/libxml2,
 					/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS2.0.sdk/usr/include/libxml2,
 				);
-				IPHONEOS_DEPLOYMENT_TARGET = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.1;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CFLAGS = "-I/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.0.sdk/usr/include/libxml2";
 				OTHER_LDFLAGS = (
-					"-all_load",
 					"-ObjC",
+					"-all_load",
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = "SpeakTweet!";
@@ -1565,8 +1566,14 @@
 					ENABLE_OAUTH,
 					"FLITE_PLUS_HTS_ENGINE=1",
 				);
+				HEADER_SEARCH_PATHS = (
+					"./VocalKit/**",
+					"./VocalKit/include/**",
+					/usr/include/libxml2,
+					/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS2.0.sdk/usr/include/libxml2,
+				);
 				INFOPLIST_FILE = Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/gtm/TigerGcov\"",

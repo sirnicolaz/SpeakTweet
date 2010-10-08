@@ -12,7 +12,7 @@
 #import <AVFoundation/AVFoundation.h>
 
 
-@interface VocalKitTestViewController : UIViewController {
+@interface VocalKitTestViewController : UIViewController <UITextFieldDelegate> {
 	IBOutlet UITextView *textView;
 
 	IBOutlet UIButton *listenButton;

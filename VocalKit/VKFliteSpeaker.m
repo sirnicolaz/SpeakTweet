@@ -7,6 +7,7 @@
 //
 
 #import "VKFliteSpeaker.h"
+
 #import "flite_version.h"
 #include <AudioToolbox/AudioToolbox.h>
 
@@ -28,6 +29,7 @@
 	}
 	return self;
 }
+
 - (void) speakText:(NSString*)text
 				toFile:(NSString*)filename
 			withPitch:(float)pitch
@@ -49,6 +51,7 @@
 	
 	durs = flite_text_to_speech([text UTF8String],desired_voice,[filename UTF8String]);
 }
+
 
 
 - (NSArray*) speakers {
@@ -73,9 +76,8 @@
 		desired_voice = register_cmu_us_rms(NULL);
 	}
 	else {
-		desired_voice = register_cmu_us_slt(NULL);
+	desired_voice = register_cmu_us_slt(NULL);
 	}
-
 }
 
 
@@ -88,6 +90,8 @@
 	feat_set_float(desired_voice->features, [key UTF8String], fValue);
 	
 }
+
+
 - (void) setStringValue:(NSString*)string forKey:(NSString*)key {
 	feat_set_string(feature_config, [key UTF8String], [string UTF8String]);
 }
@@ -113,6 +117,5 @@
 	[self setFloatValue:(float)variance forKey:(NSString*)@"int_f0_target_stddev"];
 	[self setFloatValue:(float)speed forKey:(NSString*)@"duration_stretch"];
 }
-
 
 @end
