@@ -37,6 +37,11 @@
 		D34A056B1256345C005BC82B /* speak.png in Resources */ = {isa = PBXBuildFile; fileRef = D34A056A1256345C005BC82B /* speak.png */; };
 		D34A0573125635F7005BC82B /* speak@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D34A0572125635F7005BC82B /* speak@2x.png */; };
 		D34FD26F12536760009D6029 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D34FD26E12536760009D6029 /* Default@2x.png */; };
+		D350EE04125FCF8100E1770C /* libflite_cmu_us_slt.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D350EDFE125FCF8100E1770C /* libflite_cmu_us_slt.a */; };
+		D350EE05125FCF8100E1770C /* libflite_cmulex.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D350EDFF125FCF8100E1770C /* libflite_cmulex.a */; };
+		D350EE06125FCF8100E1770C /* libflite_usenglish.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D350EE00125FCF8100E1770C /* libflite_usenglish.a */; };
+		D350EE07125FCF8100E1770C /* libflite.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D350EE01125FCF8100E1770C /* libflite.a */; };
+		D350EE20125FD09D00E1770C /* libflite_cmu_us_rms.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D350EE1F125FD09D00E1770C /* libflite_cmu_us_rms.a */; };
 		D35C14931259C34200F13D75 /* normal_black_03@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D35C14911259C34200F13D75 /* normal_black_03@2x.png */; };
 		D35C14941259C34200F13D75 /* normal_black_05@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D35C14921259C34200F13D75 /* normal_black_05@2x.png */; };
 		D35C149F1259C77700F13D75 /* normal_black_04_@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D35C149D1259C77700F13D75 /* normal_black_04_@2x.png */; };
@@ -208,7 +213,7 @@
 			isa = PBXContainerItemProxy;
 			containerPortal = D3D8EC591257A1C5009FE482 /* VocalKit.xcodeproj */;
 			proxyType = 1;
-			remoteGlobalIDString = D2AAC07D0554694100DB518D /* VocalKit */;
+			remoteGlobalIDString = D2AAC07D0554694100DB518D;
 			remoteInfo = VocalKit;
 		};
 		D3D8EC621257A1C5009FE482 /* PBXContainerItemProxy */ = {
@@ -260,6 +265,11 @@
 		D34A056A1256345C005BC82B /* speak.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = speak.png; sourceTree = "<group>"; };
 		D34A0572125635F7005BC82B /* speak@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "speak@2x.png"; sourceTree = "<group>"; };
 		D34FD26E12536760009D6029 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "resources/Default@2x.png"; sourceTree = "<group>"; };
+		D350EDFE125FCF8100E1770C /* libflite_cmu_us_slt.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libflite_cmu_us_slt.a; path = VocalKit/libs/libflite_cmu_us_slt.a; sourceTree = "<group>"; };
+		D350EDFF125FCF8100E1770C /* libflite_cmulex.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libflite_cmulex.a; path = VocalKit/libs/libflite_cmulex.a; sourceTree = "<group>"; };
+		D350EE00125FCF8100E1770C /* libflite_usenglish.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libflite_usenglish.a; path = VocalKit/libs/libflite_usenglish.a; sourceTree = "<group>"; };
+		D350EE01125FCF8100E1770C /* libflite.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libflite.a; path = VocalKit/libs/libflite.a; sourceTree = "<group>"; };
+		D350EE1F125FD09D00E1770C /* libflite_cmu_us_rms.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libflite_cmu_us_rms.a; path = VocalKit/libs/libflite_cmu_us_rms.a; sourceTree = "<group>"; };
 		D35C14911259C34200F13D75 /* normal_black_03@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "normal_black_03@2x.png"; sourceTree = "<group>"; };
 		D35C14921259C34200F13D75 /* normal_black_05@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "normal_black_05@2x.png"; sourceTree = "<group>"; };
 		D35C149D1259C77700F13D75 /* normal_black_04_@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "normal_black_04_@2x.png"; sourceTree = "<group>"; };
@@ -534,6 +544,11 @@
 				D335F64C12577AC50032F52F /* libiconv.dylib in Frameworks */,
 				D3D8EDE21257A39D009FE482 /* AVFoundation.framework in Frameworks */,
 				D383A5D8125F55510014F3D9 /* libVocalKit.a in Frameworks */,
+				D350EE04125FCF8100E1770C /* libflite_cmu_us_slt.a in Frameworks */,
+				D350EE05125FCF8100E1770C /* libflite_cmulex.a in Frameworks */,
+				D350EE06125FCF8100E1770C /* libflite_usenglish.a in Frameworks */,
+				D350EE07125FCF8100E1770C /* libflite.a in Frameworks */,
+				D350EE20125FD09D00E1770C /* libflite_cmu_us_rms.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -577,6 +592,11 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D350EE1F125FD09D00E1770C /* libflite_cmu_us_rms.a */,
+				D350EDFE125FCF8100E1770C /* libflite_cmu_us_slt.a */,
+				D350EDFF125FCF8100E1770C /* libflite_cmulex.a */,
+				D350EE00125FCF8100E1770C /* libflite_usenglish.a */,
+				D350EE01125FCF8100E1770C /* libflite.a */,
 				8D1EF37A0FA6C46200BD452F /* libxml2.2.dylib */,
 				F17419A80E2A45AF008BA863 /* CoreGraphics.framework */,
 				F17419030E2A2E6A008BA863 /* UIKit.framework */,
@@ -1481,10 +1501,11 @@
 					DEBUG,
 				);
 				INFOPLIST_FILE = Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 3.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/gtm/TigerGcov\"",
+					"\"$(SRCROOT)/VocalKit/libs\"",
 				);
 				OTHER_LDFLAGS = "-licucore";
 				PRODUCT_NAME = SpeakTweet;
@@ -1511,7 +1532,7 @@
 					/usr/include/libxml2,
 					/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS2.0.sdk/usr/include/libxml2,
 				);
-				IPHONEOS_DEPLOYMENT_TARGET = 4.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 3.0;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CFLAGS = "-I/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.0.sdk/usr/include/libxml2";
 				OTHER_LDFLAGS = (
@@ -1540,7 +1561,7 @@
 					"./VocalKit/include/**",
 					/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS2.0.sdk/usr/include/libxml2,
 				);
-				IPHONEOS_DEPLOYMENT_TARGET = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 3.0;
 				OTHER_LDFLAGS = (
 					"-all_load",
 					"-ObjC",
@@ -1573,13 +1594,14 @@
 					/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS2.0.sdk/usr/include/libxml2,
 				);
 				INFOPLIST_FILE = Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 3.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/gtm/TigerGcov\"",
+					"\"$(SRCROOT)/VocalKit/libs\"",
 				);
 				OTHER_LDFLAGS = "-licucore";
-				PRODUCT_NAME = SpeakTweet;
+				PRODUCT_NAME = speaktweet;
 				PROVISIONING_PROFILE = "FDB452C6-F90A-46C1-812A-33360EB89AFD";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "FDB452C6-F90A-46C1-812A-33360EB89AFD";
 			};

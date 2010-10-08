@@ -76,7 +76,7 @@
 		desired_voice = register_cmu_us_rms(NULL);
 	}
 	else {
-	desired_voice = register_cmu_us_slt(NULL);
+		desired_voice = register_cmu_us_slt(NULL);
 	}
 }
 
