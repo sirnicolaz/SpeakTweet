@@ -183,6 +183,7 @@
 	window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 	[window addSubview:tabBarController.view];
 	[window makeKeyAndVisible];
+	[self splashScreenAnimation];
 	
 #ifdef ENABLE_OAUTH	
 	if (! [[Account sharedInstance] waitForOAuthCallback] && 
@@ -262,9 +263,6 @@
 	[friendsViewController.timeline prefetch];
 	[replysViewController.timeline prefetch];
 	[directMessageViewController.timeline prefetch];
-	
-	// devo metterla qui se voglio che sfumi anche quando avviata da background (multitasking)
-	[self splashScreenAnimation];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
