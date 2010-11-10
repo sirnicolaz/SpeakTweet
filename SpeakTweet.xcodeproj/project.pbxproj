@@ -176,6 +176,7 @@
 		D3D7CD1A12541DC400ECC114 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D3D7CD1912541DC400ECC114 /* main.m */; };
 		D3D8EDE21257A39D009FE482 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3D8EDE11257A39D009FE482 /* AVFoundation.framework */; };
 		D70AB4231248EF2E0027DDC5 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D70AB4221248EF2E0027DDC5 /* QuartzCore.framework */; };
+		D73B5E69128AC5B50066A351 /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D73B5E68128AC5B50066A351 /* iAd.framework */; };
 		D7BB379A125677BC00C0F155 /* FliteWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = D7BB3799125677BC00C0F155 /* FliteWrapper.m */; };
 		F1474FE70FD3F486007D9F4C /* UICPrototypeTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F1474FD40FD3F486007D9F4C /* UICPrototypeTableCell.m */; };
 		F1474FE80FD3F486007D9F4C /* UICPrototypeTableCellSelect.m in Sources */ = {isa = PBXBuildFile; fileRef = F1474FD60FD3F486007D9F4C /* UICPrototypeTableCellSelect.m */; };
@@ -469,6 +470,7 @@
 		D3D8EDE11257A39D009FE482 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		D704E52912476195005BBFAD /* twitter_apikeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = twitter_apikeys.h; path = ../OAuthConsumer/twitter_apikeys.h; sourceTree = "<group>"; };
 		D70AB4221248EF2E0027DDC5 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		D73B5E68128AC5B50066A351 /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
 		D7BB3798125677BC00C0F155 /* FliteWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FliteWrapper.h; sourceTree = "<group>"; };
 		D7BB3799125677BC00C0F155 /* FliteWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FliteWrapper.m; sourceTree = "<group>"; };
 		F1474FD30FD3F486007D9F4C /* UICPrototypeTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UICPrototypeTableCell.h; sourceTree = "<group>"; };
@@ -551,6 +553,7 @@
 				D350EE06125FCF8100E1770C /* libflite_usenglish.a in Frameworks */,
 				D350EE07125FCF8100E1770C /* libflite.a in Frameworks */,
 				D350EE20125FD09D00E1770C /* libflite_cmu_us_rms.a in Frameworks */,
+				D73B5E69128AC5B50066A351 /* iAd.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -609,6 +612,7 @@
 				D70AB4221248EF2E0027DDC5 /* QuartzCore.framework */,
 				D335F64B12577AC50032F52F /* libiconv.dylib */,
 				D3D8EDE11257A39D009FE482 /* AVFoundation.framework */,
+				D73B5E68128AC5B50066A351 /* iAd.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";

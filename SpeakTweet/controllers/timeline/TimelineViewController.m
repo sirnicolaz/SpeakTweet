@@ -19,6 +19,11 @@
 
 @synthesize timeline, tableView;
 
+#if __IPHONE_OS_VERSION_MAX_ALLOWED >= 40000
+@synthesize adView;
+@synthesize bannerIsVisible;
+#endif
+
 - (id)init {
 	[super init];	
 	fliteEngine = [[FliteWrapper alloc] initWithOnFinishDelegate:self whenFinishPlayingExecute:@selector(playTweets)];
@@ -118,7 +123,70 @@
 	activityView.hidesWhenStopped = YES;
 	[overlayLayer addSubview:activityView];	
 	
+	#if __IPHONE_OS_VERSION_MAX_ALLOWED >= 40000
+	NSLog(@"iAd supportato");
+	
+	adView = [[ADBannerView alloc] initWithFrame:CGRectMake(0.0f, 367.0f, 0.0f, 0.0f)];
+	adView.currentContentSizeIdentifier = ADBannerContentSizeIdentifier320x50;
+	[self.view addSubview:adView];
+	self.adView.delegate = self;
+	self.bannerIsVisible = NO;
+	
+	#else
+	NSLog(@"iAd non supportato");
+	#endif
+	
+	
 }
+
+#if __IPHONE_OS_VERSION_MAX_ALLOWED >= 40000
+- (void) bannerViewDidLoadAd:(ADBannerView *)banner {
+	
+	NSLog(@"iAd banner caricato");
+	
+	if (!self.bannerIsVisible) {
+		[UIView beginAnimations:@"animateAdBannerOn" context:NULL];
+		banner.frame = CGRectOffset(banner.frame, 0, -50.0f);
+		//banner.frame = CGRectMake(0, 50, 320, 480);
+		[UIView commitAnimations];
+		self.bannerIsVisible = YES;
+		
+	}
+	
+}
+#endif
+
+#if __IPHONE_OS_VERSION_MAX_ALLOWED >= 40000
+
+-(BOOL) bannerViewActionShouldBegin:(ADBannerView *)banner willLeaveApplication:(BOOL)willLeave{
+	NSLog(@"[iAd]: An action was started from the banner. Application will quit: %d", willLeave);
+	return YES;
+}
+#endif
+
+
+#if __IPHONE_OS_VERSION_MAX_ALLOWED >= 40000
+
+-(void) bannerViewActionDidFinish:(ADBannerView *)banner{
+	
+}
+#endif
+
+
+#if __IPHONE_OS_VERSION_MAX_ALLOWED >= 40000
+
+-(void) bannerView:(ADBannerView *)banner didFailToReceiveAdWithError:(NSError *)error{
+	NSLog(@"Impossibile caricare il banner, error: %@", error);
+	if(self.bannerIsVisible){
+		[UIView beginAnimations:@"animateAdBannerOff" context:NULL];
+		banner.frame = CGRectOffset(banner.frame, 0, 50.0f);
+		[UIView commitAnimations];
+		self.bannerIsVisible = NO;
+		
+	}
+}
+#endif
+
 
 - (void)viewWillAppear:(BOOL)animated {
 	NSIndexPath *tableSelection = [self.tableView indexPathForSelectedRow];

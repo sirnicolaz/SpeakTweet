@@ -6,6 +6,9 @@
 #import "StatusCell.h"
 #import "AccelerometerSensor.h"
 #import "Timeline.h"
+#if __IPHONE_OS_VERSION_MAX_ALLOWED >= 40000
+#import <iAd/iAd.h>
+#endif
 
 #define	PLAY_BUTTON_HEIGTH		44
 
@@ -23,7 +26,7 @@
 @class TweetPostViewController;
 @class EGORefreshTableHeaderView;
 
-@interface TimelineViewController : UIViewController  <UITableViewDelegate, UITableViewDataSource>{
+@interface TimelineViewController : UIViewController  <ADBannerViewDelegate, UITableViewDelegate, UITableViewDataSource>{
 	//ST: play calculating mode
 	UIActivityIndicatorView *activityView;
 	UIImageView* overlayLayer;
@@ -82,6 +85,11 @@
 	//  Reloading should really be your tableviews model class
 	//  Putting it here for demo purposes 
 	BOOL _reloading;
+	
+	#if __IPHONE_OS_VERSION_MAX_ALLOWED >= 40000
+	ADBannerView *adView;
+	BOOL bannerIsVisible;
+	#endif
 }
 
 @property (readonly) Timeline *timeline;
@@ -89,6 +97,11 @@
 @property(assign,getter=isReloading) BOOL reloading;
 
 @property(nonatomic, retain) UITableView *tableView;
+
+#if __IPHONE_OS_VERSION_MAX_ALLOWED >= 40000
+@property (nonatomic, retain) IBOutlet ADBannerView *adView;
+@property (nonatomic) BOOL bannerIsVisible;
+#endif
 
 @end
 

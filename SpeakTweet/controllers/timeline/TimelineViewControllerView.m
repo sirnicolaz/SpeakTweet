@@ -390,10 +390,9 @@
 	}
 
 	UITableViewCell* cellToNotCover = [self.tableView cellForRowAtIndexPath:cellIndexPath];
-	
 	[self.view addSubview:overlayLayer];
 	[self displayLayer:TRUE toHeight:cellToNotCover.bounds.size.height];
-	
+	[self.view bringSubviewToFront:self.adView];
 	//ST: ActivityIndicator stuff...
 	[activityView startAnimating];
 	
