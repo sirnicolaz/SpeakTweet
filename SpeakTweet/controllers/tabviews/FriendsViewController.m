@@ -7,7 +7,7 @@
 #import "MentionsViewController.h"
 #import "HttpClientPool.h"
 
-#define TITLE_NAME @"SpeakTweet!"
+#define TITLE_NAME @"SpeakTweet! Free"
 
 
 @implementation FriendsViewController

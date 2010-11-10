@@ -41,10 +41,10 @@
 		<dict>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>speaktweet</string>
+				<string>speaktweetfree</string>
 			</array>
 			<key>CFBundleURLName</key>
-			<string>org.nicolamiotto.speaktweet</string>
+			<string>org.nicolamiotto.speaktweetfree</string>
 		</dict>
 	</array>
 </dict>

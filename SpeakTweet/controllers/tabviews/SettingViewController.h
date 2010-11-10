@@ -1,5 +1,5 @@
 #import <UIKit/UIKit.h>
 #import "UICTableViewController.h"
 
-@interface SettingViewController : UICTableViewController
+@interface SettingViewController : UICTableViewController <UIAlertViewDelegate>
 @end

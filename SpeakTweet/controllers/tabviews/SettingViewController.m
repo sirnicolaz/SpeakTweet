@@ -26,7 +26,8 @@
 					   [UICPrototypeTableCell cellForSelect:@"Voice" 
 										   withSelectTitles:[NSArray arrayWithObjects:
 															 @"woman",
-															 @"man", nil]
+															 //@"man",
+																	nil]
 										withUserDefaultsKey:ST_PREFERENCE_VOICE],
 					   /*[UICPrototypeTableCell cellForSelect:@"Volume"
 						withSelectTitles:[NSArray arrayWithObjects:
@@ -156,6 +157,26 @@
 	 [self.tabBarController presentModalViewController:nc animated:YES];
 	 }*/
 	
+	
+	/* FREE VERSION */
+	if ([indexPath section] == 1
+		 && [indexPath row] == 0) {
+			
+		UIAlertView *alert = [[UIAlertView alloc] 
+									 initWithTitle:@"Message" 
+									 message:@"Only woman voice available in the free version.\nIf you want a man voice too, please buy the complete version iAd free."
+									 delegate:nil cancelButtonTitle:@"Not now..." 
+									 otherButtonTitles:nil];
+		[alert addButtonWithTitle:@"App Store"];
+		alert.delegate = self;
+		
+		[alert show];
+		[alert release];
+		
+	}
+	/* end FREE VERSION */
+	
+	
 	// for "About SpeakTweet for iPhone" cell
 	if ([indexPath section] == 3
 		&& [indexPath row] == 0) {
@@ -164,6 +185,16 @@
 	}
 	
 	[super tableView:tableView didSelectRowAtIndexPath:indexPath];
+}
+
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+	if(buttonIndex == 1)
+	{
+		[[UIApplication sharedApplication]
+		 openURL:[NSURL URLWithString:@"http://itunes.apple.com/us/app/speaktweet/id396175265?mt=8"]];
+	}
 }
 
 

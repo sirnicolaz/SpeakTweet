@@ -207,7 +207,41 @@
 	if (!alertShown) {
 		[self startup];
 	}
+	
+	NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
+	NSString * notFirstRun = [defaults stringForKey:@"NotFirstRun"];
+	
+	if (notFirstRun == nil) {
+		[defaults setValue:@"This is the first time you run this app!" forKey:@"NotFirstRun"];
+		[defaults synchronize];
+	
+		
+		UIAlertView *alert = [[UIAlertView alloc] 
+									 initWithTitle:@"Advertise" 
+									 message:@"This free version shows iAd advertising and offers only a woman voice.\nThe complete version is iAd free and offers a man voice too."
+									 delegate:nil cancelButtonTitle:@"Not now..." 
+									 otherButtonTitles:nil];
+		[alert addButtonWithTitle:@"App Store"];
+		alert.delegate = self;
+		
+		[alert show];
+		[alert release];
+		
+	}
+	
 }
+
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+	if(buttonIndex == 1)
+	{
+		[[UIApplication sharedApplication]
+		 openURL:[NSURL URLWithString:@"http://itunes.apple.com/us/app/speaktweet/id396175265?mt=8"]];
+	}
+}
+
+
 
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
 	LOG(@"handleOpenURL:%@", url);

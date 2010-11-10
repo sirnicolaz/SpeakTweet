@@ -57,7 +57,6 @@ static int count_from_index(int index)
 	if (index > 3) return 0;
 	
 	const int m[] = {20,50,100,200};
-	NSLog(@"DIOCANEE %d", m[index]);
 	return m[index];
 }
 

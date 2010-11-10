@@ -15,7 +15,7 @@
 #define PREFERENCE_LEFTHAND				@"lefthand"
 
 #define OAUTH_PROVIDER					@"twitter.com"
-#define OAUTH_PREFIX						@"SpeakTweet"
+#define OAUTH_PREFIX						@"SpeakTweetFree"
 
 #define ST_PREFERENCE_VOICE               @"voice"
 
@@ -23,4 +23,4 @@
 #define OAUTH_WAIT_FOR_CALLBACK		@"oAuthWaitForCallback"
 
 // callback: http://iphone.natsulion.org/oauth_callback
-#define SPEAKTWEET_OAUTH_CALLBACK_URL @"speaktweet:///oauth_callback"
+#define SPEAKTWEET_OAUTH_CALLBACK_URL @"speaktweetfree:///oauth_callback"

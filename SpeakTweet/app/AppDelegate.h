@@ -17,7 +17,7 @@
 @end
 // ST: end custom
 
-@interface AppDelegate : NSObject <UIApplicationDelegate, UITabBarControllerDelegate, CacheCleanerDelegate> {
+@interface AppDelegate : NSObject <UIAlertViewDelegate, UIApplicationDelegate, UITabBarControllerDelegate, CacheCleanerDelegate> {
 	UIWindow *window;
 	// splash screen fade out
 	UIImageView *splashView;
